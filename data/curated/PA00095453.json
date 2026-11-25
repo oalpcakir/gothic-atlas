@@ -1,0 +1,41 @@
+{
+  "id": "PA00095453",
+  "name_en": "Albi Cathedral (Sainte-Cécile)",
+  "summary": "Albi Cathedral is a fortress-like Southern Gothic church built entirely of brick from 1282, with a single wide nave and a massive tower-keep. Inside it holds a very large painted vault and Last Judgment, a stone rood screen and a Renaissance choir enclosure. It is part of the UNESCO-listed Episcopal City of Albi.",
+  "dimensions": {
+    "vault_height_m": {"value": 30, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "note": "vault height; wall height 40 m"},
+    "length_interior_m": {"value": 100, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "alt": [{"value": 97, "source": "https://en.wikipedia.org/wiki/Albi_Cathedral"}]},
+    "length_exterior_m": {"value": 113.5, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    "nave_width_m": {"value": 18, "source": "https://en.wikipedia.org/wiki/Albi_Cathedral", "note": "nave width per English Wikipedia; French Wikipedia gives total interior width 30 m and exterior 35 m, which include side chapels"},
+    "tallest_point_m": {"value": 78, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "note": "bell tower (clocher-donjon)"},
+    "towers_m": {"value": 78, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "note": "single bell tower"}
+  },
+  "phases": [
+    {"from": 1282, "to": 1303, "part": "choir", "what": "First brick laid 15 August 1282; apse walls and first four straight bays built", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "documented"},
+    {"from": 1310, "to": 1340, "part": "nave", "what": "Vaults over the existing part and walls of three more bays", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "approximate"},
+    {"from": 1340, "to": 1370, "part": "nave", "what": "Walls completed; base of the bell tower begun", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "approximate"},
+    {"from": 1370, "to": 1390, "part": "nave", "what": "Vaults completed", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "approximate"},
+    {"from": 1400, "to": 1470, "part": "whole", "what": "About 70 years of stagnation", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "approximate"},
+    {"from": 1474, "to": 1484, "part": "nave", "what": "Rood screen and Last Judgment mural made (rood screen dates vary up to 1517)", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "debated"},
+    {"from": 1480, "to": 1480, "part": "whole", "what": "Cathedral consecrated 23 April by Bishop Louis I d'Amboise, who also added two octagonal storeys to the tower", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "documented"},
+    {"from": 1509, "to": 1512, "part": "nave", "what": "Renaissance vault paintings under Louis II d'Amboise, completed 1512", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi", "certainty": "documented"}
+  ],
+  "events": [
+    {"year": 1282, "type": "other", "what": "Bishop Bernard de Castanet starts the new cathedral after the Albigensian Crusade.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"year": 1693, "type": "other", "what": "Saint-Clair chapel built, cutting away part of the Last Judgment mural.", "source": "https://en.wikipedia.org/wiki/Albi_Cathedral"},
+    {"year": 1792, "type": "revolution", "what": "Rood screen statues destroyed; the Tarn department voted to demolish the cathedral, stopped by a minister after a letter from Mariès on 5 November.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"year": 1830, "type": "restoration", "what": "Leaking roof prompts the restoration by César Daly; works halted 1866 and resumed after his death in 1896.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"year": 1862, "type": "restoration", "what": "Listed as a monument historique.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"year": 1947, "type": "other", "what": "Raised to minor basilica on 9 May.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"year": 2010, "type": "other", "what": "Inscribed on the UNESCO World Heritage list with the Episcopal City.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"}
+  ],
+  "masters": [
+    {"name": "Bernard de Castanet (bishop, patron)", "active": "from 1277", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"name": "Pons Descoyl (probable architect, per Biget)", "active": "c.1277–1308", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"name": "César Daly", "active": "1830–1866", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Sainte-Cécile d'Albi (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Cécile_d'Albi"},
+    {"title": "Albi Cathedral (English Wikipedia)", "url": "https://en.wikipedia.org/wiki/Albi_Cathedral"}
+  ]
+}

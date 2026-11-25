@@ -1,0 +1,62 @@
+---
+import Base from "../../layouts/Base.astro";
+import { href } from "../../lib/data.js";
+import { curated, shortName, firstYear, gantt, PARTS, LEGEND_PARTS } from "../../lib/dossier.js";
+const all = curated().filter((b) => b.dossier.phases.length).sort((a, b) => firstYear(a) - firstYear(b));
+const chart = gantt(all.map((b) => ({ label: shortName(b), href: href(b), phases: b.dossier.phases, events: b.dossier.events })), { width: 980, labelW: 120, x0: 1130, x1: 1560, rowH: 22 });
+
+// How long did it take? From the first phase to the last one that ends by 1560.
+const spans = all.map((b) => {
+  const ph = b.dossier.phases, start = ph[0].from;
+  const medievalEnd = Math.max(...ph.filter((p) => p.from <= 1560).map((p) => Math.min(p.to, 1560)));
+  const lastEnd = Math.max(...ph.map((p) => p.to));
+  return { b, start, medievalEnd, lastEnd, years: medievalEnd - start };
+}).sort((a, b) => a.years - b.years);
+
+const kinds = { fire: "Fires", collapse: "Collapses", lightning: "Lightning", war: "War damage", revolution: "Revolution", restoration: "Restorations" };
+const events = all.flatMap((b) => b.dossier.events.map((e) => ({ ...e, b })));
+const byKind = Object.keys(kinds).map((k) => [k, events.filter((e) => e.type === k)]);
+const disasters = events.filter((e) => ["fire", "collapse", "lightning", "war"].includes(e.type)).sort((a, b) => a.year - b.year);
+---
+<Base title="Built over centuries" description="Building phases of thirty French Gothic cathedrals on one timeline, with the fires, collapses and wars that interrupted them.">
+  <div class="stack" style="--gap:3rem">
+    <header class="stack">
+      <p class="eyebrow"><a href="/studies/">Studies</a></p>
+      <h1>Built over centuries</h1>
+      <p>No Gothic cathedral was built in one go. Choirs went up first so that services could start; naves, fronts and towers followed as money allowed, often under several generations of masons. Here are thirty of them on one timeline.</p>
+    </header>
+
+    <section class="stack">
+      <h2>Phases, 1130–1560</h2>
+      <div class="scroll-x" set:html={chart}></div>
+      <p class="legend">{LEGEND_PARTS.map((k) => <span><i style={`background:${PARTS[k][1]};border-radius:0`}></i>{PARTS[k][0]}</span>)}<span>▼ fire, collapse, lightning or war</span></p>
+      <p class="caption">Solid bars are phases the sources call documented; paler bars are approximate or debated. An arrow and a year on the right mean work continued after 1560. Hover a bar for the detail; each cathedral's page lists its phases with sources.</p>
+    </section>
+
+    <section class="stack">
+      <h2>From first stone to last medieval phase</h2>
+      <div class="scroll-x">
+        <table class="data" style="min-width:560px">
+          <thead><tr><th>Cathedral</th><th class="num">Begun</th><th class="num">Last phase to 1560 ends</th><th class="num">Years</th><th class="num">Latest work</th></tr></thead>
+          <tbody>{spans.map((s) => <tr><td><a href={href(s.b)}>{shortName(s.b)}</a></td><td class="num">{s.start}</td><td class="num">{s.medievalEnd}</td><td class="num">{s.years}</td><td class="num">{s.lastEnd > 1560 ? s.lastEnd : "—"}</td></tr>)}</tbody>
+        </table>
+      </div>
+      <p class="caption">A span counts the years between the first and last recorded phases, pauses included. It depends on which phases a dossier lists, so treat small differences as noise.</p>
+    </section>
+
+    <section class="stack">
+      <h2>What went wrong</h2>
+      <p>The dossiers record {events.length} events across the thirty buildings: {byKind.filter(([, v]) => v.length).map(([k, v]) => `${v.length} ${kinds[k].toLowerCase()}`).join(", ")}.</p>
+      <div class="scroll-x">
+        <table class="data" style="min-width:560px">
+          <thead><tr><th>Year</th><th>Cathedral</th><th>Kind</th><th>What happened</th></tr></thead>
+          <tbody>{disasters.map((e) => <tr><td class="mono">{e.year}</td><td><a href={href(e.b)}>{shortName(e.b)}</a></td><td>{e.type}</td><td>{e.what}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .legend i { vertical-align: -1px; }
+</style>

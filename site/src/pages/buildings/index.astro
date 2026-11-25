@@ -1,0 +1,93 @@
+---
+import Base from "../../layouts/Base.astro";
+import { load, fmt } from "../../lib/data.js";
+const { meta } = load();
+---
+<Base title="Buildings" description={`Search and filter ${fmt(meta.count)} Gothic-era religious buildings in France by place, type, century and evidence.`}>
+  <div class="stack" style="--gap:1.4rem">
+    <p class="eyebrow">Buildings</p>
+    <h1>{fmt(meta.count)} buildings</h1>
+    <p>Every protected church, chapel, abbey and cathedral in the atlas. Each has its own page with dates, protection history, archive photographs and protected objects.</p>
+
+    <form class="filters" id="filters" onsubmit="return false">
+      <input id="q" type="search" placeholder="Name or town, e.g. Amiens" aria-label="Search by name or town" />
+      <select id="fType" aria-label="Type"><option value="">All types</option></select>
+      <select id="fRegion" aria-label="Region"><option value="">All regions</option></select>
+      <select id="fCentury" aria-label="Century of first Gothic campaign">
+        <option value="">Any century</option>
+        <option value="12">12th century</option><option value="13">13th century</option><option value="14">14th century</option>
+        <option value="15">15th century</option><option value="16">16th century</option><option value="0">Undated</option>
+      </select>
+      <select id="fSort" aria-label="Sort">
+        <option value="first">Oldest Gothic campaign first</option>
+        <option value="photos">Most archive photographs</option>
+        <option value="objects">Most protected objects</option>
+        <option value="name">Town A–Z</option>
+      </select>
+    </form>
+    <p class="mono muted" id="count" aria-live="polite">Loading…</p>
+    <div class="scroll-x">
+      <table class="data" style="min-width:640px">
+        <thead><tr><th>Building</th><th>Town</th><th>Type</th><th>Gothic from</th><th class="num">Photos</th><th class="num">Objects</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p><button id="more" type="button" hidden>Show 200 more</button></p>
+  </div>
+</Base>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filters input { flex: 1 1 240px; min-width: 0; }
+  .filters select { flex: 0 1 auto; max-width: 100%; }
+</style>
+
+<script>
+  const $ = (id: string) => document.getElementById(id) as any;
+  const atlas = await fetch("/data/atlas.json").then((r) => r.json());
+  const I = Object.fromEntries(atlas.cols.map((c: string, i: number) => [c, i]));
+  const esc = (s: any) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
+  const norm = (s: string) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  atlas.types.forEach((t: string, i: number) => $("fType").add(new Option(t[0].toUpperCase() + t.slice(1), String(i))));
+  atlas.regions.forEach((t: string, i: number) => $("fRegion").add(new Option(t, String(i))));
+
+  const params = new URLSearchParams(location.search);
+  if (params.get("q")) $("q").value = params.get("q");
+  let shown = 200, result: any[] = [];
+
+  function run() {
+    const q = norm($("q").value.trim()).split(/\s+/).filter(Boolean);
+    const type = $("fType").value, region = $("fRegion").value, cent = $("fCentury").value, sort = $("fSort").value;
+    result = atlas.rows.filter((r: any[]) => {
+      if (type !== "" && r[I.type] !== +type) return false;
+      if (region !== "" && r[I.region] !== +region) return false;
+      if (cent !== "") {
+        const f = r[I.first];
+        if (cent === "0" ? f != null : f == null || Math.floor((f - 1) / 100) + 1 !== +cent) return false;
+      }
+      return q.every((w: string) => r[I.search].includes(w));
+    });
+    const by: Record<string, (a: any[], b: any[]) => number> = {
+      first: (a, b) => (a[I.first] ?? 9999) - (b[I.first] ?? 9999) || b[I.photos] - a[I.photos],
+      photos: (a, b) => b[I.photos] - a[I.photos],
+      objects: (a, b) => b[I.objects] - a[I.objects],
+      name: (a, b) => a[I.commune].localeCompare(b[I.commune], "fr") || a[I.name].localeCompare(b[I.name], "fr"),
+    };
+    result.sort(by[sort]);
+    shown = 200; draw();
+  }
+  function draw() {
+    $("count").textContent = `${result.length.toLocaleString("en-GB")} buildings${result.length > shown ? `, showing the first ${shown}` : ""}`;
+    $("rows").innerHTML = result.slice(0, shown).map((r) => `<tr>
+      <td><a href="/buildings/${r[I.id].toLowerCase()}/">${esc(r[I.name])}</a></td>
+      <td>${esc(r[I.commune])} <span class="muted mono">${esc(r[I.dept])}</span></td>
+      <td>${esc(atlas.types[r[I.type]])}</td>
+      <td class="mono">${r[I.first] ?? "—"}</td>
+      <td class="num">${r[I.photos] ? r[I.photos].toLocaleString("en-GB") : "—"}</td>
+      <td class="num">${r[I.objects] ? r[I.objects].toLocaleString("en-GB") : "—"}</td></tr>`).join("");
+    $("more").hidden = result.length <= shown;
+  }
+  $("filters").addEventListener("input", run);
+  $("more").addEventListener("click", () => { shown += 200; draw(); });
+  run();
+</script>

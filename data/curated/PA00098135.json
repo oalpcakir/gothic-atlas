@@ -1,0 +1,168 @@
+{
+  "id": "PA00098135",
+  "name_en": "Tours Cathedral (Saint-Gatien)",
+  "summary": "Saint-Gatien was rebuilt in Gothic style from 1170, starting at the south transept arm and the choir, and took until the mid-16th century to finish. Its two west towers carry Renaissance caps, and it holds a large set of medieval stained glass.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 29,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "note": "height under the vaults of the main vessel",
+      "alt": [
+        {
+          "value": 29,
+          "source": "https://en.wikipedia.org/wiki/Tours_Cathedral"
+        }
+      ]
+    },
+    "length_exterior_m": {
+      "value": 100,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "note": "total length, not specified as interior or exterior",
+      "alt": [
+        {
+          "value": 100,
+          "source": "https://en.wikipedia.org/wiki/Tours_Cathedral"
+        }
+      ]
+    },
+    "nave_width_m": {
+      "value": 28,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "note": "overall width as stated; central vessel not given"
+    },
+    "towers_m": {
+      "value": 69,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "note": "south tower; the north tower is 68 m"
+    }
+  },
+  "phases": [
+    {
+      "from": 1170,
+      "to": 1230,
+      "part": "transept",
+      "what": "Current cathedral begun; first campaign covered the south transept arm and the towers' base",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1220,
+      "to": 1279,
+      "part": "choir",
+      "what": "Choir built; recent dating puts the lower parts c.1220-1230, traditional dating gives 1236-1279",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "certainty": "debated"
+    },
+    {
+      "from": 1300,
+      "to": 1400,
+      "part": "nave",
+      "what": "Six nave bays, aisles and chapels built in the 14th century; first two bays are 12th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1400,
+      "to": 1500,
+      "part": "nave",
+      "what": "Nave completed in the 15th century by Jean de Dampmartin, Jean Papin and Jean Durand",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1430,
+      "to": 1470,
+      "part": "west front",
+      "what": "West front built under Jean de Dampmartin",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "certainty": "documented"
+    },
+    {
+      "from": 1507,
+      "to": 1507,
+      "part": "towers",
+      "what": "North tower built (Pierre de Valence)",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "certainty": "documented"
+    },
+    {
+      "from": 1534,
+      "to": 1547,
+      "part": "towers",
+      "what": "South tower built (Pierre Gadier); cathedral complete in 1547",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1166,
+      "type": "fire",
+      "what": "Burned during the war between Louis VII and Henry II.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "year": 1562,
+      "type": "war",
+      "what": "Large jamb statues of the west front were destroyed during the Wars of Religion.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Revolutionaries damaged the portal statues and the church became a Temple of Reason.",
+      "source": "https://en.wikipedia.org/wiki/Tours_Cathedral"
+    },
+    {
+      "year": 1841,
+      "type": "restoration",
+      "what": "Lobin workshop restored the old stained glass from 1841 to 1863.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "year": 1862,
+      "type": "restoration",
+      "what": "Classified as a historic monument.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "year": 1903,
+      "type": "other",
+      "what": "Four tapestries were stolen in March.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "year": 1994,
+      "type": "restoration",
+      "what": "Choir restored; north transept restoration began in 2009.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Jean de Dampmartin",
+      "active": "1430-1470",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "name": "Pierre de Valence",
+      "active": "1507",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "name": "Pierre Gadier",
+      "active": "1534-1547",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Gatien de Tours (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gatien_de_Tours"
+    },
+    {
+      "title": "Tours Cathedral (English Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Tours_Cathedral"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "PA00078250",
+  "name_en": "Troyes Cathedral",
+  "summary": "Troyes Cathedral was begun around 1200 after a fire and built slowly, with a Gothic choir and nave and a flamboyant west front started by Martin Chambiges. It is known for about 1,500 square metres of stained glass, and only one of its two west towers was ever completed.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 29.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "note": "central vessel height as listed in the dimensions table",
+      "alt": [
+        {
+          "value": 29.5,
+          "source": "https://en.wikipedia.org/wiki/Troyes_Cathedral"
+        }
+      ]
+    },
+    "length_exterior_m": {
+      "value": 114,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "note": "total length outside the walls",
+      "alt": [
+        {
+          "value": 114,
+          "source": "https://en.wikipedia.org/wiki/Troyes_Cathedral"
+        }
+      ]
+    },
+    "nave_width_m": {
+      "value": 12,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "note": "central nave width"
+    },
+    "towers_m": {
+      "value": 62.34,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "note": "tower height including the small domes",
+      "alt": [
+        {
+          "value": 62.34,
+          "source": "https://en.wikipedia.org/wiki/Troyes_Cathedral"
+        }
+      ]
+    }
+  },
+  "phases": [
+    {
+      "from": 1199,
+      "to": 1240,
+      "part": "choir",
+      "what": "Gothic choir begun c.1199-1200; lower parts done by 1220, high parts rebuilt 1235-c.1240",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "certainty": "documented"
+    },
+    {
+      "from": 1260,
+      "to": 1310,
+      "part": "transept",
+      "what": "Transept piers nearly done c.1260; transept vault and crossing spire completed c.1310",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1290,
+      "to": 1340,
+      "part": "nave",
+      "what": "Three easternmost nave bays built from the late 13th to the early 14th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1450,
+      "to": 1500,
+      "part": "nave",
+      "what": "Work resumed under Bishop Louis Raguier from 1450",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1489,
+      "to": 1554,
+      "part": "west front",
+      "what": "West front: central part 1489 (Jehançon Garnache), Martin Chambiges called c.1507, two-thirds done by 1554",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "certainty": "documented"
+    },
+    {
+      "from": 1554,
+      "to": 1634,
+      "part": "towers",
+      "what": "North tower built with two of four corner turrets; south tower never built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes",
+      "certainty": "approximate"
+    }
+  ],
+  "events": [
+    {
+      "year": 1188,
+      "type": "fire",
+      "what": "Fire partly destroyed the cathedral.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "year": 1228,
+      "type": "other",
+      "what": "A hurricane destroyed the south choir aisle of the half-built choir.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "year": 1365,
+      "type": "other",
+      "what": "A tornado damaged the crossing spire; rebuilt and finished in 1437.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "year": 1389,
+      "type": "lightning",
+      "what": "Lightning started a fire on the nave roofs.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "year": 1390,
+      "type": "collapse",
+      "what": "The north transept rose window collapsed; rebuilt 1408-1409.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "year": 1700,
+      "type": "lightning",
+      "what": "Lightning destroyed the crossing spire on 7-8 October; it was never rebuilt.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "year": 1794,
+      "type": "revolution",
+      "what": "The treasury was attacked in January and relics and metalwork destroyed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "year": 1841,
+      "type": "restoration",
+      "what": "South transept entirely rebuilt 1841-1844; choir piers underpinned 1849-1866.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Jehançon Garnache",
+      "active": "1489",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "name": "Martin Chambiges",
+      "active": "from c.1507",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "name": "Jean de Soissons",
+      "active": "from 1519",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "name": "Eugène Millet",
+      "active": "1849-1866",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Pierre-et-Saint-Paul de Troyes (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre-et-Saint-Paul_de_Troyes"
+    },
+    {
+      "title": "Troyes Cathedral (English Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Troyes_Cathedral"
+    }
+  ]
+}

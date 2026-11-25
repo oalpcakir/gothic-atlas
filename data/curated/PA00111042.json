@@ -1,0 +1,166 @@
+{
+  "id": "PA00111042",
+  "name_en": "Bayeux Cathedral",
+  "summary": "Bayeux Cathedral combines a Romanesque nave and west towers, dedicated in 1077, with a Gothic choir and upper nave of the early and mid-13th century. The central tower was topped with a dome in the 18th century and a neo-Gothic stage in 1865-1868.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 23.3,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "note": "nave vault"
+    },
+    "length_exterior_m": {
+      "value": 102,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "note": "total length as given in the infobox; not specified as interior or exterior"
+    },
+    "nave_width_m": {
+      "value": 10,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "note": "nave width as listed in the infobox"
+    },
+    "tallest_point_m": {
+      "value": 76.6,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "note": "west facade spires"
+    },
+    "towers_m": {
+      "value": 76.6,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "note": "west facade spires; the crossing tower is 74.5 m"
+    }
+  },
+  "phases": [
+    {
+      "from": 1040,
+      "to": 1080,
+      "part": "whole",
+      "what": "Romanesque cathedral rebuilt under Bishops Hugues II and Odon de Conteville; dedicated 14 July 1077",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "documented"
+    },
+    {
+      "from": 1050,
+      "to": 1090,
+      "part": "towers",
+      "what": "Crypt c.1050-1060 and west towers c.1070-1090",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1160,
+      "to": 1180,
+      "part": "nave",
+      "what": "Work resumed after the fire of 1160; Gothic aisles begun c.1180",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1220,
+      "to": 1240,
+      "part": "choir",
+      "what": "Choir rebuilt, dated 1224-1228 by dendrochronology",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "debated"
+    },
+    {
+      "from": 1245,
+      "to": 1255,
+      "part": "nave",
+      "what": "Upper nave rebuilt in the Rayonnant style",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1280,
+      "to": 1350,
+      "part": "chapels",
+      "what": "Side chapels built after the aisle walls were removed",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1300,
+      "to": 1479,
+      "part": "towers",
+      "what": "Central tower begun in the first half of the 14th century; restored 1477-1479 after lightning in 1425",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1865,
+      "to": 1868,
+      "part": "towers",
+      "what": "Neo-Gothic octagonal stage and spire added to the central tower",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1046,
+      "type": "fire",
+      "what": "Fire destroyed the cathedral predating the 11th-century rebuild.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "year": 1105,
+      "type": "fire",
+      "what": "Fire during the siege by Henry Beauclerc.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "year": 1160,
+      "type": "fire",
+      "what": "Another fire led to renewed building work.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "year": 1425,
+      "type": "lightning",
+      "what": "Lightning struck the central tower.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "year": 1562,
+      "type": "war",
+      "what": "Sacked by Calvinists in the first War of Religion, 1562-1563.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "year": 1760,
+      "type": "other",
+      "what": "A hailstorm destroyed most of the stained glass.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "year": 1790,
+      "type": "revolution",
+      "what": "Looted again; the cathedral later became a Temple of Reason.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "year": 1857,
+      "type": "restoration",
+      "what": "Crossing piers replaced under the engineer Eugène Flachat in 1857-1858.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Nicolas Habart",
+      "active": "after 1425",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    },
+    {
+      "name": "Gabriel Crétin",
+      "active": "1865-1868",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Bayeux (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bayeux"
+    }
+  ]
+}

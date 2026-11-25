@@ -1,0 +1,10 @@
+SELECT ?c ?cLabel ?cityLabel ?coord ?inception ?height ?merimee ?styleLabel ?article WHERE {
+  ?c wdt:P31/wdt:P279* wd:Q2977 ; wdt:P17 wd:Q142 ; wdt:P149 ?style ; wdt:P625 ?coord .
+  ?style wdt:P279* wd:Q176483 .
+  OPTIONAL { ?c wdt:P131 ?city }
+  OPTIONAL { ?c wdt:P571 ?inception }
+  OPTIONAL { ?c wdt:P2048 ?height }
+  OPTIONAL { ?c wdt:P380 ?merimee }
+  OPTIONAL { ?article schema:about ?c ; schema:isPartOf <https://en.wikipedia.org/> }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,fr". }
+}

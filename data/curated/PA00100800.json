@@ -1,0 +1,223 @@
+{
+  "id": "PA00100800",
+  "name_en": "Rouen Cathedral",
+  "summary": "Rouen Cathedral grew from a Romanesque church into a Gothic one in the 12th and 13th centuries, then received a flamboyant west front and a cast-iron spire in the 19th century. At 151 m the spire is the tallest in France, and the building was repaired after wartime bombing in 1944.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 28,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "note": "nave, under the vault; dimensions as measured on site in 1977"
+    },
+    "length_interior_m": {
+      "value": 136.86,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "note": "inside the walls"
+    },
+    "length_exterior_m": {
+      "value": 144,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "note": "outside the walls"
+    },
+    "nave_width_m": {
+      "value": 11.3,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "note": "central vessel, axis to axis of the piers"
+    },
+    "tallest_point_m": {
+      "value": 151,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "note": "cast-iron spire built from 1825"
+    },
+    "towers_m": {
+      "value": 82,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "note": "Tour Saint-Romain; the Tour de Beurre is 75 m"
+    }
+  },
+  "phases": [
+    {
+      "from": 1145,
+      "to": 1164,
+      "part": "towers",
+      "what": "Gothic work begins; Tour Saint-Romain completed in 1164",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1170,
+      "to": 1170,
+      "part": "west front",
+      "what": "West front rebuilt with three portals",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1185,
+      "to": 1237,
+      "part": "nave",
+      "what": "Nave begun c.1185 under Archbishop Gautier de Coutances; last keystone placed c.1237",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "documented"
+    },
+    {
+      "from": 1206,
+      "to": 1220,
+      "part": "choir",
+      "what": "Choir usable by 1206; axial chapel and choir works 1214-1220",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "documented"
+    },
+    {
+      "from": 1265,
+      "to": 1275,
+      "part": "chapels",
+      "what": "Chapels added along the nave aisles",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1280,
+      "to": 1280,
+      "part": "transept",
+      "what": "Portail des Libraires and Portail de la Calende built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1370,
+      "to": 1450,
+      "part": "west front",
+      "what": "Flamboyant west front completed with over 60 statues",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1485,
+      "to": 1506,
+      "part": "towers",
+      "what": "Tour de Beurre built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "documented"
+    },
+    {
+      "from": 1538,
+      "to": 1557,
+      "part": "spire",
+      "what": "Renaissance wooden spire, about 135 m high",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "documented"
+    },
+    {
+      "from": 1825,
+      "to": 1876,
+      "part": "spire",
+      "what": "Cast-iron spire built; completion given as 1876 in the text and 1884 in the infobox",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen",
+      "certainty": "debated"
+    }
+  ],
+  "events": [
+    {
+      "year": 1200,
+      "type": "fire",
+      "what": "Fire on Easter night damaged the cathedral quarter; the tower, facade and new nave bays survived.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 1514,
+      "type": "fire",
+      "what": "Fire on the original Gothic spire on 5 October.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 1562,
+      "type": "war",
+      "what": "The cathedral was sacked by Huguenots.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 1792,
+      "type": "revolution",
+      "what": "The parvis wall was demolished and the building made a Temple of Reason; its bells were broken.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 1822,
+      "type": "lightning",
+      "what": "Lightning destroyed the Renaissance spire on 15 September.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 1944,
+      "type": "war",
+      "what": "Bombing in April 1944 hit the cathedral with seven torpedoes (one did not explode); Tour Saint-Romain burned in June.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 1974,
+      "type": "restoration",
+      "what": "Steel structure of 300 tonnes added to consolidate the spire.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 1999,
+      "type": "other",
+      "what": "Storm Lothar brought down a pinnacle on the north-east, damaging choir vaults.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "year": 2024,
+      "type": "fire",
+      "what": "Fire broke out on the spire during restoration on 11 July and was contained with little damage.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Enguerran",
+      "active": "until 1214",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "name": "Durand",
+      "active": "c.1237",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "name": "Jean Périer",
+      "active": "1362-1388",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "name": "Jenson Salvart",
+      "active": "1398-1447",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "name": "Guillaume Pontifs",
+      "active": "1462-1496",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "name": "Jacques Le Roux",
+      "active": "1496-1508",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "name": "Roulland Le Roux",
+      "active": "1508-1526",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    },
+    {
+      "name": "Jean-Antoine Alavoine",
+      "active": "1822-1834",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Rouen (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rouen"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "PA00096656",
+  "name_en": "Bourges Cathedral",
+  "summary": "Begun in 1195, Bourges has no transept and a double-aisled plan with inner and outer aisles of different heights, giving a very wide, open interior. The lower church and choir came first, with the nave and west front finished around 1230. The north tower fell in 1506 and was rebuilt in the 16th century.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 37.15,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "note": "central vault",
+      "alt": [
+        {
+          "value": 37.5,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+        }
+      ]
+    },
+    "length_interior_m": {
+      "value": 117.95,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "note": "dans oeuvre"
+    },
+    "length_exterior_m": {
+      "value": 125,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "note": "hors oeuvre"
+    },
+    "nave_width_m": {
+      "value": 14.96,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "note": "central nave at the choir"
+    },
+    "towers_m": {
+      "value": 65,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "note": "north tower; south tower 53 m"
+    },
+    "tallest_point_m": {
+      "value": 65,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "note": "north tower"
+    },
+    "area_m2": {
+      "value": 5900,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    }
+  },
+  "phases": [
+    {
+      "from": 1195,
+      "to": 1206,
+      "part": "crypt",
+      "what": "Lower church built after Archbishop Henri de Sully's donation",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "certainty": "documented"
+    },
+    {
+      "from": 1195,
+      "to": 1214,
+      "part": "choir",
+      "what": "Nearly half the building, up to the present choir, finished by 1214",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "certainty": "documented"
+    },
+    {
+      "from": 1225,
+      "to": 1230,
+      "part": "nave",
+      "what": "Second campaign: nave and west facade structure; main structure finished by 1230",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "certainty": "documented"
+    },
+    {
+      "from": 1313,
+      "to": 1324,
+      "part": "towers",
+      "what": "South tower shored up with a buttress pier in 1313; cathedral consecrated 13 May 1324 with north tower unfinished",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "certainty": "documented"
+    },
+    {
+      "from": 1480,
+      "to": 1500,
+      "part": "towers",
+      "what": "North tower completed in the 1480s",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1508,
+      "to": 1542,
+      "part": "towers",
+      "what": "North tower rebuilt after its collapse",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1506,
+      "type": "collapse",
+      "what": "North tower collapsed on 31 December.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "year": 1562,
+      "type": "war",
+      "what": "Sculptures badly damaged when Protestants took Bourges in the Wars of Religion.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Became the Temple of the Unity; Jean de Berry's tomb vandalised and partly destroyed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "year": 1835,
+      "type": "restoration",
+      "what": "Roof base modified in neo-Gothic style.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "year": 1882,
+      "type": "restoration",
+      "what": "Major restoration under Paul Boeswillwald.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "year": 2013,
+      "type": "restoration",
+      "what": "Roof restoration completed after works from 2008.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Henri de Sully (archbishop, patron)",
+      "active": "1195-1199",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "name": "Guillaume de Dangeon (archbishop)",
+      "active": "d. 1209",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "name": "Premier Maître de Bourges (anonymous)",
+      "active": "c. 1195-1214",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    },
+    {
+      "name": "Paul Boeswillwald",
+      "active": "1882",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Étienne de Bourges (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Bourges"
+    }
+  ]
+}

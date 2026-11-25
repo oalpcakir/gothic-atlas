@@ -1,0 +1,194 @@
+---
+import Base from "../../layouts/Base.astro";
+import Src from "../../components/Src.astro";
+import Tr from "../../components/Tr.astro";
+import Dossier from "../../components/Dossier.astro";
+import { load, href, fmt, centuryOf, project, MAP_BOX, inFrance } from "../../lib/data.js";
+
+export function getStaticPaths() {
+  return load().buildings.map((b) => ({ params: { id: b.id.toLowerCase() }, props: { b } }));
+}
+const { b } = Astro.props;
+const { byId, meta } = load();
+const cap = (s) => s[0].toUpperCase() + s.slice(1);
+const gothic = (c) => c.from && c.from >= meta.rule.era_start && c.to <= meta.rule.era_end;
+const dated = b.campaigns.filter((c) => c.from);
+
+// Campaign timeline: one row per campaign on a fixed 1000-2000 axis so pages can be compared.
+const TW = 600, TL = 8, X0 = 1000, X1 = 2000;
+const tx = (y) => TL + ((Math.min(Math.max(y, X0), X1) - X0) / (X1 - X0)) * (TW - TL * 2);
+const TH = 34 + dated.length * 18;
+
+const pos = inFrance(b) ? project(b.lon, b.lat) : null;
+const nearby = (b.nearby || []).map((n) => ({ ...n, b: byId.get(n.id) })).filter((n) => n.b);
+const ph = b.photos, ob = b.objects;
+const decMax = ph ? Math.max(...ph.decades.map((d) => d[1]), 1) : 1;
+const decades = []; for (let d = 1850; d <= 2020; d += 10) decades.push(d);
+const decMap = ph ? Object.fromEntries(ph.decades) : {};
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const hue = (c) => (gothic(c) ? `var(--c${centuryOf(c.from)})` : "var(--ink-2)");
+const eraX = tx(meta.rule.era_start), eraW = tx(meta.rule.era_end) - eraX;
+const timelineSvg = `<svg viewBox="0 0 ${TW} ${TH}" width="${TW}" style="min-width:480px" role="img" aria-label="${esc("Building campaigns: " + dated.map((c) => c.label).join("; "))}">
+<rect x="${eraX}" y="0" width="${eraW}" height="${TH - 20}" fill="var(--paper-2)"/>
+<text x="${eraX + 4}" y="11">Gothic era, ${meta.rule.era_start}–${meta.rule.era_end}</text>
+${[1000, 1200, 1400, 1600, 1800, 2000].map((y) => `<line x1="${tx(y)}" x2="${tx(y)}" y1="${TH - 20}" y2="${TH - 15}" stroke="var(--ink)"/><text x="${tx(y)}" y="${TH - 3}" text-anchor="${y === 1000 ? "start" : y === 2000 ? "end" : "middle"}">${y}</text>`).join("")}
+<line x1="${TL}" x2="${TW - TL}" y1="${TH - 20}" y2="${TH - 20}" stroke="var(--ink)"/>
+${dated.map((c, i) => `<rect x="${tx(c.from)}" y="${18 + i * 18}" width="${Math.max(3, tx(c.to) - tx(c.from))}" height="11" fill="${c.role === "main" ? hue(c) : "none"}" stroke="${hue(c)}" stroke-width="1.5"><title>${esc(c.label)} (${c.role} campaign)</title></rect>`).join("")}
+</svg>`;
+const decadeSvg = !ph ? "" : `<svg viewBox="0 0 600 110" width="600" style="min-width:480px" role="img" aria-label="Dated archive photographs per decade">
+${decades.map((d, i) => { const n = decMap[d] || 0; const h = (n / decMax) * 70; const x = 6 + i * 33;
+  return `<rect x="${x}" y="${86 - h}" width="28" height="${n ? Math.max(h, 1.5) : 0}" fill="var(--ink)"><title>${d}s: ${n}</title></rect>` + (i % 2 === 0 ? `<text x="${x}" y="102">${d}</text>` : "") + (n ? `<text x="${x + 14}" y="${82 - h}" text-anchor="middle">${n}</text>` : ""); }).join("")}
+<line x1="6" x2="594" y1="86.5" y2="86.5" stroke="var(--ink)"/></svg>`;
+const kindLabel = { classified: "Classified (classé MH)", inscribed: "Inscribed (inscrit MH)", delisted: "Removed from the list" };
+const title = `${b.name}, ${b.commune}`;
+const desc = `${cap(b.type)} in ${b.commune} (${b.dept_name})${b.first_label ? `, Gothic-era building campaign: ${b.first_label}` : ""}. Dates, protection history, archive photographs and protected objects, with sources.`;
+const cite = `Gothic Atlas, "${title}" (${b.id}), data compiled ${meta.generated}. https://gothic.onuralp.co${href(b)}`;
+---
+<Base title={title} description={desc}>
+  <article class="stack" style="--gap:2.6rem">
+    <header class="stack" style="--gap:.7rem">
+      <p class="eyebrow"><a href="/buildings/">Buildings</a> / {b.region} / {b.dept_name}</p>
+      <h1>{b.name}</h1>
+      <p class="where">{b.commune}{b.address ? <span class="muted">, {b.address}</span> : null}</p>
+      {(b.dossier?.name_en || b.name_en) && (b.dossier?.name_en || b.name_en) !== b.name ? <p class="muted">Known in English as {b.dossier?.name_en || b.name_en}<Src s="W" /></p> : null}
+      <p class="tags">
+        <span class="tag solid">{b.type}</span>
+        {b.level === "confirmed" ? <span class="tag">Gothic style: {b.styles.join(", ")}</span> : <span class="tag">Gothic-era campaign</span>}
+        {b.world_heritage ? <span class="tag">World Heritage</span> : null}
+      </p>
+    </header>
+
+    {b.dossier ? <Dossier b={b} /> : null}
+    {b.dossier ? <hr class="rule" /> : null}
+    {b.dossier ? <p class="eyebrow">From the public registers</p> : null}
+
+    <div class="top">
+      <div class="stack" style="--gap:1.6rem">
+        {b.image ? (
+          <figure class="plate">
+            <a href={b.image.page}><img src={b.image.thumb} width={b.image.w} height={b.image.h} alt={`${b.name}, ${b.commune}`} loading="eager" /></a>
+            <figcaption>Photo: {b.image.artist || "see source"} · <a href={b.image.licence_url || b.image.page}>{b.image.licence}</a> · via <a href={b.image.page}>Wikimedia Commons</a></figcaption>
+          </figure>
+        ) : null}
+
+        <section class="stack">
+          <h2>Building campaigns</h2>
+          {dated.length
+            ? <div class="scroll-x" set:html={timelineSvg}></div>
+            : <p class="muted">Mérimée gives no dated campaign for this building. It is included because Wikidata records a Gothic style.</p>}
+          <ul class="plain">
+            {b.campaigns.map((c) => <li><span class="mono">{c.from ? `${c.from}–${c.to}` : "undated"}</span> {cap(c.label)} <span class="muted">· {c.role} campaign · “{c.fr}”</span></li>)}
+          </ul>
+          <p class="caption">Filled bars are main campaigns, outlined bars secondary ones. A century in Mérimée means "some time in that century", so a bar shows the span of uncertainty, not the length of the works.<Src s="M" /></p>
+        </section>
+
+        {b.historique ? (
+          <section class="stack">
+            <h2>History in the record</h2>
+            <blockquote lang="fr">{b.historique}</blockquote>
+            <p class="caption">Text of the Mérimée record, in French, unedited.<Src s="M" /> <Tr text={b.historique} /></p>
+          </section>
+        ) : null}
+      </div>
+
+      <aside class="stack side" style="--gap:1.4rem">
+        {pos ? (
+          <figure class="plate locator">
+            <svg viewBox={MAP_BOX} role="img" aria-label={`Location of ${b.commune} in France`}>
+              <use href="/france.svg#fr" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="0.8" />
+              <circle cx={pos[0]} cy={pos[1]} r="10" fill="none" stroke="var(--accent)" stroke-width="1.2" />
+              <circle cx={pos[0]} cy={pos[1]} r="3.5" fill="var(--accent)" />
+            </svg>
+            <figcaption class="mono">{b.lat.toFixed(4)}° N, {Math.abs(b.lon).toFixed(4)}° {b.lon < 0 ? "W" : "E"}<Src s="M" /></figcaption>
+          </figure>
+        ) : null}
+        <dl class="facts">
+          <dt>Type</dt><dd>{b.denomination_en.join(", ")}<Src s="M" /></dd>
+          {b.first_label ? <><dt>Gothic from</dt><dd>{cap(b.first_label)}<Src s="M" /></dd></> : null}
+          {b.dated_years.length ? <><dt>Dated years</dt><dd class="mono">{b.dated_years.join(", ")}<Src s="M" /></dd></> : null}
+          {b.wd_inception ? <><dt>Inception</dt><dd class="mono">{b.wd_inception}<Src s="W" /></dd></> : null}
+          {b.authors.length ? <><dt>Builders</dt><dd>{b.authors.join("; ")}<Src s="M" /></dd></> : null}
+          {b.wd_architects?.length ? <><dt>Architects</dt><dd>{b.wd_architects.join("; ")}<Src s="W" /></dd></> : null}
+          {b.protected_since ? <><dt>Protected</dt><dd>since <span class="mono">{b.protected_since}</span><Src s="M" /></dd></> : null}
+          {b.ownership ? <><dt>Owner</dt><dd>{b.ownership_en}<Src s="M" /></dd></> : null}
+          {b.km_saint_denis != null ? <><dt>From Saint-Denis</dt><dd><span class="mono">{fmt(b.km_saint_denis)} km</span><Src s="A" /></dd></> : null}
+          <dt>Record</dt><dd class="mono">{b.id}</dd>
+        </dl>
+        <ul class="plain links">
+          <li><a href={`https://pop.culture.gouv.fr/notice/merimee/${b.id}`}>Mérimée record on POP</a></li>
+          {b.inventaire.map((i) => <li><a href={`https://pop.culture.gouv.fr/notice/merimee/${i}`}>Inventaire général dossier {i}</a></li>)}
+          {b.enwiki ? <li><a href={b.enwiki}>Wikipedia (English)</a></li> : null}
+          {b.frwiki ? <li><a href={b.frwiki}>Wikipédia (français)</a></li> : null}
+          {b.commons ? <li><a href={`https://commons.wikimedia.org/wiki/Category:${encodeURIComponent(b.commons.replace(/ /g, "_"))}`}>Images on Wikimedia Commons</a></li> : null}
+          {b.wikidata ? <li><a href={`https://www.wikidata.org/wiki/${b.wikidata}`}>Wikidata {b.wikidata}</a></li> : null}
+        </ul>
+      </aside>
+    </div>
+
+    {b.protection.length ? (
+      <section class="stack">
+        <h2>Protection</h2>
+        <table class="data">
+          <thead><tr><th>Date</th><th>Decision</th></tr></thead>
+          <tbody>{b.protection.map((p) => <tr><td class="mono">{p.date}</td><td>{kindLabel[p.kind] || p.kind}{p.partial ? ", in part" : ""}</td></tr>)}</tbody>
+        </table>
+        {b.protection_note ? <p class="caption"><span lang="fr">{b.protection_note}</span><Src s="M" /> <Tr text={b.protection_note} /></p> : null}
+      </section>
+    ) : null}
+
+    {ph ? (
+      <section class="stack">
+        <h2>In the photographic archive</h2>
+        <p>The Médiathèque du patrimoine et de la photographie holds <strong class="mono">{fmt(ph.count)}</strong> records for this building, <span class="mono">{fmt(ph.with_image)}</span> of them digitised{ph.drawings ? <>, including <span class="mono">{fmt(ph.drawings)}</span> measured drawings</> : null}{ph.earliest ? <>. The earliest dated view is from <span class="mono">{ph.earliest}</span></> : null}.<Src s="Ph" /></p>
+        {ph.decades.length ? <div class="scroll-x" set:html={decadeSvg}></div> : null}
+        {ph.sample.length ? (
+          <table class="data">
+            <thead><tr><th>Year</th><th>Earliest digitised views</th><th>Photographer</th></tr></thead>
+            <tbody>{ph.sample.map((s) => <tr><td class="mono">{s.year}</td><td><a href={`https://pop.culture.gouv.fr/notice/memoire/${s.id}`} lang="fr">{s.caption || s.id}</a></td><td>{s.by || "—"}</td></tr>)}</tbody>
+          </table>
+        ) : null}
+        <p class="caption"><Tr text={ph.sample.map((s) => s.caption)} label="Translate these captions" /> Links open the photograph on POP. The images are not shown here because most are not openly licensed.{ph.photographers.length ? ` Most frequent names: ${ph.photographers.map((p) => `${p[0]} (${p[1]})`).join(", ")}.` : ""}</p>
+      </section>
+    ) : null}
+
+    {ob ? (
+      <section class="stack">
+        <h2>Protected objects inside</h2>
+        <p><strong class="mono">{fmt(ob.count)}</strong> objects in this building are protected as Monuments historiques{ob.stained_glass ? <>, <span class="mono">{fmt(ob.stained_glass)}</span> of them stained-glass records</> : null}.{ob.categories.length ? ` By craft: ${ob.categories.map((c) => `${c[0]} ${c[1]}`).join(", ")}.` : ""}<Src s="P" /></p>
+        <table class="data">
+          <thead><tr><th>Date</th><th>Oldest objects on record</th></tr></thead>
+          <tbody>{ob.sample.map((s) => <tr><td class="mono" style="white-space:nowrap">{s.century || "—"}</td><td><a href={`https://pop.culture.gouv.fr/notice/palissy/${s.id}`} lang="fr">{s.title}</a></td></tr>)}</tbody>
+        </table>
+        <p class="caption"><Tr text={ob.sample.map((s) => s.title)} label="Translate these titles" /> Titles are those of the Palissy records, in French.</p>
+      </section>
+    ) : null}
+
+    {nearby.length ? (
+      <section class="stack">
+        <h2>Nearby in the atlas</h2>
+        <table class="data">
+          <thead><tr><th>Building</th><th>Gothic from</th><th class="num">Distance</th></tr></thead>
+          <tbody>{nearby.map((n) => <tr><td><a href={href(n.b)}>{n.b.name}</a>, {n.b.commune}</td><td>{n.b.first_label || "—"}</td><td class="num">{n.km} km</td></tr>)}</tbody>
+        </table>
+      </section>
+    ) : null}
+
+    <section class="stack cite">
+      <h2>Cite this page</h2>
+      <p class="mono">{cite}</p>
+      <p class="caption">Mérimée record last updated {b.merimee_updated || "n/a"}. Found an error? The record of reference is Mérimée; corrections made there reach this page at the next data refresh.</p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .where { font-size: 1.3rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .top { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 40px; align-items: start; }
+  .top:not(:has(.plate img)) .side { order: 0; }
+  .locator svg { display: block; width: 100%; height: auto; }
+  ul.plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 0.95rem; }
+  blockquote { margin: 0; padding-left: 18px; border-left: 2px solid var(--ink); font-style: italic; max-width: 66ch; }
+  .cite .mono { overflow-wrap: anywhere; border: 1px solid var(--rule); padding: 10px 12px; max-width: none; }
+  @media (max-width: 900px) { .top { grid-template-columns: minmax(0, 1fr); } }
+</style>

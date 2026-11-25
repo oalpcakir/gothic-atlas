@@ -1,0 +1,41 @@
+{
+  "id": "PA00100333",
+  "name_en": "Limoges Cathedral (Saint-Étienne)",
+  "summary": "Limoges Cathedral is a southern French Gothic cathedral whose choir and transept were begun in 1273 on the model of northern Rayonnant churches. The nave was started in the 15th century but left unfinished for over 300 years, and only completed in 1876-1888. It keeps a fine 16th-century stone rood screen and a Renaissance north portal.",
+  "dimensions": {
+    "vault_height_m": {"value": 23.5, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "note": "under the vault, nave and choir"},
+    "length_interior_m": {"value": 81.7, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "note": "back of nave to chevet; nave alone 72.90 m"},
+    "length_exterior_m": {"value": 102, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "note": "total length; total width 44 m"},
+    "nave_width_m": {"value": 22, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "note": "approximate width including side aisles, not the central vessel alone"},
+    "towers_m": {"value": 62, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "note": "bell tower-porch"}
+  },
+  "phases": [
+    {"from": 1010, "to": 1095, "part": "crypt", "what": "Romanesque cathedral: crypt 1010-1014, church begun about 1013, consecrated by Urban II in 1095", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "documented"},
+    {"from": 1273, "to": 1320, "part": "choir", "what": "Gothic chevet begun in 1273 under Bishop Aimeric de la Serre's successors, built in campaigns to 1320", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "documented"},
+    {"from": 1200, "to": 1299, "part": "towers", "what": "Three lower stages of the bell tower-porch are 11th century; the four upper stages are 13th century Gothic", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "approximate"},
+    {"from": 1378, "to": 1399, "part": "transept", "what": "South transept gable and rose window rebuilt in 1378; Saint-Martial chapel and part of north transept raised afterwards", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "documented"},
+    {"from": 1458, "to": 1499, "part": "nave", "what": "Two eastern nave bays built", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "documented"},
+    {"from": 1516, "to": 1541, "part": "transept", "what": "Saint-Jean portal (north transept) built; the page gives 1516-1541, with 1516-1530 in one section", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "debated"},
+    {"from": 1533, "to": 1536, "part": "nave", "what": "Rood screen built 1533-1534 under Bishop Jean de Langeac, statuary from 1536", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "documented"},
+    {"from": 1541, "to": 1875, "part": "nave", "what": "Nave bays left 3-10 m high and unfinished, falling into ruin", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "documented"},
+    {"from": 1876, "to": 1888, "part": "nave", "what": "Nave completed by Bailly, Boulanger and Geay and joined to the bell tower; inaugurated 12 August 1888", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges", "certainty": "documented"}
+  ],
+  "events": [
+    {"year": 1074, "type": "fire", "what": "Fire in fighting between the cathedral borough and the Saint-Martial borough (another in 1105).", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"year": 1327, "type": "other", "what": "Construction halted for lack of funds.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"year": 1483, "type": "lightning", "what": "Lightning destroyed the stone spire of the tower, replaced by a low roof.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"year": 1571, "type": "lightning", "what": "Lightning struck the wooden spire on 30 June and fire reached the belfry; eleven bells melted.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"year": 1793, "type": "revolution", "what": "Rood screen mutilated and the Langeac tomb stripped of its bronze during the Revolution.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"year": 1847, "type": "restoration", "what": "Major restoration of transept gables, buttresses, chevet, roofs and interior under Chabrol, to 1852.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"year": 1862, "type": "restoration", "what": "Classified as a monument historique.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"year": 2005, "type": "other", "what": "A gas cylinder explosion caused by vandals destroyed 19th-century glass and damaged nearly 3,000 panes.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"}
+  ],
+  "masters": [
+    {"name": "Jean Deschamps (attributed, unproven)", "active": "late 13th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"name": "Pierre Prosper Chabrol", "active": "1847–1852", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"},
+    {"name": "Antoine-Nicolas Bailly, Boulanger and Geay", "active": "1876–1888", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Saint-Étienne de Limoges (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Limoges"}
+  ]
+}

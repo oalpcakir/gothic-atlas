@@ -1,0 +1,48 @@
+---
+import "@fontsource-variable/bodoni-moda";
+import "@fontsource/spectral/400.css";
+import "@fontsource/spectral/400-italic.css";
+import "@fontsource/spectral/600.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "../styles/global.css";
+import { load } from "../lib/data.js";
+import { CONTACT, PUBLISHER } from "../config.js";
+const { title, description, wide = false } = Astro.props;
+const { meta } = load();
+const path = Astro.url.pathname;
+const nav = [["/atlas/", "Atlas"], ["/buildings/", "Buildings"], ["/studies/", "Studies"], ["/data/", "Data"], ["/about/", "About"]];
+const full = title ? `${title} · Gothic Atlas` : "Gothic Atlas";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{full}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <meta property="og:title" content={full} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap">
+        <a class="wordmark" href="/">Gothic Atlas</a>
+        <nav aria-label="Sections">
+          {nav.map(([h, t]) => <a href={h} aria-current={path.startsWith(h) ? "page" : undefined}>{t}</a>)}
+        </nav>
+      </div>
+    </header>
+    <main class={wide ? "" : "wrap"}><slot /></main>
+    <footer class="site-foot">
+      <div class="wrap">
+        <p>Gothic Atlas is a non-commercial, open-source reference. Data compiled {meta.generated} from Mérimée, Palissy and Mémoire (Ministère de la Culture), Wikidata and Wikimedia Commons.</p>
+        {CONTACT ? <p>Published by {PUBLISHER || "the Gothic Atlas project"}. Corrections and questions: {CONTACT.startsWith("http") ? <a href={CONTACT}>{CONTACT.replace(/^https?:\/\//, "")}</a> : <a href={`mailto:${CONTACT}`}>{CONTACT}</a>}.</p> : null}
+        <p>Dataset: <a href="/data/">ODbL 1.0</a>. Text: CC BY 4.0. Code: MIT. Images keep the licence shown beside them. <a href="/about/">Method and sources</a>.</p>
+      </div>
+    </footer>
+  </body>
+</html>

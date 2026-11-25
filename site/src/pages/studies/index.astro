@@ -1,0 +1,38 @@
+---
+import Base from "../../layouts/Base.astro";
+import { href } from "../../lib/data.js";
+import { curated, shortName, dim, firstYear, num } from "../../lib/dossier.js";
+const all = curated().sort((a, b) => (firstYear(a) ?? 9999) - (firstYear(b) ?? 9999));
+---
+<Base title="Studies" description="Data studies of thirty French Gothic cathedrals: heights and silhouettes compared, and building phases on one timeline.">
+  <div class="stack" style="--gap:3rem">
+    <header class="stack">
+      <p class="eyebrow">Studies</p>
+      <h1>Thirty cathedrals, read closely</h1>
+      <p>The public registers say little about the greatest buildings. For thirty cathedrals the atlas adds a dossier compiled by hand: dimensions, building phases, damage and repair, each with its source, and a 3D cut from the national laser survey where one exists.</p>
+    </header>
+
+    <section class="studies">
+      <a class="study" href="/studies/heights/"><span class="eyebrow">Comparison</span><h2>How high, how long</h2><p>Vault heights ranked, the race to Beauvais, and surveyed silhouettes at one scale.</p></a>
+      <a class="study" href="/studies/construction/"><span class="eyebrow">Construction</span><h2>Built over centuries</h2><p>Every building phase on one timeline, with the fires and collapses that interrupted them.</p></a>
+    </section>
+
+    <section class="stack">
+      <h2>The dossiers</h2>
+      <div class="scroll-x">
+        <table class="data" style="min-width:600px">
+          <thead><tr><th>Cathedral</th><th>Town</th><th class="num">Gothic works begin</th><th class="num">Vault, m</th><th class="num">Phases</th><th>3D survey</th></tr></thead>
+          <tbody>{all.map((b) => <tr><td><a href={href(b)}>{shortName(b)}</a></td><td>{b.commune}</td><td class="num">{firstYear(b) ?? "—"}</td><td class="num">{dim(b, "vault_height_m") ? num(dim(b, "vault_height_m")) : "—"}</td><td class="num">{b.dossier.phases.length}</td><td>{b.lidar ? "yes" : b.lidar_held ? "held for checking" : b.lidar_missing ? "not yet published by IGN" : "not processed yet"}</td></tr>)}</tbody>
+        </table>
+      </div>
+      <p class="caption">Dossiers are compiled mostly from French and English Wikipedia and still need checking against measured surveys and the monographs. Each figure links to the page it was read on. A 3D cut is held for checking when its length does not match the published length, usually because a cloister, palace or older church touching the cathedral was cut with it.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .studies { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .study { display: grid; gap: 8px; border: 1px solid var(--ink); padding: 20px; text-decoration: none; color: var(--ink); align-content: start; }
+  .study:hover { background: var(--ink); color: var(--paper); }
+  .study:hover .eyebrow { color: var(--paper); }
+</style>

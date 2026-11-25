@@ -1,0 +1,63 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import Base from "../layouts/Base.astro";
+import { load, fmt } from "../lib/data.js";
+const { meta } = load();
+const size = (f) => (fs.statSync(path.join(process.cwd(), "public", "data", f)).size / 1e6).toFixed(1);
+const fields = [
+  ["id", "Mérimée reference (PA…). Stable; also the page address on this site.", "Mérimée"],
+  ["name, name_en", "Title of the record in French; English label when Wikidata has one.", "Mérimée, Wikidata"],
+  ["type", "Cathedral, church, chapel, abbey… derived from the Mérimée denomination.", "Atlas"],
+  ["commune, insee, dept, region", "Location and INSEE commune code at the date of protection.", "Mérimée"],
+  ["lat, lon", "WGS84 coordinates.", "Mérimée"],
+  ["level", "“era”: a campaign dated 1140–1600. “confirmed”: a Gothic style on Wikidata.", "Atlas"],
+  ["styles", "Gothic style labels (Rayonnant, Flamboyant…).", "Wikidata P149"],
+  ["first_gothic_campaign_from", "First year of the earliest campaign inside 1140–1600. A century means its first year, not a known start.", "Atlas"],
+  ["campaigns", "All campaign terms as written in the record, main and secondary.", "Mérimée"],
+  ["protected_since, protection", "Year of first protection and the full list of decisions.", "Mérimée"],
+  ["photo_records, earliest_photo", "Linked records in the photographic archive and the earliest dated view.", "Mémoire"],
+  ["protected_objects, stained_glass_records", "Protected movable objects linked to the building.", "Palissy"],
+  ["km_from_saint_denis", "Straight-line distance from the basilica of Saint-Denis.", "Atlas"],
+];
+---
+<Base title="Data" description="Download the compiled Gothic Atlas dataset as CSV or JSON under the Open Database License, with a field guide and source licences.">
+  <div class="stack" style="--gap:2.4rem">
+    <header class="stack">
+      <p class="eyebrow">Data</p>
+      <h1>Take the whole dataset</h1>
+      <p>Everything on this site is built from one compiled table of {fmt(meta.count)} buildings. It is yours to download, check and reuse. Compiled {meta.generated}.</p>
+    </header>
+
+    <section class="stack">
+      <table class="data">
+        <thead><tr><th>File</th><th>Contents</th><th class="num">Size</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/data/gothic-atlas-buildings.csv" download>gothic-atlas-buildings.csv</a></td><td>One row per building, flat columns. Opens in any spreadsheet.</td><td class="num">{size("gothic-atlas-buildings.csv")} MB</td></tr>
+          <tr><td><a href="/data/gothic-atlas-buildings.json" download>gothic-atlas-buildings.json</a></td><td>Full records: parsed campaigns, protection decisions, photograph and object summaries, neighbours.</td><td class="num">{size("gothic-atlas-buildings.json")} MB</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="stack">
+      <h2>Licence</h2>
+      <p>The compiled dataset is released under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License 1.0</a>. You may copy, adapt and redistribute it, including commercially, provided you credit Gothic Atlas and its sources and release any derived database under the same licence. ODbL applies because the photograph counts derive from Mémoire metadata, which is itself ODbL.</p>
+      <p>Credit line: <span class="mono">Gothic Atlas (gothic.onuralp.co), from Mérimée, Palissy and Mémoire, Ministère de la Culture, and Wikidata.</span></p>
+    </section>
+
+    <section class="stack">
+      <h2>Fields in the CSV</h2>
+      <div class="scroll-x">
+        <table class="data" style="min-width:620px">
+          <thead><tr><th>Column</th><th>Meaning</th><th>Source</th></tr></thead>
+          <tbody>{fields.map(([a, b, c]) => <tr><td class="mono">{a}</td><td>{b}</td><td>{c}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>Rebuild it yourself</h2>
+      <p>The pipeline is a few Python scripts with no dependencies. <span class="mono">pipeline/fetch.py</span> downloads the public exports and queries Wikidata; <span class="mono">pipeline/build.py</span> selects, parses and links the records. The inclusion rule and every parsing choice are in the code and described on the <a href="/about/">About</a> page.</p>
+    </section>
+  </div>
+</Base>

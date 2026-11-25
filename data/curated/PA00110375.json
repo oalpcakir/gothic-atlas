@@ -1,0 +1,164 @@
+{
+  "id": "PA00110375",
+  "name_en": "Coutances Cathedral",
+  "summary": "Coutances Cathedral was rebuilt in Gothic style from about 1208, working from west to east over a Romanesque church of which parts of the facade and nave walls remain. Its tall lantern over the crossing and its two west spires define the profile, and the building was damaged in 1944.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 21.9,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "note": "nave, under the keystone",
+      "alt": [
+        {
+          "value": 21.9,
+          "source": "https://en.wikipedia.org/wiki/Coutances_Cathedral"
+        }
+      ]
+    },
+    "length_interior_m": {
+      "value": 87,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "alt": [
+        {
+          "value": 87,
+          "source": "https://en.wikipedia.org/wiki/Coutances_Cathedral"
+        }
+      ]
+    },
+    "length_exterior_m": {
+      "value": 95.17,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "alt": [
+        {
+          "value": 95.17,
+          "source": "https://en.wikipedia.org/wiki/Coutances_Cathedral"
+        }
+      ]
+    },
+    "nave_width_m": {
+      "value": 15,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "note": "axis to axis of piers; 8 m between piers"
+    },
+    "tallest_point_m": {
+      "value": 77,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "note": "north-west spire, including 3 m for the cross; the south-west spire is 75 m"
+    },
+    "towers_m": {
+      "value": 77,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "note": "west spire including cross"
+    }
+  },
+  "phases": [
+    {
+      "from": 1036,
+      "to": 1056,
+      "part": "whole",
+      "what": "Romanesque cathedral begun under Bishop Robert and dedicated in 1056",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "certainty": "documented"
+    },
+    {
+      "from": 1208,
+      "to": 1225,
+      "part": "nave",
+      "what": "Gothic rebuilding from west to east; nave in the first decade, transept nearly finished c.1225",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1220,
+      "to": 1240,
+      "part": "choir",
+      "what": "Choir built; scholars date it between c.1220 and 1255, finished by 1238 when Hugues de Morville was buried",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "certainty": "debated"
+    },
+    {
+      "from": 1228,
+      "to": 1250,
+      "part": "west front",
+      "what": "South and north-west porches built after 1228",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1270,
+      "to": 1315,
+      "part": "chapels",
+      "what": "North chapels c.1270; south chapels attributed to Robert d'Harcourt 1291-1315",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1371,
+      "to": 1386,
+      "part": "chapels",
+      "what": "Six nave chapels and rose gallery added under Bishop Sylvestre de La Cervelle",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances",
+      "certainty": "approximate"
+    }
+  ],
+  "events": [
+    {
+      "year": 1356,
+      "type": "war",
+      "what": "Siege of the cathedral by Geoffroy d'Harcourt in October.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    },
+    {
+      "year": 1417,
+      "type": "war",
+      "what": "Damage after Henry V's landing at Touques.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    },
+    {
+      "year": 1562,
+      "type": "war",
+      "what": "Protestants pillaged the cathedral and destroyed statues during the Wars of Religion.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    },
+    {
+      "year": 1647,
+      "type": "other",
+      "what": "A pinnacle of the south-west tower fell.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    },
+    {
+      "year": 1705,
+      "type": "other",
+      "what": "Another pinnacle fell during a storm on 31 December.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    },
+    {
+      "year": 1800,
+      "type": "collapse",
+      "what": "Two nave bays collapsed and were rebuilt by Doublet.",
+      "source": "https://en.wikipedia.org/wiki/Coutances_Cathedral"
+    },
+    {
+      "year": 1862,
+      "type": "restoration",
+      "what": "Listed as a historic monument.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    },
+    {
+      "year": 1944,
+      "type": "war",
+      "what": "Bombing in June set fire to the lantern roof; the fire stopped at the bell chamber.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    }
+  ],
+  "masters": [],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Coutances (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Coutances"
+    },
+    {
+      "title": "Coutances Cathedral (English Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Coutances_Cathedral"
+    }
+  ]
+}

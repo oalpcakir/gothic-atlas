@@ -1,0 +1,228 @@
+{
+  "id": "PA00086250",
+  "name_en": "Notre-Dame de Paris",
+  "summary": "Begun in 1163 under Bishop Maurice de Sully, Notre-Dame is a landmark of early and High Gothic with a four-storey nave, double aisles and a west front finished around 1250. It was stripped and damaged in the Revolution and restored by Viollet-le-Duc, who added the 19th-century spire. A fire in April 2019 destroyed the spire and roof, and the building reopened in December 2024.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 33,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "note": "vaults of nave and choir"
+    },
+    "length_exterior_m": {
+      "value": 127,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "note": "stated without saying inside or outside",
+      "alt": [
+        {
+          "value": 128,
+          "source": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+        }
+      ]
+    },
+    "nave_width_m": {
+      "value": 13,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "note": "central vessel of the nave"
+    },
+    "towers_m": {
+      "value": 69,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "note": "west towers"
+    },
+    "tallest_point_m": {
+      "value": 96,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "note": "Viollet-le-Duc's flèche of 1859; destroyed in 2019"
+    },
+    "area_m2": {
+      "value": 4800,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "note": "interior area",
+      "alt": [
+        {
+          "value": 5500,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+        }
+      ]
+    }
+  },
+  "phases": [
+    {
+      "from": 1163,
+      "to": 1182,
+      "part": "choir",
+      "what": "Choir and ambulatories; high altar consecrated 19 May 1182",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "documented"
+    },
+    {
+      "from": 1182,
+      "to": 1190,
+      "part": "nave",
+      "what": "Four eastern nave bays, aisles and galleries; work then paused",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "documented"
+    },
+    {
+      "from": 1208,
+      "to": 1250,
+      "part": "west front",
+      "what": "West front begun about 1208, rose level c. 1220-1225, upper parts 1225-1250",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "documented"
+    },
+    {
+      "from": 1218,
+      "to": 1230,
+      "part": "nave",
+      "what": "Two western nave bays completed to brace the facade",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1225,
+      "to": 1250,
+      "part": "towers",
+      "what": "Upper tower stages; north tower c. 1240, south tower 1250",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "documented"
+    },
+    {
+      "from": 1250,
+      "to": 1267,
+      "part": "transept",
+      "what": "Transept arms and facades under Jehan de Chelles then Pierre de Montreuil",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "documented"
+    },
+    {
+      "from": 1296,
+      "to": 1345,
+      "part": "chapels",
+      "what": "Chevet chapels begun 1296; building considered finished about 1345",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1845,
+      "to": 1864,
+      "part": "spire",
+      "what": "Viollet-le-Duc and Lassus restoration; new spire built February-August 1859",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1225,
+      "type": "fire",
+      "what": "Fire reported by Viollet-le-Duc destroyed the roof frame, around 1225-1230.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "year": 1756,
+      "type": "other",
+      "what": "Medieval glass replaced by clear glass and walls whitewashed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Royal statues on the west front beheaded; building became a Temple of Reason and wine store.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "year": 1802,
+      "type": "other",
+      "what": "Cathedral returned to worship on 18 April.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "year": 1831,
+      "type": "other",
+      "what": "Rioters pillaged the sacristy and treasury and broke windows.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "year": 1864,
+      "type": "restoration",
+      "what": "Viollet-le-Duc finished the restoration on 31 May after Lassus died in 1857.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "year": 1871,
+      "type": "war",
+      "what": "Communards piled furniture to burn the cathedral but stopped, fearing for the neighbouring hospital.",
+      "source": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+    },
+    {
+      "year": 2019,
+      "type": "fire",
+      "what": "Fire on 15 April destroyed the spire and most of the roof.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "year": 2024,
+      "type": "restoration",
+      "what": "Official reopening on 7 December and public opening on 8 December.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Maurice de Sully (bishop)",
+      "active": "1160-1197",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Jehan de Chelles",
+      "active": "1258-1265",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Pierre de Montreuil",
+      "active": "1265-1267",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Pierre de Chelles",
+      "active": "1291-after 1316",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Jean Ravy",
+      "active": "1318-1344",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Jean Le Bouteiller",
+      "active": "1344-1363",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Raymond Du Temple",
+      "active": "1363",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Eugène Viollet-le-Duc",
+      "active": "1845-1864",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "name": "Philippe Villeneuve",
+      "active": "2019-2024",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Paris (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Paris"
+    },
+    {
+      "title": "Notre-Dame de Paris (en.wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+    }
+  ]
+}

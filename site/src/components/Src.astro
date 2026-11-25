@@ -1,0 +1,7 @@
+---
+// Small source badge placed next to a value: which database it comes from.
+import { SOURCES } from "../lib/data.js";
+const { s } = Astro.props;
+const src = SOURCES[s];
+---
+<abbr class="src" title={`Source: ${src.long}`}>{src.name}</abbr>

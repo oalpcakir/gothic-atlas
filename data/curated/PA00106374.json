@@ -1,0 +1,41 @@
+{
+  "id": "PA00106374",
+  "name_en": "Toul Cathedral",
+  "summary": "Toul Cathedral was rebuilt in Gothic style from about 1220, with a choir first, then transept and nave in the 13th and 14th centuries, and a Flamboyant west front added after 1460. Its nave vault is about 30 m high. Fire in June 1940 destroyed the roofs and organ, and the roofs were rebuilt only between 1981 and 1995.",
+  "dimensions": {
+    "vault_height_m": {"value": 30, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "note": "nave vault, given in the summary table; elsewhere 29.23 m at the first bay rising to 29.60 m, and 32 m before the floor was raised", "alt": [{"value": 29.6, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"}]},
+    "length_interior_m": {"value": 89.81, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "note": "inside the walls, choir to west front; central nave 52.58 m"},
+    "length_exterior_m": {"value": 100, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "note": "hors-oeuvre"},
+    "towers_m": {"value": 62, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "note": "west towers; spires of about 90 m were planned but never built", "alt": [{"value": 65, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"}]}
+  },
+  "phases": [
+    {"from": 963, "to": 967, "part": "whole", "what": "Romanesque cathedral begun by Bishop Gérard replacing three earlier churches", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "documented"},
+    {"from": 1220, "to": 1235, "part": "choir", "what": "Gothic choir and chevet with two towers begun under Bishop Eudes II de Sorcy, finished by 1235", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "approximate"},
+    {"from": 1240, "to": 1299, "part": "cloister", "what": "Cloister begun about 1240 with the east gallery, finished before the end of the 13th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "approximate"},
+    {"from": 1275, "to": 1297, "part": "transept", "what": "Transept and last nave bay built", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "approximate"},
+    {"from": 1331, "to": 1400, "part": "nave", "what": "Nave bays built (the page says five in one section and four in another)", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "debated"},
+    {"from": 1400, "to": 1460, "part": "whole", "what": "Works halted by war between the Duke of Burgundy and the Duke of Lorraine", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "approximate"},
+    {"from": 1460, "to": 1497, "part": "west front", "what": "Flamboyant west front and first nave bays; towers crowned 1496 and bells 1497", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "documented"},
+    {"from": 1500, "to": 1549, "part": "chapels", "what": "Bishops' chapel (before 1533) and All Saints chapel (before 1549) added; campanile between the west towers in 1534", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul", "certainty": "approximate"}
+  ],
+  "events": [
+    {"year": 1561, "type": "collapse", "what": "Upper storey of the south chevet tower collapses and the north one is demolished for symmetry.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 1794, "type": "revolution", "what": "Statues and ornaments removed by municipal order in January; most bells melted down.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 1840, "type": "restoration", "what": "Cathedral listed as a monument historique (cloister in 1889).", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 1870, "type": "war", "what": "Prussian fire damages the west front and Renaissance choir windows.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 1874, "type": "restoration", "what": "Restoration begun by Émile Boeswillwald, continued by his son Paul.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 1940, "type": "war", "what": "Artillery and fire on 19-21 June destroy the roof, a tower and the organ.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 1978, "type": "other", "what": "Building closed for safety reasons.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 1981, "type": "restoration", "what": "Roofs rebuilt on their pre-1940 geometry, to 1995.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"year": 2004, "type": "restoration", "what": "Polychromy of the vaults restored in stages: nave 2004-2005, choir and transept 2006-2008.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"}
+  ],
+  "masters": [
+    {"name": "Eudes II de Sorcy (bishop, patron)", "active": "1219–1228", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"name": "Pierre Perrat", "active": "until 1400", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"name": "Jacquemin de Lenoncourt", "active": "from 1460", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"},
+    {"name": "Émile Boeswillwald", "active": "from 1874", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Saint-Étienne de Toul (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Toul"}
+  ]
+}

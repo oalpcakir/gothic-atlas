@@ -1,0 +1,43 @@
+{
+  "id": "PA00098836",
+  "name_en": "Orléans Cathedral (Sainte-Croix)",
+  "summary": "Orléans Cathedral is a five-aisled church begun in 1287, nearly wrecked when Huguenots blew up the crossing piers in 1568, and rebuilt under the Bourbon kings from 1601 in a Gothic style following the surviving medieval plan. It was finished only in 1829, with 18th-century west towers. It is tied to Joan of Arc, who attended vespers there during the 1429 siege.",
+  "dimensions": {
+    "vault_height_m": {"value": 31.75, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "note": "main nave, under the keystone of the transverse arches"},
+    "length_interior_m": {"value": 136.1, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "note": "dans-oeuvre"},
+    "length_exterior_m": {"value": 143.85, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "note": "hors-oeuvre"},
+    "nave_width_m": {"value": 13.94, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "note": "central nave, interior; all five aisles together 41.14 m"},
+    "tallest_point_m": {"value": 114, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "note": "central spire, built 1855-1859"},
+    "towers_m": {"value": 78.4, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "note": "west towers, to the top of the crowns", "alt": [{"value": 81.64, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"}, {"value": 88, "source": "https://en.wikipedia.org/wiki/Orléans_Cathedral"}]}
+  },
+  "phases": [
+    {"from": 989, "to": 1100, "part": "whole", "what": "Romanesque cathedral rebuilt by Bishop Arnoul after the 989 fire", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "approximate"},
+    {"from": 1287, "to": 1399, "part": "choir", "what": "First stone laid 11 September 1287 under Bishop Gilles Pastai; new choir built in two campaigns in the 14th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "documented"},
+    {"from": 1450, "to": 1512, "part": "transept", "what": "Work resumes at the crossing in the second half of the 15th century; crossing tower topped in 1512", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "approximate"},
+    {"from": 1500, "to": 1599, "part": "nave", "what": "Two nave bays built in the 16th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "approximate"},
+    {"from": 1601, "to": 1623, "part": "choir", "what": "Rebuilding after 1568 starts 18 April 1601 with a first stone laid by Henri IV and Marie de Médicis; choir completed 1623", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "documented"},
+    {"from": 1627, "to": 1690, "part": "transept", "what": "Transept built, north arm done 1643, south arm 1690", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "documented"},
+    {"from": 1739, "to": 1773, "part": "west front", "what": "West portal and tower bases built, façade completed to tower bases in 1773", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "documented"},
+    {"from": 1817, "to": 1829, "part": "towers", "what": "Work resumes after the Revolution to complete the towers; completed cathedral inaugurated 8 May 1829", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "documented"},
+    {"from": 1855, "to": 1859, "part": "spire", "what": "Central spire built, 114 m high", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans", "certainty": "documented"}
+  ],
+  "events": [
+    {"year": 989, "type": "fire", "what": "Great fire of Orléans, said to have damaged the cathedral.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"year": 1277, "type": "collapse", "what": "Romanesque vaults threatened or partly collapsed (the commonly cited 1227 is read here as a misreading of 1277).", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"year": 1429, "type": "war", "what": "Siege of Orléans slows building; Joan of Arc attends vespers on 2 May.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"year": 1562, "type": "war", "what": "Cathedral pillaged in the Wars of Religion.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"year": 1568, "type": "war", "what": "Huguenots blew up the four crossing piers on 23-24 March, collapsing much of the building.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"year": 1854, "type": "restoration", "what": "Leaning bell tower demolished and rebuilt as the 114 m spire.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"year": 1904, "type": "collapse", "what": "Vaults of the sanctuary collapse on 8-9 September.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"year": 1940, "type": "war", "what": "German bombing causes minor damage; 1944 bombing followed.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"}
+  ],
+  "masters": [
+    {"name": "Étienne Martellange", "active": "17th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"name": "Jacques V Gabriel", "active": "18th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"name": "Louis-François Trouard", "active": "18th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Sainte-Croix d'Orléans (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Sainte-Croix_d'Orléans"},
+    {"title": "Orléans Cathedral (English Wikipedia)", "url": "https://en.wikipedia.org/wiki/Orléans_Cathedral"}
+  ]
+}

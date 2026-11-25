@@ -1,0 +1,43 @@
+{
+  "id": "PA00110943",
+  "name_en": "Sées Cathedral",
+  "summary": "Sées is a mid-sized Norman Gothic cathedral built mostly between about 1210 and 1310, with a six-bay nave, an ambulatory choir and two west towers. It is the only Norman Gothic cathedral without a crossing tower. Weak foundations left the nave leaning, which prompted repeated reinforcement from the 16th century through the 19th, and the choir was largely rebuilt after 1869.",
+  "dimensions": {
+    "vault_height_m": {"value": 24, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "note": "nave, measured under the keystone; side aisles 12 m"},
+    "length_exterior_m": {"value": 106, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "note": "given as total length; the page does not say whether interior or exterior"},
+    "nave_width_m": {"value": 9.10, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "note": "central vessel; nave plus aisles together 21.55 m"},
+    "towers_m": {"value": 70, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "note": "west towers"}
+  },
+  "phases": [
+    {"from": 1048, "to": 1126, "part": "whole", "what": "Romanesque cathedral rebuilt after the 1048 fire, begun by Bishop Yves de Bellême, consecrated 1126", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "documented"},
+    {"from": 1210, "to": 1278, "part": "nave", "what": "Construction of most of the present Gothic cathedral starts around 1210, with the foundations skimped for lack of money", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "approximate"},
+    {"from": 1250, "to": 1310, "part": "choir", "what": "Choir, radiating chapels and transept built from the third quarter of the 13th century to the early 14th", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "approximate"},
+    {"from": 1278, "to": 1293, "part": "chapels", "what": "An epitaph credits Jean de Bernières as the builder during this period", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "documented"},
+    {"from": 1310, "to": 1310, "part": "whole", "what": "Cathedral consecrated by Bishop Philippe Le Boulenger on 27 September", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "documented"},
+    {"from": 1500, "to": 1599, "part": "nave", "what": "Consolidation shortens the nave by one bay and adds two buttresses to the west front (16th century)", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "approximate"},
+    {"from": 1780, "to": 1784, "part": "nave", "what": "Brousseau builds a double buttress on the fourth north bay against the lean of the nave", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "documented"},
+    {"from": 1832, "to": 1850, "part": "nave", "what": "Nave buttresses rebuilt, north side 1832-1838 and south side 1844-1850; the south tower spire rebuilt to match the north", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "documented"},
+    {"from": 1869, "to": 1887, "part": "choir", "what": "Choir dismantled and rebuilt with foundations up to 8 m deep under Ruprich-Robert, finished by Petitgrand", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées", "certainty": "documented"}
+  ],
+  "events": [
+    {"year": 1048, "type": "fire", "what": "Fire set during Bishop Yves de Bellême's siege of the cathedral destroyed much of the building.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1174, "type": "fire", "what": "Another fire during the wars between Henry II and Louis VII.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1353, "type": "war", "what": "Hundred Years' War damage, with more in 1375.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1494, "type": "other", "what": "Cathedral reconsecrated after profanation and repair.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1740, "type": "other", "what": "Bishop Lallement closes the building because of its poor condition.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1775, "type": "restoration", "what": "Joseph Brousseau starts restoration (to 1797), including removal of the crossing tower threatened by collapse.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1817, "type": "restoration", "what": "Alavoine encases the west front in a heavy supporting frame with cast-iron colonnettes and pinnacles.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1849, "type": "restoration", "what": "Ruprich-Robert appointed to direct the restoration; south transept done 1856, north transept begun 1869.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"year": 1978, "type": "restoration", "what": "Spires restored.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"}
+  ],
+  "masters": [
+    {"name": "Jean de Bernières", "active": "1278–1293", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"name": "Joseph Brousseau", "active": "1775–1797", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"name": "Jean-Antoine Alavoine", "active": "from 1817", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"name": "Victor Ruprich-Robert", "active": "1849–1887", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"},
+    {"name": "Victor Petitgrand", "active": "from 1887", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Notre-Dame de Sées (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Sées"}
+  ]
+}

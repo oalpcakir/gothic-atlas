@@ -1,0 +1,154 @@
+---
+// The hand-compiled part of a building page: summary, sourced dimensions, phases, events, 3D survey.
+import Src from "./Src.astro";
+import { DIM_LABELS, LEGEND_PARTS, PARTS, gantt, host, num } from "../lib/dossier.js";
+const { b } = Astro.props;
+const d = b.dossier, L = b.lidar;
+const dims = DIM_LABELS.filter(([k]) => d.dimensions?.[k]);
+const lastMedieval = Math.max(...d.phases.filter((p) => p.from <= 1560).map((p) => Math.min(p.to, 1560)), 1300);
+const chart = gantt(d.phases.map((p) => ({ label: `${p.from}–${p.to}`, phases: [p] })).concat([{ label: "", phases: [], events: d.events }]),
+  { width: 760, labelW: 86, x0: Math.floor((d.phases[0]?.from ?? 1140) / 50) * 50 - 50, x1: Math.max(lastMedieval + 40, 1400) });
+const typeLabel = { fire: "Fire", collapse: "Collapse", war: "War", revolution: "Revolution", restoration: "Restoration", lightning: "Lightning", other: "Event" };
+---
+<section class="stack dossier" style="--gap:2.2rem">
+  <div class="stack">
+    <p class="eyebrow">Dossier · compiled by hand, every figure sourced</p>
+    <p class="summary">{d.summary}</p>
+  </div>
+
+  {dims.length ? (
+    <div class="stack">
+      <h2>Dimensions</h2>
+      <div class="scroll-x">
+        <table class="data" style="min-width:560px">
+          <thead><tr><th>Measure</th><th class="num">Value</th><th>What is measured</th><th>Source</th></tr></thead>
+          <tbody>
+            {dims.map(([k, label, unit]) => {
+              const v = d.dimensions[k];
+              return (
+                <tr>
+                  <td>{label}</td>
+                  <td class="num"><strong>{num(v.value)} {unit}</strong></td>
+                  <td>{v.note || "—"}{(v.alt || []).map((a) => <span class="alt"> Also given as <a href={a.source}>{num(a.value)} {unit}</a>.</span>)}</td>
+                  <td><a href={v.source}>{host(v.source)}</a></td>
+                </tr>
+              );
+            })}
+            {L ? (
+              <tr>
+                <td>Highest point, surveyed</td>
+                <td class="num"><strong>{num(L.top_m)} m</strong></td>
+                <td>Top of the airborne LiDAR points above local ground. Thin spire tips and crosses are often missed.</td>
+                <td>IGN LiDAR HD<Src s="A" /></td>
+              </tr>
+            ) : null}
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Published figures for the same building often differ by a metre or more, because authors measure from different floors, to different points. Where sources disagree both values are kept.</p>
+    </div>
+  ) : null}
+
+  {L ? (
+    <div class="stack">
+      <h2>Surveyed from the air</h2>
+      <figure class="plate">
+        <div class="lidar" data-lidar={b.id} data-points={L.points} role="img" aria-label={`3D point cloud of ${d.name_en}`}><p class="lidar-msg mono">Loading {num(L.points)} points…</p></div>
+        <figcaption>{num(L.points)} points from the national airborne laser survey, thinned to a 0.6 m grid. Drag to turn, scroll or pinch to zoom. Adjoining buildings that touch the cathedral may be included. Data: IGN LiDAR HD, Licence Ouverte 2.0.</figcaption>
+      </figure>
+    </div>
+  ) : null}
+
+  {d.phases.length ? (
+    <div class="stack">
+      <h2>Building phases</h2>
+      <div class="scroll-x" set:html={chart}></div>
+      <p class="legend">{LEGEND_PARTS.map((k) => <span><i style={`background:${PARTS[k][1]};border-radius:0`}></i>{PARTS[k][0]}</span>)}<span>▼ fire, collapse or war damage</span></p>
+      <div class="scroll-x">
+        <table class="data" style="min-width:560px">
+          <thead><tr><th>Years</th><th>Part</th><th>Work</th><th>Source</th></tr></thead>
+          <tbody>{d.phases.map((p) => <tr><td class="mono" style="white-space:nowrap">{p.from}–{p.to}</td><td>{(PARTS[p.part] || [p.part])[0]}</td><td>{p.what}{p.certainty && p.certainty !== "documented" ? <span class="muted"> ({p.certainty})</span> : null}</td><td><a href={p.source}>{host(p.source)}</a></td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  ) : null}
+
+  {d.events.length ? (
+    <div class="stack">
+      <h2>Damage and repair</h2>
+      <div class="scroll-x">
+        <table class="data" style="min-width:520px">
+          <thead><tr><th>Year</th><th>Kind</th><th>What happened</th><th>Source</th></tr></thead>
+          <tbody>{d.events.map((e) => <tr><td class="mono">{e.year}</td><td>{typeLabel[e.type] || e.type}</td><td>{e.what}</td><td><a href={e.source}>{host(e.source)}</a></td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  ) : null}
+
+  {d.masters?.length ? (
+    <div class="stack">
+      <h2>Master masons and architects</h2>
+      <ul class="masters">{d.masters.map((m) => <li><strong>{m.name}</strong>{m.active ? <span class="mono muted"> {m.active}</span> : null} <a href={m.source}>{host(m.source)}</a></li>)}</ul>
+    </div>
+  ) : null}
+</section>
+
+<style>
+  .summary { font-size: 1.25rem; max-width: 60ch; }
+  .alt { color: var(--ink-2); }
+  .lidar { height: min(62vh, 520px); min-height: 320px; background: var(--paper-2); position: relative; cursor: grab; touch-action: none; }
+  .lidar-msg { position: absolute; inset: auto 0 12px 12px; color: var(--ink-2); }
+  .masters { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .legend i { vertical-align: -1px; }
+</style>
+
+<script>
+  import * as THREE from "three";
+  import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+
+  const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  for (const el of document.querySelectorAll<HTMLElement>(".lidar")) {
+    const buf = await fetch(`/lidar/${el.dataset.lidar}.bin`).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+    const msg = el.querySelector(".lidar-msg")!;
+    if (!buf) { msg.textContent = "The point cloud could not be loaded."; continue; }
+    const src = new Int16Array(buf), n = src.length / 3;
+    const pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
+    let top = 1;
+    for (let i = 0; i < n; i++) top = Math.max(top, src[i * 3 + 2] / 10);
+    const lo = new THREE.Color(css("--ink-2")), hi = new THREE.Color(css("--accent")), c = new THREE.Color();
+    for (let i = 0; i < n; i++) {
+      const x = src[i * 3] / 10, y = src[i * 3 + 1] / 10, z = src[i * 3 + 2] / 10;
+      pos.set([x, z, -y], i * 3); // survey z (up) becomes the viewer's y
+      c.copy(lo).lerp(hi, Math.min(1, z / (top * 0.75)));
+      col.set([c.r, c.g, c.b], i * 3);
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+    geo.computeBoundingSphere();
+    const r = geo.boundingSphere!.radius;
+    const scene = new THREE.Scene();
+    scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ size: 1.7, sizeAttenuation: false, vertexColors: true })));
+    const camera = new THREE.PerspectiveCamera(32, el.clientWidth / el.clientHeight, 1, r * 20);
+    camera.position.set(r * 1.5, r * 0.9, r * 1.9);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(el.clientWidth, el.clientHeight);
+    el.append(renderer.domElement);
+    msg.remove();
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set(0, top * 0.3, 0);
+    controls.enableDamping = true;
+    controls.maxPolarAngle = Math.PI / 2;
+    controls.autoRotate = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    controls.autoRotateSpeed = 0.6;
+    controls.addEventListener("start", () => (controls.autoRotate = false));
+    new ResizeObserver(() => {
+      camera.aspect = el.clientWidth / el.clientHeight; camera.updateProjectionMatrix();
+      renderer.setSize(el.clientWidth, el.clientHeight);
+    }).observe(el);
+    let visible = true;
+    new IntersectionObserver((e) => (visible = e[0].isIntersecting)).observe(el);
+    renderer.setAnimationLoop(() => { if (visible) { controls.update(); renderer.render(scene, camera); } });
+  }
+</script>

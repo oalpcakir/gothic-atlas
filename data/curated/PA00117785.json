@@ -1,0 +1,43 @@
+{
+  "id": "PA00117785",
+  "name_en": "Lyon Cathedral (Saint-Jean)",
+  "summary": "Lyon Cathedral was begun in 1175 on a Romanesque plan that was converted to Gothic during building, and it shows the transition in its choir and transept. It sits on a cramped site between hill and river, which kept the nave short. It is known for its 14th-century astronomical clock and stained glass, and for hosting two ecumenical councils.",
+  "dimensions": {
+    "vault_height_m": {"value": 32.5, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "note": "general vault height; the source does not say which vault, probably the nave. Choir vault 24.3 m", "alt": [{"value": 32.5, "source": "https://en.wikipedia.org/wiki/Lyon_Cathedral"}]},
+    "length_interior_m": {"value": 80, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "note": "including about 20 m of choir", "alt": [{"value": 80, "source": "https://en.wikipedia.org/wiki/Lyon_Cathedral"}]},
+    "nave_width_m": {"value": 13.3, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "note": "nave; three vessels together 26 m"},
+    "towers_m": {"value": 44, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "note": "west towers, without spires"}
+  },
+  "phases": [
+    {"from": 1175, "to": 1200, "part": "choir", "what": "Works start under Archbishop Guichard de Pontigny on a Romanesque plan, reusing stone in the chevet", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "documented"},
+    {"from": 1200, "to": 1250, "part": "transept", "what": "Transition to Gothic under Jean Belles-mains and Renaud de Forez; south rose 1235-1240 and north rose 1240-1250", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "approximate"},
+    {"from": 1244, "to": 1251, "part": "nave", "what": "Pope Innocent IV lives in Lyon and funds construction", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "documented"},
+    {"from": 1267, "to": 1270, "part": "whole", "what": "Citizens' revolt halts works", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "documented"},
+    {"from": 1308, "to": 1322, "part": "towers", "what": "Under Archbishop Pierre de Savoie the north tower (Saint-Thomas) is prioritised; the south tower is finished about a century later, with no bell", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "approximate"},
+    {"from": 1308, "to": 1415, "part": "nave", "what": "First double nave bay built", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "approximate"},
+    {"from": 1401, "to": 1448, "part": "chapels", "what": "Saint-Sépulcre chapel (1401) and Saint-Michel chapel (1448) added", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "documented"},
+    {"from": 1419, "to": 1480, "part": "cloister", "what": "Cloister begun by Jacques de Beaujeu in 1419", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "documented"},
+    {"from": 1480, "to": 1500, "part": "chapels", "what": "Bourbon chapel started 1480 and finished in the early 16th century; façade sculpture installed 1481", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon", "certainty": "documented"}
+  ],
+  "events": [
+    {"year": 1245, "type": "other", "what": "First Council of Lyon held at the cathedral; a second followed in 1274.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1562, "type": "war", "what": "Baron des Adrets's troops destroy the rood screen and many façade statues, and damage the clock.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1697, "type": "other", "what": "Attempts to consolidate the façade, to 1706 (Saquin, then de la Monce).", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1793, "type": "revolution", "what": "Choir altered, rood screen removed, damage during the siege of Lyon, and the building used for the Cult of Reason.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1802, "type": "other", "what": "Worship resumes on 6 June after the Concordat; works done by November 1804 for Pius VII's visit.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1819, "type": "restoration", "what": "Antoine-Marie Chenavard appointed architect (dismissed 1842); long restoration of choir, roofs and chapels followed, roof framework 1855-1861.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1862, "type": "restoration", "what": "Classified as a monument historique.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1944, "type": "war", "what": "Retreating German troops' bridge demolitions damage the stained glass in September.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"year": 1998, "type": "other", "what": "Inscribed on the UNESCO World Heritage list on 5 December (Historic Site of Lyon).", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"}
+  ],
+  "masters": [
+    {"name": "Guichard de Pontigny (archbishop, patron)", "active": "from 1175", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"name": "Jean Belles-mains (archbishop, patron)", "active": "late 12th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"name": "Jacques de Beaujeu", "active": "from 1419", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"name": "Antoine-Marie Chenavard", "active": "1819–1842", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Saint-Jean-Baptiste de Lyon (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Jean-Baptiste_de_Lyon"},
+    {"title": "Lyon Cathedral (English Wikipedia)", "url": "https://en.wikipedia.org/wiki/Lyon_Cathedral"}
+  ]
+}

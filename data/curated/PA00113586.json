@@ -1,0 +1,151 @@
+{
+  "id": "PA00113586",
+  "name_en": "Auxerre Cathedral",
+  "summary": "Auxerre Cathedral was rebuilt in Gothic style from 1215, starting with the choir and a west tower, and the nave followed in the 14th century. It is best known for its 13th-century stained glass and its Romanesque crypt with early wall paintings.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 30,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "note": "nave and choir vault"
+    },
+    "length_interior_m": {
+      "value": 98,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    "length_exterior_m": {
+      "value": 100,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    "nave_width_m": {
+      "value": 12,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "note": "central nave"
+    },
+    "towers_m": {
+      "value": 68,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "note": "north tower, completed in the 16th century"
+    }
+  },
+  "phases": [
+    {
+      "from": 1215,
+      "to": 1245,
+      "part": "choir",
+      "what": "Gothic choir begun under Bishop Guillaume de Seignelay; structure finished by 1235",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1300,
+      "to": 1320,
+      "part": "transept",
+      "what": "South transept arm begun c.1300; tympanum carved c.1320",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1320,
+      "to": 1350,
+      "part": "nave",
+      "what": "Romanesque nave demolished and Gothic nave built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1345,
+      "to": 1355,
+      "part": "chapels",
+      "what": "Nave side chapels built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1415,
+      "to": 1513,
+      "part": "transept",
+      "what": "North transept begun in 1415, completed under Bishop Jean III Baillet",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1478,
+      "to": 1478,
+      "part": "nave",
+      "what": "Nave vaults built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "certainty": "documented"
+    },
+    {
+      "from": 1500,
+      "to": 1543,
+      "part": "towers",
+      "what": "North tower begun in 1500; completed 1543 or 1547 (the article gives both)",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre",
+      "certainty": "debated"
+    }
+  ],
+  "events": [
+    {
+      "year": 1023,
+      "type": "fire",
+      "what": "Fire destroyed the earlier cathedral and much of the town.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 1567,
+      "type": "war",
+      "what": "Protestant forces sacked the town and damaged the cathedral.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 1690,
+      "type": "other",
+      "what": "The floor labyrinth was destroyed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 1790,
+      "type": "revolution",
+      "what": "The diocese was suppressed and the cathedral made a Temple of Reason.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 1844,
+      "type": "restoration",
+      "what": "Crypt restored by Viollet-le-Duc, 1844-1848.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 1866,
+      "type": "restoration",
+      "what": "Major restoration by the architect Piéplu until 1880.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 1870,
+      "type": "war",
+      "what": "Prussian cannonballs struck the cathedral.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 1939,
+      "type": "war",
+      "what": "Stained glass removed for safekeeping; reinstalled 1945.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    },
+    {
+      "year": 2001,
+      "type": "restoration",
+      "what": "Current general restoration campaign began.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    }
+  ],
+  "masters": [],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Étienne d'Auxerre (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_d'Auxerre"
+    }
+  ]
+}

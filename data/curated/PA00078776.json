@@ -1,0 +1,177 @@
+{
+  "id": "PA00078776",
+  "name_en": "Reims Cathedral",
+  "summary": "The coronation church of the kings of France, rebuilt after a fire in 1210 and begun in 1211 on a plan with a rich sculptural programme on the west front. Its architects are known by name more fully than most, from Jean d'Orbais onward. It was gutted by shelling in 1914 and rebuilt from 1919 with a concrete roof frame.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 38,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "note": "nave under the vault"
+    },
+    "length_interior_m": {
+      "value": 138,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    "length_exterior_m": {
+      "value": 149.17,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "note": "outside the walls"
+    },
+    "nave_width_m": {
+      "value": 14.65,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    "towers_m": {
+      "value": 81.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "note": "two west towers"
+    },
+    "tallest_point_m": {
+      "value": 87,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "note": "crossing tower (tour de l'Ange)"
+    },
+    "area_m2": {
+      "value": 6650,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "note": "building floor area"
+    }
+  },
+  "phases": [
+    {
+      "from": 1211,
+      "to": 1221,
+      "part": "choir",
+      "what": "First stone laid on 6 May 1211 by Archbishop Albéric de Humbert; triforium begun 1221",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "certainty": "documented"
+    },
+    {
+      "from": 1221,
+      "to": 1241,
+      "part": "choir",
+      "what": "Choir and sanctuary completed; vaults and flying buttresses 1236-1241; handed to the chapter 1241",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "certainty": "documented"
+    },
+    {
+      "from": 1241,
+      "to": 1255,
+      "part": "nave",
+      "what": "Nave bays 10 to 5 raised",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1252,
+      "to": 1275,
+      "part": "west front",
+      "what": "West facade begun after 8 April 1252 once houses were demolished",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1299,
+      "to": 1299,
+      "part": "whole",
+      "what": "Definitive roof laid",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "certainty": "documented"
+    },
+    {
+      "from": 1919,
+      "to": 1938,
+      "part": "whole",
+      "what": "Reconstruction after the First World War led by Henri Deneux, with a reinforced-concrete roof frame",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1210,
+      "type": "fire",
+      "what": "Fire destroyed the earlier cathedral.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "year": 1481,
+      "type": "fire",
+      "what": "Fire from roofing work on 24 July destroyed the timber roof and the central bell tower.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Statues broken and portals damaged; used as a fodder store and demolition abandoned.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "year": 1860,
+      "type": "restoration",
+      "what": "Viollet-le-Duc directed restoration.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "year": 1914,
+      "type": "war",
+      "what": "On 19 September 25 shells hit the cathedral; fire destroyed the timber roof and melted lead poured through the gargoyles. The building took 288 shells in all.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "year": 1919,
+      "type": "restoration",
+      "what": "Reconstruction began.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "year": 1989,
+      "type": "restoration",
+      "what": "Phased restoration of the west facade, 1989 to 2016.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Jean d'Orbais",
+      "active": "1211-1231",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "name": "Jean le Loup",
+      "active": "1231-1247",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "name": "Gaucher de Reims",
+      "active": "1247-1277",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "name": "Bernard de Soissons",
+      "active": "1255-1282/1287",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "name": "Robert de Coucy",
+      "active": "d. 1311",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "name": "Colard de Givry",
+      "active": "1416-1452",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    },
+    {
+      "name": "Henri Deneux",
+      "active": "1915-1939",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Reims (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Reims"
+    }
+  ]
+}

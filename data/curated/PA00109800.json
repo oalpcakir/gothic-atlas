@@ -1,0 +1,155 @@
+{
+  "id": "PA00109800",
+  "name_en": "Le Mans Cathedral (Saint-Julien)",
+  "summary": "Le Mans Cathedral combines a Romanesque nave with a large Gothic choir, built from 1220 with thirteen radiating chapels and a double ambulatory. The transepts and nave were raised in the 14th and 15th centuries to match the choir, giving the building its present form.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 34,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "note": "under the vault of the transept and choir; the Romanesque nave vault is 24 m",
+      "alt": [
+        {
+          "value": 24,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+        }
+      ]
+    },
+    "length_exterior_m": {
+      "value": 134,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "alt": [
+        {
+          "value": 134,
+          "source": "https://en.wikipedia.org/wiki/Le_Mans_Cathedral"
+        }
+      ]
+    },
+    "nave_width_m": {
+      "value": 23,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "note": "nave width as stated in the rebuilding section; unclear whether this is the central vessel only"
+    },
+    "towers_m": {
+      "value": 64,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "note": "tower height; the text calls it the highest building of the urban area"
+    }
+  },
+  "phases": [
+    {
+      "from": 1056,
+      "to": 1120,
+      "part": "whole",
+      "what": "Romanesque cathedral begun under Bishop Vulgrin, resumed by Arnaud (1067) and Hoël (1085), considered complete c.1120",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "certainty": "documented"
+    },
+    {
+      "from": 1134,
+      "to": 1158,
+      "part": "nave",
+      "what": "Nave and south tower rebuilt after fires of 1134 and 1138; dedicated 18 April 1158",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "certainty": "documented"
+    },
+    {
+      "from": 1145,
+      "to": 1158,
+      "part": "transept",
+      "what": "Royal Portal on the south side built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1220,
+      "to": 1254,
+      "part": "choir",
+      "what": "New Gothic choir with 13 radiating chapels, completed April 1254",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "certainty": "documented"
+    },
+    {
+      "from": 1385,
+      "to": 1392,
+      "part": "transept",
+      "what": "South transept raised, finished c.1392 (Jehan le Mazçon)",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "certainty": "documented"
+    },
+    {
+      "from": 1403,
+      "to": 1430,
+      "part": "transept",
+      "what": "North transept raised; foundations reinforced 1419; finished c.1430",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans",
+      "certainty": "approximate"
+    }
+  ],
+  "events": [
+    {
+      "year": 1134,
+      "type": "fire",
+      "what": "Fire damaged the Romanesque cathedral; another fire followed in 1138.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "year": 1138,
+      "type": "fire",
+      "what": "Second fire led to the rebuilding of the nave and south tower.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "year": 1419,
+      "type": "other",
+      "what": "Foundations of the north transept were reinforced after a collapse threat.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "year": 1562,
+      "type": "war",
+      "what": "The rood screen was destroyed during the Wars of Religion period.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "year": 1768,
+      "type": "restoration",
+      "what": "Bishop Grimaldi closed the cathedral for renovation until 1771.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "year": 1858,
+      "type": "other",
+      "what": "A hailstorm damaged the choir windows.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "year": 1862,
+      "type": "restoration",
+      "what": "Listed as a historic monument; 19th-century restoration of the stained glass followed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "year": 2014,
+      "type": "restoration",
+      "what": "Belfry and bell-ringing system restored.",
+      "source": "https://en.wikipedia.org/wiki/Le_Mans_Cathedral"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Jehan le Mazçon",
+      "active": "from 1385",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Julien du Mans (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Julien_du_Mans"
+    },
+    {
+      "title": "Le Mans Cathedral (English Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Le_Mans_Cathedral"
+    }
+  ]
+}

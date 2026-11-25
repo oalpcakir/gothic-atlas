@@ -1,0 +1,82 @@
+---
+import Base from "../layouts/Base.astro";
+import { load, fmt, SOURCES } from "../lib/data.js";
+import { CONTACT, PUBLISHER } from "../config.js";
+const { meta, buildings } = load();
+const era = buildings.filter((b) => b.level === "era").length;
+const confirmed = buildings.length - era;
+const undated = buildings.filter((b) => !b.first).length;
+const centuryOnly = buildings.filter((b) => b.first && b.campaigns.find((c) => c.from === b.first).precision === "century").length;
+const noCoord = buildings.filter((b) => b.lat == null).length;
+---
+<Base title="About" description="How Gothic Atlas selects buildings, what its dates mean, where each value comes from and what the data cannot tell you.">
+  <div class="stack prose" style="--gap:2.4rem">
+    <header class="stack">
+      <p class="eyebrow">About</p>
+      <h1>Method, sources and limits</h1>
+      <p>Gothic Atlas is a non-commercial, open-source reference on Gothic architecture, starting with France. It is written for general readers and built so that a specialist can check every value against its source.</p>
+    </header>
+
+    <section class="stack">
+      <h2>Which buildings are included</h2>
+      <p>The starting point is Mérimée, the Ministry of Culture's register of buildings protected as Monuments historiques. From it we keep religious buildings: churches, chapels, cathedrals, collegiate churches, basilicas, abbeys, priories, convents and a few related types. A building then enters the atlas on one of two grounds.</p>
+      <table class="data">
+        <thead><tr><th>Evidence</th><th>Rule</th><th class="num">Buildings</th></tr></thead>
+        <tbody>
+          <tr><td>Gothic-era campaign</td><td>Mérimée dates a main or secondary building campaign between {meta.rule.era_start} and {meta.rule.era_end}.</td><td class="num">{fmt(era)}</td></tr>
+          <tr><td>Gothic style</td><td>Wikidata records a Gothic architectural style for the building (property P149, any subclass of Gothic architecture).</td><td class="num">{fmt(confirmed)}</td></tr>
+        </tbody>
+      </table>
+      <p>The first rule is about date, not style. A Romanesque church that gained a chapel in 1520 is in; so is a Renaissance church of 1580. The second rule is stricter but covers few buildings, because few have a style recorded. Pages and maps always say which rule applies.</p>
+      <p>A record dated only "12th century" does not qualify on date. Most twelfth-century churches in France are Romanesque, and the record does not say which half of the century is meant. Records dated to the second half, third or fourth quarter, or the middle of the twelfth century do qualify.</p>
+    </section>
+
+    <section class="stack">
+      <h2>What the dates mean</h2>
+      <p>Mérimée dates campaigns in words: "13e siècle", "4e quart 15e siècle". We turn each into a span of years and keep the original wording beside it. Of the buildings here, {fmt(centuryOnly)} have a first Gothic-era campaign known only to the century, and {fmt(undated)} have no dated campaign at all. On the time slider a century-dated building appears at the first year of its century. That is a convention, not a finding.</p>
+      <p>Only buildings that are protected today appear. Churches destroyed before the first lists of 1840, and the many never protected, are absent. Counts by region therefore reflect survival and listing policy as well as medieval building.</p>
+    </section>
+
+    <section class="stack">
+      <h2>Sources</h2>
+      <table class="data">
+        <thead><tr><th>Badge</th><th>Source and licence</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td><abbr class="src">Mérimée</abbr></td><td>{SOURCES.M.long}</td><td>Identity, location, campaigns, protection, history text</td></tr>
+          <tr><td><abbr class="src">Wikidata</abbr></td><td>{SOURCES.W.long}</td><td>Style, English names, links to Wikipedia and Commons</td></tr>
+          <tr><td><abbr class="src">Palissy</abbr></td><td>{SOURCES.P.long}</td><td>Protected objects inside each building</td></tr>
+          <tr><td><abbr class="src">Mémoire</abbr></td><td>{SOURCES.Ph.long}</td><td>Counts, dates and captions of archive photographs</td></tr>
+          <tr><td><abbr class="src">Atlas</abbr></td><td>{SOURCES.A.long}</td><td>Types, date spans, distances, neighbours</td></tr>
+        </tbody>
+      </table>
+      <p>Photographs shown on building pages come from Wikimedia Commons and carry their own author and licence. Photographs from the Mémoire archive are linked, not shown: most are not openly licensed. Department boundaries and the outline of France are from IGN ADMIN EXPRESS (Licence Ouverte 2.0).</p>
+    </section>
+
+    <section class="stack">
+      <h2>Known gaps</h2>
+      <ul>
+        <li>Mérimée's history text is empty for many of the greatest cathedrals, including Chartres, Bourges and Beauvais.</li>
+        <li>Dimensions, vault types and materials are almost never filled in the register. They are being compiled by hand for thirty cathedrals, with a source for each figure.</li>
+        <li>Palissy records stained glass in groups, not window by window.</li>
+        <li>{fmt(noCoord)} buildings have no coordinates and are missing from the map.</li>
+        <li>The Inventaire général's fuller dossiers are not in the national open export. Where one exists it is linked.</li>
+      </ul>
+    </section>
+
+    {CONTACT ? (
+      <section class="stack">
+        <h2>Publisher and contact</h2>
+        <p>Gothic Atlas is published by {PUBLISHER || "the Gothic Atlas project"} as a non-commercial project. To report an error or ask about the data, write to {CONTACT.startsWith("http") ? <a href={CONTACT}>{CONTACT.replace(/^https?:\/\//, "")}</a> : <a href={`mailto:${CONTACT}`}>{CONTACT}</a>}. Errors in the register itself are best reported to the Ministry of Culture through the POP page of the record, so the correction reaches everyone.</p>
+      </section>
+    ) : null}
+
+    <section class="stack">
+      <h2>Licences</h2>
+      <p>Dataset: Open Database License 1.0. Text written for this site: CC BY 4.0. Code: MIT. The data is refreshed by hand from the public exports; the date of the last refresh is in the footer.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .prose ul { margin: 0; padding-left: 1.2em; max-width: 66ch; display: grid; gap: 6px; }
+</style>

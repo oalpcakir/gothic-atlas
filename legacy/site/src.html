@@ -1,0 +1,626 @@
+<title>Taş ve Işık</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a nave at dusk. One dark stone ground, jewel-glass accents; tabs like arched bays. */
+:root {
+  --night: #11121c;
+  --stone: #1c1e2c;
+  --stone-2: #2a2d40;
+  --line: #3a3e56;
+  --ink: #ebe6da;
+  --muted: #a19fb2;
+  --gold: #e2ad4c;
+  --ruby: #d9435c;
+  --ok: #5fb383;
+  --warn: #e0873a;
+  --p-early: #7ea4ff;
+  --p-high: #e2ad4c;
+  --p-ray: #e0566e;
+  --p-flam: #ef8a3c;
+  --p-south: #c98a6a;
+  --p-none: #6d6b80;
+  --display: "Grenze Gotisch", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+html, body { background: var(--night); color: var(--ink); }
+body { font-family: var(--body); font-size: 17px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 48px; }
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; border-bottom: 1px solid var(--line); }
+header.top > div { padding-bottom: 14px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(44px, 7vw, 76px); line-height: .9; margin: 0; letter-spacing: .01em; }
+h1 span { color: var(--gold); }
+.sub { color: var(--muted); margin: 6px 0 0; max-width: 60ch; text-wrap: balance; }
+nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+nav.tabs a { font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 12px 18px 9px; border: 1px solid var(--line); border-bottom: none; border-radius: 40px 40px 0 0; background: var(--stone); }
+nav.tabs a[aria-current="page"] { color: var(--night); background: var(--gold); border-color: var(--gold); }
+nav.tabs a:focus-visible, button:focus-visible, input:focus-visible, .dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+section.view { padding-top: 22px; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 34px; margin: 0 0 4px; line-height: 1.05; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+button { font: inherit; color: var(--ink); background: var(--stone-2); border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--gold); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+a { color: var(--p-early); }
+
+/* Map */
+.map-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.map-box { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+#map { width: 100%; height: auto; display: block; }
+#map .land { fill: var(--stone-2); stroke: var(--line); stroke-width: 1; }
+#map .dot { cursor: pointer; transition: r .35s ease; }
+#map .dot.undated { fill: none; stroke: var(--p-none); stroke-width: 1.2; }
+#map .dot.sel { stroke: var(--ink); stroke-width: 2.2; }
+#map .lbl { font-family: var(--body); font-size: 11px; fill: var(--ink); paint-order: stroke; stroke: var(--stone); stroke-width: 3px; pointer-events: none; transition: opacity .3s; }
+.year-big { font-family: var(--display); font-size: 72px; line-height: .9; color: var(--gold); }
+.slider-row { display: flex; gap: 10px; align-items: center; margin: 8px 0 14px; }
+.slider-row input { flex: 1; min-width: 0; accent-color: var(--gold); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; box-sizing: border-box; }
+.card { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.card h3 { font-family: var(--display); font-weight: 500; font-size: 28px; margin: 2px 0 6px; line-height: 1.05; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; font-size: 15px; margin: 8px 0; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; }
+.recent { list-style: none; padding: 0; margin: 14px 0 0; font-size: 15px; }
+.recent li { display: flex; gap: 10px; padding: 4px 0; border-top: 1px solid var(--line); }
+.recent li[data-id] { cursor: pointer; }
+.recent li[data-id]:hover { color: var(--gold); }
+.recent .mono { color: var(--muted); width: 3.2em; flex: none; }
+
+/* Race */
+.chart-box { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; padding: 10px; overflow-x: auto; }
+#race { width: 100%; min-width: 560px; height: auto; display: block; }
+#race text { font-family: var(--body); fill: var(--ink); }
+#race .ax { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+#race .grid { stroke: var(--line); stroke-width: 1; }
+#race .rec { fill: none; stroke: var(--gold); stroke-width: 2; stroke-dasharray: 5 4; }
+.race-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+.race-notes p { margin: 0; font-size: 15px; color: var(--muted); }
+.race-notes b { color: var(--ink); }
+
+/* Game */
+.game-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.canvas-box { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; position: relative; }
+#cv { width: 100%; height: auto; aspect-ratio: 560 / 440; display: block; }
+.hud { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+.hud div { background: var(--stone); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-width: 0; }
+.hud b { display: block; font-family: var(--mono); font-size: 19px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hud span { font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.stab { height: 10px; border-radius: 5px; background: var(--stone-2); overflow: hidden; margin: 4px 0 12px; position: relative; }
+.stab i { position: absolute; inset: 0 auto 0 0; background: var(--ok); transition: width .3s, background .3s; }
+.stab::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--ink); opacity: .6; }
+.actions { display: grid; gap: 6px; }
+.act { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; text-align: left; padding: 9px 12px; }
+.act .nm { font-weight: 700; }
+.act .cost { font-family: var(--mono); color: var(--gold); text-align: right; }
+.act .eff { grid-column: 1 / -1; font-size: 13px; color: var(--muted); }
+.act .eff .bad { color: var(--ruby); font-weight: 700; }
+.act .eff .good { color: var(--ok); }
+.speed { display: flex; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
+.speed button[aria-pressed="true"] { background: var(--gold); color: var(--night); border-color: var(--gold); }
+#log { list-style: none; margin: 0; padding: 0; font-size: 14px; max-height: 190px; overflow-y: auto; border-top: 1px solid var(--line); }
+#log li { padding: 5px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
+#log .mono { color: var(--muted); flex: none; }
+#log .bad { color: var(--ruby); }
+#log .hist { color: var(--p-early); }
+#log .good { color: var(--ok); }
+.end { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(17, 18, 28, .82); padding: 16px; }
+.end .card { max-width: 420px; text-align: center; }
+.end h3 { font-size: 34px; }
+
+footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+footer p { margin: 4px 0; max-width: 90ch; }
+
+@media (max-width: 820px) {
+  .map-grid, .game-grid { grid-template-columns: minmax(0, 1fr); }
+  .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .year-big { font-size: 56px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Taş ve <span>Işık</span></h1>
+      <p class="sub">Fransa'nın gotik katedralleri: nerede, ne zaman ve ne kadar yükseğe. Sonra sıra seninkinde.</p>
+    </div>
+    <nav class="tabs" aria-label="Bölümler">
+      <a href="#harita" data-v="harita">Harita</a>
+      <a href="#yaris" data-v="yaris">Yükseklik yarışı</a>
+      <a href="#insa" data-v="insa">İnşa et</a>
+    </nav>
+  </header>
+
+  <section class="view" id="v-harita">
+    <h2>Gotik nasıl yayıldı</h2>
+    <p class="lede">1140'ta Saint-Denis'de bir koro, iki kuşak sonra bütün kuzey Fransa. Yılı kaydır ya da oynat: her nokta, gotik yapımın başladığı yıl haritaya düşer. İçi boş halkaların başlangıç tarihi veride yok.</p>
+    <div class="map-grid">
+      <div class="map-box"><svg id="map" viewBox="0 0 420 400" role="img" aria-label="Fransa haritasında gotik katedraller"></svg></div>
+      <div>
+        <div class="eyebrow">Yıl</div>
+        <div class="year-big mono" id="yearBig">1250</div>
+        <div class="slider-row">
+          <button id="play" type="button">▶ Oynat</button>
+          <input id="year" type="range" min="1130" max="1610" step="1" value="1250" aria-label="Yıl">
+        </div>
+        <div class="legend" id="legend"></div>
+        <div class="card" id="info"></div>
+        <ul class="recent" id="recent" aria-label="Son başlayanlar"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-yaris" hidden>
+    <h2>Tonoz yarışı</h2>
+    <p class="lede">Her yeni katedral bir öncekinden yükseğe çıkmak istedi. Dikey eksen tavanın, yani tonozun iç yüksekliği; kuleler ve sivri tepeler hariç. Altın çizgi o yılın rekorunu izliyor. Kendi katedralin de burada görünür.</p>
+    <div class="chart-box"><svg id="race" viewBox="0 0 680 380" role="img" aria-label="Katedrallerin tonoz yüksekliği yıllara göre"></svg></div>
+    <div class="race-notes">
+      <p><b>Sivri kemer</b> yükü daha dik indirir, duvarı daha az iter. Yuvarlak Romanesk kemerle bu yüksekliklere çıkılamazdı.</p>
+      <p><b>Uçan payanda</b> itkiyi duvardan alıp dışarıdaki taş ayağa taşır. Duvar incelir, yerini cama bırakır.</p>
+      <p><b>Beauvais, 1284.</b> 48,5 metreyle rekoru kırdıktan on iki yıl sonra koro tonozu çöktü. Yarış orada durdu.</p>
+    </div>
+  </section>
+
+  <section class="view" id="v-insa" hidden>
+    <h2>Katedralini inşa et</h2>
+    <p class="lede">Yıl 1140. Elinde bir piskoposun parası ve Romanesk bir kilise var. Tonozu yükselt, pencereleri büyüt, hacılar gelsin. Ama her metre duvarı daha çok iter ve fırtınalar zayıf yapıyı bulur. Kara Ölüm 1348'de gelir, inşaat durur.</p>
+    <div class="game-grid">
+      <div class="canvas-box">
+        <canvas id="cv" width="560" height="440" aria-label="Katedralinin kesiti"></canvas>
+        <div class="end" id="end" hidden></div>
+      </div>
+      <div>
+        <div class="hud">
+          <div><span>Yıl</span><b id="hYear">1140</b></div>
+          <div><span>Hazine ₤</span><b id="hMoney">0</b></div>
+          <div><span>Tonoz</span><b id="hH">0 m</b></div>
+          <div><span>Hacı / yıl</span><b id="hPil">0</b></div>
+        </div>
+        <div class="eyebrow">Denge <span class="mono" id="hStab"></span> · 1,00'ın altı tehlikeli</div>
+        <div class="stab" aria-hidden="true"><i id="stabBar"></i></div>
+        <div class="actions" id="actions"></div>
+        <div class="speed" role="group" aria-label="Zaman hızı">
+          <button type="button" data-s="0">❚❚ Dur</button>
+          <button type="button" data-s="1">▶ 1 yıl/sn</button>
+          <button type="button" data-s="4">▶▶ 4 yıl/sn</button>
+          <button type="button" id="restart">Yeniden başla</button>
+        </div>
+        <ul id="log" aria-live="polite"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Veri.</b> Katedral listesi, konumlar ve üsluplar <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a>'dan (CC0). Her kayıt Kültür Bakanlığı'nın Mérimée tarihi eser kaydına (<a href="https://pop.culture.gouv.fr" target="_blank" rel="noopener">POP</a>, Licence Ouverte) bağlı. Fransa sınırı <a href="https://github.com/gregoiredavid/france-geojson" target="_blank" rel="noopener">france-geojson</a>'dan.</p>
+    <p><b>Uyarı.</b> Ünlü katedrallerin başlangıç yılları ve tonoz yükseklikleri elle düzeltildi ve yaklaşıktır; kaynaklar birkaç yıl ve metre farklı sayılar verir. Oyunun fiziği bir oyuncak modeldir, mühendislik değil.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = /*@DATA@*/null;
+const CATS = DATA.cathedrals;
+const PERIODS = {
+  early: ["Erken gotik", "--p-early"],
+  high: ["Klasik gotik", "--p-high"],
+  rayonnant: ["Rayonnant", "--p-ray"],
+  flamboyant: ["Flamboyant", "--p-flam"],
+  south: ["Güney (tuğla) gotiği", "--p-south"],
+  gothic: ["Gotik, dönemi belirsiz", "--p-none"],
+};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $ = s => document.querySelector(s);
+const svgEl = (tag, attrs) => { const e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+const fmt = n => Math.round(n).toLocaleString("tr-TR");
+const dec = n => String(n).replace(".", ",");
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+
+/* ---------- Tabs ---------- */
+const VIEWS = ["harita", "yaris", "insa"];
+function route() {
+  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "harita";
+  VIEWS.forEach(n => { $("#v-" + n).hidden = n !== v; });
+  document.querySelectorAll("nav.tabs a").forEach(a => { if (a.dataset.v === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  if (v === "yaris") drawRace();
+  if (v === "insa") resizeCanvas();
+}
+addEventListener("hashchange", route);
+
+/* ---------- Map ---------- */
+const map = $("#map");
+const SHORT = { Q2981: "Paris", Q180274: "Chartres", Q206823: "Reims", Q106934: "Amiens", Q513300: "Beauvais", Q745460: "Strasbourg", Q207985: "Bourges", Q94744: "Albi", Q184407: "Saint-Denis", Q476516: "Rouen", Q1366553: "Orléans", Q473121: "Narbonne", Q489014: "Sens", Q932828: "Noyon", Q585947: "Laon", Q671066: "Metz", Q1736223: "Soissons", Q2443243: "Troyes", Q547013: "Tours", Q1518999: "Auxerre", Q1351690: "Toul" };
+const LABELED = ["Q2981", "Q180274", "Q206823", "Q106934", "Q513300", "Q745460", "Q207985", "Q94744", "Q184407", "Q476516", "Q1366553", "Q473121"];
+const LEFT = new Set(["Q184407", "Q1366553", "Q180274"]);
+let selected = "Q180274";
+map.append(svgEl("path", { d: DATA.france, class: "land" }));
+const dots = {};
+const gDots = svgEl("g", {}), gLbl = svgEl("g", {});
+map.append(gDots, gLbl);
+for (const c of CATS) {
+  const r = c.vault ? 3 + (c.vault - 20) / 5 : 3.5;
+  const d = svgEl("circle", { cx: c.x, cy: c.y, r: 0, class: "dot" + (c.start ? "" : " undated"), tabindex: 0, role: "button", "aria-label": c.name });
+  if (c.start) d.setAttribute("fill", css(PERIODS[c.period][1]));
+  else d.style.opacity = .6;
+  d.dataset.r = r;
+  const t = svgEl("title", {}); t.textContent = `${c.name}${c.start ? " · " + c.start : ""}`; d.append(t);
+  d.addEventListener("click", () => select(c.id));
+  d.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(c.id); } });
+  gDots.append(d);
+  dots[c.id] = d;
+  if (LABELED.includes(c.id)) {
+    const l = svgEl("text", { x: c.x + (LEFT.has(c.id) ? -7 : 7), y: c.y + 4, class: "lbl", "text-anchor": LEFT.has(c.id) ? "end" : "start" });
+    l.textContent = SHORT[c.id]; l.dataset.start = c.start || 0; gLbl.append(l);
+  }
+}
+$("#legend").innerHTML = Object.entries(PERIODS).map(([k, [n, v]]) => k === "gothic"
+  ? `<span><i style="border:1.5px solid var(--p-none)"></i>Başlangıç tarihi yok</span>`
+  : `<span><i style="background:var(${v})"></i>${n}</span>`).join("");
+
+function setYear(y) {
+  y = +y;
+  $("#year").value = y; $("#yearBig").textContent = y;
+  for (const c of CATS) { const d = dots[c.id]; d.setAttribute("r", !c.start || c.start <= y ? d.dataset.r : 0); }
+  gLbl.querySelectorAll("text").forEach(l => { const s = +l.dataset.start; l.style.opacity = s && s <= y ? 1 : 0; });
+  const shown = CATS.filter(c => c.start && c.start <= y).sort((a, b) => b.start - a.start);
+  $("#recent").innerHTML = `<li class="eyebrow">${y} yılına kadar ${shown.length} katedral · en son başlayanlar</li>` +
+    shown.slice(0, 6).map(c => `<li data-id="${c.id}"><span class="mono">${c.start}</span><span>${c.name}</span></li>`).join("");
+}
+$("#recent").addEventListener("click", e => { const li = e.target.closest("li[data-id]"); if (li) select(li.dataset.id); });
+$("#year").addEventListener("input", e => { stopPlay(); setYear(e.target.value); });
+
+function select(id) {
+  selected = id;
+  const c = CATS.find(k => k.id === id);
+  Object.values(dots).forEach(d => d.classList.remove("sel"));
+  dots[id].classList.add("sel");
+  const [pn, pv] = PERIODS[c.period];
+  const rows = [
+    ["Şehir", c.city || "—", false],
+    ["Gotik yapım", c.start ? `${c.start}'den itibaren` : "veride yok", !!c.start],
+    ["Tonoz yüksekliği", c.vault ? `${dec(c.vault)} m` : "—", !!c.vault],
+    ["En yüksek nokta", c.tallest ? `${dec(c.tallest)} m` : "—", !!c.tallest],
+    ["Dönem", pn, false],
+  ];
+  const links = [
+    c.merimee && `<a href="https://pop.culture.gouv.fr/notice/merimee/${c.merimee}" target="_blank" rel="noopener">Mérimée kaydı ${c.merimee}</a>`,
+    c.wiki && `<a href="${c.wiki}" target="_blank" rel="noopener">Wikipedia</a>`,
+    `<a href="https://www.wikidata.org/wiki/${c.id}" target="_blank" rel="noopener">Wikidata</a>`,
+  ].filter(Boolean).join("");
+  $("#info").innerHTML = `<div class="eyebrow" style="color:var(${pv})">${pn}</div><h3>${c.name}</h3>
+    ${c.note ? `<p style="margin:0 0 6px">${c.note}</p>` : ""}
+    <dl class="facts">${rows.map(([a, b, num]) => `<dt>${a}</dt><dd class="${num ? "mono" : ""}">${b}</dd>`).join("")}</dl>
+    <div class="links">${links}</div>`;
+}
+let playT = null;
+function stopPlay() { clearInterval(playT); playT = null; $("#play").textContent = "▶ Oynat"; }
+$("#play").addEventListener("click", () => {
+  if (playT) return stopPlay();
+  let y = +$("#year").value; if (y >= 1600) y = 1130;
+  $("#play").textContent = "❚❚ Durdur";
+  playT = setInterval(() => { y += y < 1350 ? 2 : 6; setYear(Math.min(y, 1610)); if (y >= 1610) stopPlay(); }, 70);
+});
+
+/* ---------- Race chart ---------- */
+function drawRace() {
+  const svg = $("#race"); svg.innerHTML = "";
+  const W = 680, Hh = 380, L = 48, R = 24, T = 20, B = 40;
+  const x0 = 1130, x1 = 1350, yMax = 55;
+  const X = y => L + (y - x0) / (x1 - x0) * (W - L - R);
+  const Y = m => T + (1 - m / yMax) * (Hh - T - B);
+  const defs = svgEl("defs", {}); const mk = svgEl("marker", { id: "arr", viewBox: "0 0 10 10", refX: 5, refY: 5, markerWidth: 6, markerHeight: 6, orient: "auto-start-reverse" });
+  mk.append(svgEl("path", { d: "M0,0L10,5L0,10Z", fill: css("--ruby") })); defs.append(mk); svg.append(defs);
+  for (let m = 0; m <= 50; m += 10) {
+    svg.append(svgEl("line", { x1: L, x2: W - R, y1: Y(m), y2: Y(m), class: "grid" }));
+    const t = svgEl("text", { x: L - 8, y: Y(m) + 4, class: "ax", "text-anchor": "end" }); t.textContent = m + " m"; svg.append(t);
+  }
+  for (let y = 1140; y <= 1340; y += 20) {
+    const t = svgEl("text", { x: X(y), y: Hh - B + 18, class: "ax", "text-anchor": "middle" }); t.textContent = y; svg.append(t);
+  }
+  const pts = CATS.filter(c => c.vault && c.start && c.start <= 1350).sort((a, b) => a.start - b.start || a.vault - b.vault);
+  let best = 0, d = "";
+  for (const c of pts) if (c.vault > best) { d += d ? `H${X(c.start)}V${Y(c.vault)}` : `M${X(c.start)},${Y(c.vault)}`; best = c.vault; }
+  d += `H${X(1284)}`;
+  svg.append(svgEl("path", { d, class: "rec" }));
+  const bx = X(1284);
+  svg.append(svgEl("line", { x1: bx, x2: bx, y1: Y(48.5) + 6, y2: Y(31), stroke: css("--ruby"), "stroke-width": 2, "marker-end": "url(#arr)" }));
+  const ct = svgEl("text", { x: bx + 8, y: Y(37), "font-size": 13 }); ct.textContent = "1284: Beauvais çöker"; ct.style.fill = css("--ruby"); svg.append(ct);
+  const placed = [];
+  for (const c of pts) {
+    const cx = X(c.start), cy = Y(c.vault);
+    svg.append(svgEl("circle", { cx, cy, r: 5.5, fill: css(PERIODS[c.period][1]), stroke: css("--stone"), "stroke-width": 1.5 }));
+    let ly = cy - 9;
+    while (placed.some(p => Math.abs(p[0] - cx) < 62 && Math.abs(p[1] - ly) < 13)) ly -= 13;
+    placed.push([cx, ly]);
+    const t = svgEl("text", { x: cx, y: ly, "font-size": 12, "text-anchor": "middle" });
+    t.textContent = SHORT[c.id] || c.city || c.name;
+    svg.append(t);
+  }
+  const p = game.started ? { h: game.H, y: game.peakYear } : store.get("tasisik-best");
+  if (p && p.h) {
+    const cx = X(Math.min(Math.max(p.y, 1140), 1348)), cy = Y(p.h);
+    svg.append(svgEl("path", { d: `M${cx},${cy - 9}L${cx + 9},${cy}L${cx},${cy + 9}L${cx - 9},${cy}Z`, fill: css("--ink"), stroke: css("--ruby"), "stroke-width": 2.5 }));
+    const right = cx < W - 200;
+    const t = svgEl("text", { x: cx + (right ? 14 : -14), y: cy + 4, "font-size": 13, "font-weight": 700, "text-anchor": right ? "start" : "end" });
+    t.textContent = `Senin katedralin · ${p.h} m`; svg.append(t);
+  }
+}
+
+/* ---------- Game ---------- */
+const cv = $("#cv"), ctx = cv.getContext("2d");
+const LW = 560, LH = 440, GROUND = 418, PX = 6.2, SPAN = 14;
+function resizeCanvas() {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const w = cv.clientWidth || LW;
+  cv.width = Math.round(w * dpr); cv.height = Math.round(w * LH / LW * dpr);
+  ctx.setTransform(cv.width / LW, 0, 0, cv.height / LH, 0, 0);
+  draw();
+}
+addEventListener("resize", () => { if (!$("#v-insa").hidden) resizeCanvas(); });
+
+const HIST = {
+  1144: "Saint-Denis'nin yeni korosu kutsandı: ışıkla dolu ilk gotik koro.",
+  1163: "Paris'te Notre-Dame'ın temeli atıldı.",
+  1170: "Ustalar yeni bir fikir konuşuyor: duvarı dışarıdan kemerle desteklemek. Uçan payanda açıldı.",
+  1194: "Chartres yandı. Yerine bugünkü katedral yükselecek.",
+  1211: "Reims'te yeni katedralin inşası başladı.",
+  1220: "Amiens'te temel atıldı. Hedef: 42 metre.",
+  1225: "Beauvais yarışa katıldı. Herkesi geçmek istiyorlar.",
+  1230: "Taş oymacılar pencereleri ince dallara bölüyor (tracery). Cam sınırı yükseldi.",
+  1248: "Paris'te Sainte-Chapelle kutsandı: neredeyse tamamen cam.",
+  1272: "Beauvais korosu bitti: 48,5 m, dünya rekoru.",
+  1284: "Beauvais korosunun tonozu çöktü. Herkes yeniden hesap yapıyor.",
+  1337: "Yüz Yıl Savaşı başladı. Bağışlar azalacak.",
+};
+const START = () => ({ started: false, over: false, year: 1140, money: 260, H: 20, wall: 1.8, glass: 0.15, tiers: 0, arch: "round", ribs: false, peakH: 20, peakYear: 1140, collapses: 0, log: [], shake: 0, rubble: [], frac: 0 });
+let game = START();
+
+const thrust = s => 0.3 * Math.pow(s.H, 1.4) * (s.arch === "pointed" ? 0.62 : 1) * (s.ribs ? 0.85 : 1);
+const support = s => s.wall * 14 * (1 - s.glass * 0.55) + s.tiers * 10;
+const stability = s => support(s) / thrust(s);
+const lightEff = s => s.glass * Math.max(0.3, 1.2 - s.wall * 0.2);
+const pilgrims = s => 200 + s.H * 15 + lightEff(s) * 1800;
+const income = s => (pilgrims(s) * 0.02 + 5) * (s.year >= 1337 ? 0.75 : 1);
+
+const ACTIONS = [
+  { id: "h", nm: "Tonozu 2 m yükselt", cost: s => Math.round(40 + s.H * 4), can: s => s.H < 56, apply: s => { s.H += 2; }, why: "Ün ve hacı getirir, itkiyi artırır." },
+  { id: "arch", nm: "Sivri kemere geç", cost: () => 120, can: s => s.arch === "round", apply: s => { s.arch = "pointed"; }, why: "İtki %38 azalır. Saint-Denis 1140'ta böyle yaptı." },
+  { id: "ribs", nm: "Kaburgalı tonoz", cost: () => 100, can: s => !s.ribs, apply: s => { s.ribs = true; }, why: "Yük kaburgalara toplanır, itki %15 azalır." },
+  { id: "fly", nm: "Uçan payanda katı ekle", cost: s => 150 * (s.tiers + 1), can: s => s.tiers < 3, unlock: 1170, apply: s => { s.tiers++; }, why: "Duvara dışarıdan +10 destek." },
+  { id: "glass", nm: "Pencereleri büyüt", cost: s => Math.round(45 + s.glass * 120), can: s => s.glass < (s.year >= 1230 ? 0.8 : 0.5) - 0.001, apply: s => { s.glass = +(s.glass + 0.05).toFixed(2); }, why: "Daha çok ışık, daha çok hacı. Duvarı zayıflatır." },
+  { id: "wall", nm: "Duvarları kalınlaştır", cost: () => 70, can: s => s.wall < 3.5, apply: s => { s.wall = +(s.wall + 0.3).toFixed(1); }, why: "Sağlam ama karanlık." },
+  { id: "thin", nm: "Duvarları incelt", cost: () => 25, can: s => s.wall > 1.0, apply: s => { s.wall = +(s.wall - 0.3).toFixed(1); }, why: "Işık için yer açar, desteği azaltır." },
+];
+
+function say(text, cls = "") { game.log.unshift({ y: game.year, text, cls }); game.log = game.log.slice(0, 60); renderLog(); }
+function renderLog() { $("#log").innerHTML = game.log.map(l => `<li class="${l.cls}"><span class="mono">${l.y}</span><span>${l.text}</span></li>`).join(""); }
+
+function collapse(reason) {
+  const oldH = game.H;
+  game.H = Math.max(20, Math.round(game.H * 0.72 / 2) * 2);
+  game.glass = Math.max(0.1, +(game.glass - 0.1).toFixed(2));
+  game.collapses++;
+  game.shake = 1.2;
+  for (let i = 0; i < 40; i++) game.rubble.push({ x: LW / 2 + (Math.random() - .5) * SPAN * PX, y: GROUND - oldH * PX, vx: (Math.random() - .5) * 60, vy: Math.random() * -40, life: 1.8 });
+  say(`${reason} Tonoz ${oldH} m'den ${game.H} m'ye indi.`, "bad");
+}
+
+function doAction(a) {
+  if (game.over) return;
+  const c = a.cost(game);
+  if (game.money < c || !a.can(game) || (a.unlock && game.year < a.unlock)) return;
+  if (!game.started) { game.started = true; setSpeed(1); }
+  game.money -= c; a.apply(game);
+  if (game.H > game.peakH) { game.peakH = game.H; game.peakYear = game.year; }
+  const st = stability(game);
+  if (st < 0.9) collapse("Yapı kendi ağırlığını taşıyamadı.");
+  else if (st < 1) say("Duvarlarda çatlaklar var. İlk fırtına tehlikeli olur.", "bad");
+  renderHud();
+}
+
+function tickYear() {
+  if (game.over) return;
+  game.year++;
+  game.money += income(game);
+  if (HIST[game.year]) say(HIST[game.year], "hist");
+  const r = Math.random();
+  if (r < 0.07) {
+    const sev = 0.05 + Math.random() * 0.35, st = stability(game);
+    if (st < 0.85 + sev) collapse(`Şiddetli bir fırtına (güç ${Math.round(sev * 100)}).`);
+    else if (st < 0.95 + sev) say("Fırtına payandaları sarstı ama yapı ayakta.");
+  } else if (r < 0.08) { const l = Math.round(game.money / 3); game.money -= l; say(`Çatıda yangın. Onarım ${fmt(l)} livre tuttu.`, "bad"); }
+  else if (r < 0.10) { game.money += 120; say("Bir kutsal emanet geldi, hacılar akın etti: +120 livre.", "good"); }
+  if (game.year >= 1348) endGame();
+  renderHud();
+}
+
+function endGame() {
+  game.over = true; setSpeed(0);
+  say("Kara Ölüm. İnşaat durdu.", "bad");
+  const prev = store.get("tasisik-best");
+  const rec = { h: game.H, y: game.peakYear };
+  if (!prev || rec.h > prev.h) store.set("tasisik-best", rec);
+  showEnd();
+}
+function showEnd() {
+  const withV = CATS.filter(c => c.vault);
+  const real = [...withV].sort((a, b) => Math.abs(a.vault - game.H) - Math.abs(b.vault - game.H))[0];
+  const above = withV.filter(c => c.vault < game.H).length;
+  const e = $("#end");
+  e.innerHTML = `<div class="card"><div class="eyebrow">1348</div><h3>${game.H} metrelik tonoz</h3>
+    <p>En yakın gerçek akrabası <b>${real.name}</b> (${dec(real.vault)} m). Listedeki ${withV.length} tonozun ${above} tanesinden yüksek.</p>
+    <p class="mono" style="color:var(--muted)">Işık %${Math.round(lightEff(game) * 100)} · ${game.collapses} çöküş · ${game.tiers} payanda katı</p>
+    <p style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:0"><button type="button" id="toRace">Yarışta gör</button><button type="button" id="again">Yeniden yap</button></p></div>`;
+  e.hidden = false;
+  $("#toRace").onclick = () => { location.hash = "yaris"; };
+  $("#again").onclick = restart;
+}
+
+function restart() { game = START(); $("#end").hidden = true; renderLog(); say(INTRO); renderHud(); setSpeed(0); }
+const INTRO = "Piskopos sana bir Romanesk kilise ve 260 livre verdi. İlk işi yaptığında zaman akmaya başlar.";
+$("#restart").addEventListener("click", restart);
+
+function renderHud() {
+  const s = game;
+  $("#hYear").textContent = s.year;
+  $("#hMoney").textContent = fmt(s.money);
+  $("#hH").textContent = s.H + " m";
+  $("#hPil").textContent = fmt(pilgrims(s));
+  const st = stability(s);
+  $("#hStab").textContent = st.toFixed(2).replace(".", ",");
+  const bar = $("#stabBar");
+  bar.style.width = Math.min(100, st / 2 * 100) + "%";
+  bar.style.background = css(st < 1 ? "--ruby" : st < 1.2 ? "--warn" : "--ok");
+  $("#actions").innerHTML = ACTIONS.map(a => {
+    const locked = a.unlock && s.year < a.unlock;
+    const can = a.can(s) && !locked;
+    const c = a.cost(s);
+    let eff = a.why;
+    if (locked) eff = `${a.unlock}'den sonra açılır. Ustalar henüz denemedi.`;
+    else if (can) {
+      const t = { ...s }; a.apply(t);
+      const ns = stability(t);
+      const cls = ns < 1 ? "bad" : ns > st ? "good" : "";
+      eff += ` <span class="${cls}">Denge → ${ns.toFixed(2).replace(".", ",")}${ns < 0.9 ? " · çöker!" : ""}</span>`;
+    } else eff = a.id === "glass" ? (s.year < 1230 ? "Bu dönemin taş işçiliğiyle sınırdasın. 1230'u bekle." : "Daha fazla cam taşıyamaz.") : a.id === "h" ? "En yüksek nokta." : "Tamamlandı.";
+    return `<button type="button" class="act" data-a="${a.id}" ${!can || s.money < c || s.over ? "disabled" : ""}><span class="nm">${a.nm}</span><span class="cost">${can ? fmt(c) + " ₤" : ""}</span><span class="eff">${eff}</span></button>`;
+  }).join("");
+  if (!$("#v-yaris").hidden) drawRace();
+}
+$("#actions").addEventListener("click", e => { const b = e.target.closest("button[data-a]"); if (b) doAction(ACTIONS.find(a => a.id === b.dataset.a)); });
+
+let speed = 1, last = 0;
+function setSpeed(v) { speed = v; document.querySelectorAll(".speed button[data-s]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.s === v))); }
+document.querySelectorAll(".speed button[data-s]").forEach(b => b.addEventListener("click", () => { if (!game.over) setSpeed(+b.dataset.s); }));
+
+function loop(now) {
+  const dt = Math.min(0.1, (now - last) / 1000); last = now;
+  if (!$("#v-insa").hidden) {
+    if (speed && !game.over) { game.frac += dt * speed; while (game.frac >= 1 && !game.over) { game.frac -= 1; tickYear(); } }
+    game.shake = Math.max(0, game.shake - dt);
+    for (const r of game.rubble) { r.vy += 300 * dt; r.x += r.vx * dt; r.y = Math.min(GROUND - 3, r.y + r.vy * dt); r.life -= dt; }
+    game.rubble = game.rubble.filter(r => r.life > 0);
+    draw(now / 1000);
+  }
+  requestAnimationFrame(loop);
+}
+
+/* Cross-section drawing */
+const stars = Array.from({ length: 70 }, (_, i) => [(i * 97.3) % LW, (i * 53.7) % 240, (i % 3) * .4 + .6]);
+function draw(t = 0) {
+  const s = game, c = ctx;
+  c.save();
+  c.clearRect(0, 0, LW, LH);
+  const sky = c.createLinearGradient(0, 0, 0, LH);
+  sky.addColorStop(0, "#0b0c17"); sky.addColorStop(1, "#262a46");
+  c.fillStyle = sky; c.fillRect(0, 0, LW, LH);
+  c.fillStyle = "#cfd3ff";
+  for (const [x, y, r] of stars) { c.globalAlpha = .35 + .3 * Math.sin(t * 1.3 + x); c.fillRect(x, y, r, r); }
+  c.globalAlpha = 1;
+  if (s.shake > 0) c.translate((Math.random() - .5) * 8 * s.shake, (Math.random() - .5) * 4 * s.shake);
+
+  const cx = LW / 2, m = v => v * PX, gy = GROUND;
+  const st = stability(s);
+  const stoneTop = st < 1 ? "#9a7079" : "#b9b2a4", stoneSide = st < 1 ? "#6a4c55" : "#857e72";
+
+  c.font = "12px 'Alegreya Sans', sans-serif"; c.textAlign = "left";
+  for (const [h, n] of [[36.5, "Chartres 36,5 m"], [42.3, "Amiens 42,3 m"], [48.5, "Beauvais 48,5 m"]]) {
+    const y = gy - m(h);
+    c.strokeStyle = "rgba(226,173,76,.4)"; c.lineWidth = 1; c.setLineDash([4, 5]); c.beginPath(); c.moveTo(12, y); c.lineTo(LW - 12, y); c.stroke(); c.setLineDash([]);
+    c.fillStyle = "rgba(226,173,76,.85)"; c.fillText(n, 14, y - 4);
+  }
+
+  const half = m(SPAN / 2), wt = m(s.wall), aisleW = m(7), aisleH = Math.min(m(s.H * 0.5), m(22));
+  const apex = gy - m(s.H);
+  const spring = apex + (s.arch === "pointed" ? m(9) : m(7));
+
+  // flying buttresses and their piers
+  const pierX = half + wt + aisleW + m(1.4), pierW = m(2.2);
+  for (const sgn of [-1, 1]) if (s.tiers) {
+    const px = cx + sgn * pierX - pierW / 2, top = gy - aisleH - m(6);
+    for (let i = 0; i < s.tiers; i++) {
+      const wallX = cx + sgn * (half + wt), yWall = spring + m(1) + i * m(5), yPier = top + m(2) + i * m(4);
+      c.strokeStyle = stoneSide; c.lineWidth = m(0.9); c.beginPath();
+      c.moveTo(wallX, yWall); c.quadraticCurveTo(cx + sgn * (half + wt + aisleW * .6), Math.min(yWall, yPier) - m(1), cx + sgn * pierX, yPier); c.stroke();
+    }
+    c.fillStyle = stoneSide; c.fillRect(px, top, pierW, gy - top);
+    c.fillStyle = stoneTop; c.beginPath(); c.moveTo(px - 1, top); c.lineTo(px + pierW / 2, top - m(4)); c.lineTo(px + pierW + 1, top); c.fill();
+  }
+
+  // side aisles with lean-to roofs
+  for (const sgn of [-1, 1]) {
+    const x0 = cx + sgn * (half + wt), x1 = x0 + sgn * aisleW;
+    c.fillStyle = stoneSide;
+    c.beginPath(); c.moveTo(x0, gy); c.lineTo(x1, gy); c.lineTo(x1, gy - aisleH + m(3)); c.lineTo(x0, gy - aisleH - m(1.5)); c.closePath(); c.fill();
+    c.fillStyle = "#4a3a3e"; c.beginPath(); c.moveTo(x0, gy - aisleH - m(1.5)); c.lineTo(x1 + sgn * 4, gy - aisleH + m(3)); c.lineTo(x1 + sgn * 4, gy - aisleH + m(4)); c.lineTo(x0, gy - aisleH - m(.5)); c.fill();
+  }
+
+  // nave interior, lit by the glass
+  const lit = lightEff(s);
+  c.fillStyle = "#14151f"; c.fillRect(cx - half, apex, half * 2, gy - apex);
+  const glow = c.createLinearGradient(0, apex, 0, gy);
+  glow.addColorStop(0, `rgba(79,127,240,${.12 + lit * .8})`); glow.addColorStop(1, `rgba(226,173,76,${.06 + lit * .45})`);
+  c.fillStyle = glow; c.fillRect(cx - half, apex, half * 2, gy - apex);
+  for (const sgn of [-1, 1]) {
+    const x = sgn < 0 ? cx - half - wt : cx + half;
+    c.fillStyle = stoneTop; c.fillRect(x, spring, wt, gy - spring);
+    const winTop = spring + m(1), winBot = gy - aisleH - m(2.5);
+    const winH = Math.max(0, winBot - winTop) * Math.min(1, s.glass * 1.6), winW = Math.max(2, wt * (0.3 + s.glass * 0.6));
+    if (winH > 3) {
+      const wy = winBot - winH, wx = x + (wt - winW) / 2;
+      const g = c.createLinearGradient(0, wy, 0, winBot);
+      g.addColorStop(0, "#4f7ff0"); g.addColorStop(.55, "#d9435c"); g.addColorStop(1, "#e2ad4c");
+      c.fillStyle = g; c.beginPath();
+      c.moveTo(wx, winBot); c.lineTo(wx, wy + winW / 2); c.quadraticCurveTo(wx + winW / 2, wy - winW * .5, wx + winW, wy + winW / 2); c.lineTo(wx + winW, winBot); c.fill();
+      c.fillStyle = `rgba(255,225,160,${.05 + lit * .15})`; c.beginPath();
+      const inner = sgn < 0 ? wx + winW : wx;
+      c.moveTo(inner, wy + winW); c.lineTo(inner, winBot); c.lineTo(cx - sgn * half * .1, gy); c.lineTo(cx - sgn * half * .7, gy); c.fill();
+    }
+  }
+
+  // vault shell
+  c.fillStyle = stoneTop; c.beginPath();
+  c.moveTo(cx - half - wt, spring);
+  if (s.arch === "pointed") { c.quadraticCurveTo(cx - half - wt, apex - m(1.6), cx, apex - m(1.2)); c.quadraticCurveTo(cx + half + wt, apex - m(1.6), cx + half + wt, spring); }
+  else c.arc(cx, spring, half + wt, Math.PI, 0);
+  c.lineTo(cx + half, spring);
+  if (s.arch === "pointed") { c.quadraticCurveTo(cx + half, apex + m(.6), cx, apex); c.quadraticCurveTo(cx - half, apex + m(.6), cx - half, spring); }
+  else c.arc(cx, spring, half, 0, Math.PI, true);
+  c.closePath(); c.fill();
+  if (s.ribs) { c.strokeStyle = "#efe6cc"; c.lineWidth = 1.6; c.beginPath(); c.moveTo(cx - half, spring); c.quadraticCurveTo(cx - half * .25, apex + m(1.6), cx, apex + m(.5)); c.quadraticCurveTo(cx + half * .25, apex + m(1.6), cx + half, spring); c.stroke(); }
+  const roofBase = apex - m(1.2), roofTop = roofBase - m(SPAN * 0.5);
+  c.fillStyle = "#3f3438"; c.beginPath(); c.moveTo(cx - half - wt - 4, roofBase + m(1.5)); c.lineTo(cx, roofTop); c.lineTo(cx + half + wt + 4, roofBase + m(1.5)); c.closePath(); c.fill();
+  c.fillStyle = "#e2ad4c"; c.fillRect(cx - 1, roofTop - m(3), 2, m(3)); c.fillRect(cx - m(.8), roofTop - m(2.2), m(1.6), 2);
+
+  c.fillStyle = "#1a1b26"; c.fillRect(0, gy, LW, LH - gy);
+  c.fillStyle = stoneTop; for (const r of game.rubble) c.fillRect(r.x, r.y, 5, 4);
+
+  c.fillStyle = "#ebe6da"; c.font = "500 15px 'IBM Plex Mono', monospace"; c.textAlign = "right";
+  c.fillText(`${s.H} m`, cx - half - wt - 12, apex + 5);
+  c.strokeStyle = "rgba(235,230,218,.5)"; c.lineWidth = 1; c.beginPath(); c.moveTo(cx - half - wt - 8, apex); c.lineTo(cx - half, apex); c.stroke();
+  c.restore();
+}
+
+/* ---------- Boot ---------- */
+function start(saved) {
+  if (saved && saved.game) game = Object.assign(START(), saved.game, { rubble: [], shake: 0 });
+  setYear(1250); select(selected);
+  renderLog();
+  if (!game.log.length) say(INTRO);
+  renderHud(); setSpeed(game.started && !game.over ? 1 : 0);
+  if (game.over) showEnd();
+  route();
+  requestAnimationFrame(t => { last = t; loop(t); });
+}
+window.claude?.hot?.snapshot?.(() => ({ game }));
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>

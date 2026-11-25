@@ -1,0 +1,171 @@
+{
+  "id": "PA00114502",
+  "name_en": "Beauvais Cathedral (Saint-Pierre)",
+  "summary": "Beauvais is an unfinished cathedral: only the choir and transept exist, but the choir vaults reach the greatest height of any Gothic building. Its builders pushed the structure past its limits, and the vault fell in 1284 and the crossing tower in 1573, so it has needed iron ties and props ever since.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 48.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "note": "choir vault; there is no nave (a single bay was vaulted c.1604)",
+      "alt": [
+        {
+          "value": 47.5,
+          "source": "https://en.wikipedia.org/wiki/Beauvais_Cathedral"
+        }
+      ]
+    },
+    "length_exterior_m": {
+      "value": 72.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "note": "total length from the axial chapel to the west partition wall; the building is unfinished"
+    },
+    "nave_width_m": {
+      "value": 16,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "note": "central vessel of the choir; no nave was built"
+    },
+    "tallest_point_m": {
+      "value": 153,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "note": "tower-lantern and spire completed 1569, collapsed 1573; no longer standing",
+      "alt": [
+        {
+          "value": 151.6,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+        }
+      ]
+    },
+    "towers_m": {
+      "value": 67.2,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "note": "exterior height given for the standing building (south facade 64.4 m)"
+    }
+  },
+  "phases": [
+    {
+      "from": 1225,
+      "to": 1272,
+      "part": "choir",
+      "what": "Gothic choir begun under Bishop Milon de Nanteuil; vespers sung there on 3 October 1272",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "certainty": "documented"
+    },
+    {
+      "from": 1284,
+      "to": 1347,
+      "part": "choir",
+      "what": "Choir vaults rebuilt and reinforced after the collapse of 1284, with added intermediate piers",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1499,
+      "to": 1548,
+      "part": "transept",
+      "what": "Transept raised under Martin Chambiges, finished by his son Pierre",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "certainty": "documented"
+    },
+    {
+      "from": 1550,
+      "to": 1569,
+      "part": "spire",
+      "what": "Crossing tower-lantern and spire designed (1550), begun 1563, completed 1569",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "certainty": "documented"
+    },
+    {
+      "from": 1600,
+      "to": 1604,
+      "part": "nave",
+      "what": "Attempt at a nave: only the first bay was vaulted and a temporary west wall built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1850,
+      "to": 1900,
+      "part": "whole",
+      "what": "Nineteenth-century restoration campaigns",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais",
+      "certainty": "approximate"
+    }
+  ],
+  "events": [
+    {
+      "year": 1284,
+      "type": "collapse",
+      "what": "Vaults of the choir fell, probably because the piers and buttresses were too slender.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "year": 1472,
+      "type": "war",
+      "what": "The town was besieged by the army of Charles the Bold.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "year": 1573,
+      "type": "collapse",
+      "what": "On 30 April the spire and three stages of the crossing tower fell.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Statues on the south portal were destroyed during the Revolution.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "year": 1940,
+      "type": "war",
+      "what": "Bombing in June 1940 destroyed the sacristy; the glass had been removed in 1939.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "year": 1960,
+      "type": "other",
+      "what": "Removal of remaining iron ties in the 1960s caused the choir to move away from the transept; steel ties were later restored.",
+      "source": "https://en.wikipedia.org/wiki/Beauvais_Cathedral"
+    },
+    {
+      "year": 1995,
+      "type": "restoration",
+      "what": "Mid-1990s: structural monitoring and timber bracing installed in the transept.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "year": 2010,
+      "type": "restoration",
+      "what": "Restoration of the lead roofing began; a new campaign starting in 2022 is planned to run to 2027.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Martin Chambiges",
+      "active": "1499–1532",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "name": "Pierre Chambiges",
+      "active": "after 1532",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "name": "Jean Vast",
+      "active": "from 1563",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Pierre de Beauvais (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Pierre_de_Beauvais"
+    },
+    {
+      "title": "Beauvais Cathedral (English Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Beauvais_Cathedral"
+    }
+  ]
+}

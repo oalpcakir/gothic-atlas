@@ -1,0 +1,175 @@
+{
+  "id": "PA00079952",
+  "name_en": "Basilica (cathedral) of Saint-Denis",
+  "summary": "A former royal abbey church north of Paris where Abbot Suger had the west front and ambulatory rebuilt in the 1130s and 1140s, using ribbed vaults and large windows in a combination later seen as the start of Gothic architecture. The nave and transept were rebuilt in the Rayonnant manner in the 13th century, and the church became the burial place of French kings. Its north tower and spire were taken down in the 1840s, leaving one tower.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 30,
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "note": "approximate height of the 13th-century nave vault; the article says 'about 30 m'"
+    },
+    "length_exterior_m": {
+      "value": 108,
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "note": "overall length as stated; the page does not say whether measured inside or outside"
+    },
+    "towers_m": {
+      "value": 58,
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "note": "surviving south tower"
+    },
+    "tallest_point_m": {
+      "value": 86,
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "note": "former north spire (1190-1230), dismantled 1847; value only for the lost spire. The English page also gives 86 m; the French page notes about 90 m with its cross",
+      "alt": [
+        {
+          "value": 90,
+          "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+        }
+      ]
+    }
+  },
+  "phases": [
+    {
+      "from": 1135,
+      "to": 1140,
+      "part": "west front",
+      "what": "Suger's west front with three portals and a rose window, dedicated 9 June 1140",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "certainty": "documented"
+    },
+    {
+      "from": 1140,
+      "to": 1144,
+      "part": "choir",
+      "what": "Suger's choir and double ambulatory, dedicated 11 June 1144",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "certainty": "documented"
+    },
+    {
+      "from": 1150,
+      "to": 1200,
+      "part": "towers",
+      "what": "Two west towers raised in the second half of the 12th century; the north tower later carried a spire (c. 1190-1230)",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1231,
+      "to": 1281,
+      "part": "nave",
+      "what": "Nave and transept rebuilt in Rayonnant style under Abbot Eudes Clement, Louis IX and Blanche of Castile",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "certainty": "documented"
+    },
+    {
+      "from": 1260,
+      "to": 1269,
+      "part": "transept",
+      "what": "Transept and nave completed in the 1260s under master Mathieu de Vendome",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1300,
+      "to": 1400,
+      "part": "chapels",
+      "what": "Side chapels added north of the nave during the 14th century",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis",
+      "certainty": "approximate"
+    }
+  ],
+  "events": [
+    {
+      "year": 1567,
+      "type": "war",
+      "what": "Battle between Protestants and Catholics fought at Saint-Denis on 10 November.",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "year": 1771,
+      "type": "other",
+      "what": "Trumeau and part of the central west tympanum removed.",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Royal tombs desecrated; church lost its lead roofing in 1794 and served briefly as a Temple of Reason.",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "year": 1837,
+      "type": "lightning",
+      "what": "Lightning struck the north spire, which led to repairs by Debret.",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "year": 1845,
+      "type": "other",
+      "what": "A tornado destabilised the north tower and spire; the spire was dismantled by 1847.",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "year": 1846,
+      "type": "restoration",
+      "what": "Viollet-le-Duc took over the restoration from Debret and directed it until 1879.",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "year": 1966,
+      "type": "other",
+      "what": "Church made a cathedral again when the diocese of Saint-Denis was created.",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "year": 2025,
+      "type": "restoration",
+      "what": "Work on rebuilding the north spire formally started on 14 March 2025.",
+      "source": "https://en.wikipedia.org/wiki/Basilica_of_St_Denis"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Suger (abbot)",
+      "active": "1122-1151",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "name": "Eudes Clement (abbot)",
+      "active": "1228-1245",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "name": "Mathieu de Vendome",
+      "active": "1260s",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "name": "Jacques-Guillaume Legrand",
+      "active": "from 1805",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "name": "Francois Debret",
+      "active": "1813-1846",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "name": "Eugene Viollet-le-Duc",
+      "active": "1846-1879",
+      "source": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Basilique Saint-Denis (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Basilique_Saint-Denis"
+    },
+    {
+      "title": "Basilica of St Denis (en.wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Basilica_of_St_Denis"
+    }
+  ]
+}

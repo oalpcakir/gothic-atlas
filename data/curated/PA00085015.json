@@ -1,0 +1,209 @@
+{
+  "id": "PA00085015",
+  "name_en": "Strasbourg Cathedral",
+  "summary": "Strasbourg Cathedral replaced a Romanesque church from 1176-1180 and was built in the Gothic style over about three centuries. Its single north tower and spire, finished in 1439, made it the tallest building in the world from 1647 to 1874.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 32.6,
+      "source": "https://en.wikipedia.org/wiki/Strasbourg_Cathedral",
+      "note": "nave vault",
+      "alt": [
+        {
+          "value": 32,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+        }
+      ]
+    },
+    "length_exterior_m": {
+      "value": 112,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "note": "total length per the plan caption; the English page gives the same overall figure",
+      "alt": [
+        {
+          "value": 112,
+          "source": "https://en.wikipedia.org/wiki/Strasbourg_Cathedral"
+        }
+      ]
+    },
+    "nave_width_m": {
+      "value": 16,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "note": "central vessel",
+      "alt": [
+        {
+          "value": 16,
+          "source": "https://en.wikipedia.org/wiki/Strasbourg_Cathedral"
+        }
+      ]
+    },
+    "tallest_point_m": {
+      "value": 142.11,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "note": "spire completed 1439",
+      "alt": [
+        {
+          "value": 142,
+          "source": "https://en.wikipedia.org/wiki/Strasbourg_Cathedral"
+        }
+      ]
+    }
+  },
+  "phases": [
+    {
+      "from": 1180,
+      "to": 1190,
+      "part": "choir",
+      "what": "Rebuilding begins with the chevet under Bishop Heinrich von Hasenburg after the fire of 1176; choir usable before 1188",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "documented"
+    },
+    {
+      "from": 1196,
+      "to": 1228,
+      "part": "transept",
+      "what": "North transept built from 1196, south transept c.1210-1220, Gothic vaults by 1228",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1235,
+      "to": 1275,
+      "part": "nave",
+      "what": "Rayonnant nave built, completed 1275",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1277,
+      "to": 1318,
+      "part": "west front",
+      "what": "West front begun on 25 May 1277 under Erwin; first stage of south tower by 1316",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "documented"
+    },
+    {
+      "from": 1330,
+      "to": 1365,
+      "part": "towers",
+      "what": "Rose window c.1330; north tower completed 1365 under Johannes Gerlach",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1384,
+      "to": 1388,
+      "part": "towers",
+      "what": "Belfry added between the towers",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "documented"
+    },
+    {
+      "from": 1399,
+      "to": 1439,
+      "part": "spire",
+      "what": "Octagonal tower and spire built under Ulrich d'Ensingen and Jean Hültz",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "documented"
+    },
+    {
+      "from": 1839,
+      "to": 1879,
+      "part": "transept",
+      "what": "Neo-Romanesque crossing tower completed 1879 under Gustave Klotz",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1002,
+      "type": "war",
+      "what": "Cathedral burned during the succession conflict after Otto III's death.",
+      "source": "https://en.wikipedia.org/wiki/Strasbourg_Cathedral"
+    },
+    {
+      "year": 1176,
+      "type": "fire",
+      "what": "Fire of 1176 had the heaviest consequences and led to rebuilding.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "year": 1384,
+      "type": "fire",
+      "what": "Fire on 16 March left visible traces only on the bell towers.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "year": 1759,
+      "type": "lightning",
+      "what": "Lightning hit the spire on 17 July; the nave roof and crossing tower burned.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Statuary was destroyed in December and a Phrygian cap placed on the spire in 1794.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "year": 1870,
+      "type": "war",
+      "what": "Shelling during the siege destroyed balustrades, sculptures and most roofs.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "year": 1926,
+      "type": "restoration",
+      "what": "Foundations of the north tower underpinned from 1911 to 1926.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "year": 1944,
+      "type": "war",
+      "what": "American bombing on 11 August damaged the dome and the north aisle vault.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Erwin de Steinbach",
+      "active": "1284-1318",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "name": "Johannes von Steinbach",
+      "active": "to 1339",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "name": "Johannes Gerlach",
+      "active": "from 1339",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "name": "Ulrich d'Ensingen",
+      "active": "1399-1419",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "name": "Jean Hültz",
+      "active": "1419-1439",
+      "source": "https://en.wikipedia.org/wiki/Strasbourg_Cathedral"
+    },
+    {
+      "name": "Gustave Klotz",
+      "active": "from 1839",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Strasbourg (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Strasbourg"
+    },
+    {
+      "title": "Strasbourg Cathedral (English Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Strasbourg_Cathedral"
+    }
+  ]
+}

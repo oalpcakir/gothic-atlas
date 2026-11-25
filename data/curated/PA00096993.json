@@ -1,0 +1,181 @@
+{
+  "id": "PA00096993",
+  "name_en": "Chartres Cathedral",
+  "summary": "Rebuilt after a fire in 1194, Chartres was largely complete within about thirty years, keeping the 12th-century west portals and towers. Its three-storey elevation and flying buttresses set the model for High Gothic, and most of its medieval stained glass survives. The north spire was rebuilt in stone after lightning in 1506.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 37.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "note": "interior height under the vault"
+    },
+    "length_interior_m": {
+      "value": 130,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "note": "sum of avant-nef 17, nave 44, crossing 14, choir 37, ambulatory and axial chapel 18"
+    },
+    "length_exterior_m": {
+      "value": 130.2,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "note": "excluding the Saint-Piat chapel"
+    },
+    "nave_width_m": {
+      "value": 16.4,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "note": "central nave"
+    },
+    "towers_m": {
+      "value": 105,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "note": "Romanesque south tower"
+    },
+    "tallest_point_m": {
+      "value": 115,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "note": "north (Gothic) spire"
+    }
+  },
+  "phases": [
+    {
+      "from": 1145,
+      "to": 1150,
+      "part": "west front",
+      "what": "Royal Portal built after the 1134 town fire",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1194,
+      "to": 1215,
+      "part": "nave",
+      "what": "Gothic rebuilding after the fire of 10 June 1194, starting with the lower walls and nave",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "documented"
+    },
+    {
+      "from": 1215,
+      "to": 1221,
+      "part": "choir",
+      "what": "Choir clerestory completed; canons moved in in 1221",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "documented"
+    },
+    {
+      "from": 1220,
+      "to": 1235,
+      "part": "transept",
+      "what": "Transept clerestories built in the late 1220s to early 1230s",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1194,
+      "to": 1230,
+      "part": "whole",
+      "what": "Main structure built in about thirty years",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "documented"
+    },
+    {
+      "from": 1260,
+      "to": 1260,
+      "part": "whole",
+      "what": "Solemn consecration on 24 October 1260",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "documented"
+    },
+    {
+      "from": 1417,
+      "to": 1417,
+      "part": "chapels",
+      "what": "Vendôme chapel built by Geoffroy Sevestre",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "documented"
+    },
+    {
+      "from": 1506,
+      "to": 1513,
+      "part": "spire",
+      "what": "North spire rebuilt in stone by Jehan de Beauce",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1020,
+      "type": "lightning",
+      "what": "Previous cathedral damaged by lightning on 7-8 September.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "year": 1194,
+      "type": "fire",
+      "what": "Fire of 10 June; the west portal, towers and crypts survived.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "year": 1506,
+      "type": "lightning",
+      "what": "Lightning on 26 July destroyed the wooden spire of the north tower.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "year": 1763,
+      "type": "other",
+      "what": "Rood screen destroyed during choir alterations.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Converted to a Temple of Reason; lead stripped from the roof.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "year": 1836,
+      "type": "fire",
+      "what": "Fire on 4 June caused by workers destroyed the roof frame; replaced by iron frame and copper roof in 1836-1841.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "year": 1944,
+      "type": "war",
+      "what": "Cathedral spared on 16 August through the intervention of Colonel Welborn Griffith.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "year": 2008,
+      "type": "restoration",
+      "what": "Restoration and cleaning campaigns from 2008 (choir, nave, statues).",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Maître de Chartres (anonymous)",
+      "active": "c. 1194-1220s",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "name": "Jehan de Beauce",
+      "active": "1506-1520",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "name": "Geoffroy Sevestre",
+      "active": "1417",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    },
+    {
+      "name": "Édouard Baron",
+      "active": "1836-1841",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Chartres (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Chartres"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+---
+// "Translate" link for French source text. Opens a free web translator with the text filled in;
+// nothing is translated or stored by this site. Google Translate accepts up to 5,000 characters.
+const { text, label = "Translate to English" } = Astro.props;
+const t = (Array.isArray(text) ? text.join("\n") : String(text || "")).slice(0, 4800);
+const url = "https://translate.google.com/?sl=fr&tl=en&op=translate&text=" + encodeURIComponent(t);
+---
+{t ? <a class="tr" href={url} target="_blank" rel="noopener">{label} ↗</a> : null}

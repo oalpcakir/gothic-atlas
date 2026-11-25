@@ -1,0 +1,118 @@
+---
+import Base from "../../layouts/Base.astro";
+import { href, centuryOf, CENTURIES } from "../../lib/data.js";
+import { curated, shortName, dim, firstYear, bodyYear, esc, num, host, DIM_LABELS } from "../../lib/dossier.js";
+const all = curated();
+const hue = (b) => `var(--c${centuryOf(Math.max(firstYear(b) ?? 1140, 1140))})`;
+
+// 1. Vault heights, tallest first.
+const vaults = all.filter((b) => dim(b, "vault_height_m")).sort((a, b) => dim(b, "vault_height_m") - dim(a, "vault_height_m"));
+const BW = 760, BL = 130, rowH = 19, maxV = 50;
+const bx = (v) => BL + (v / maxV) * (BW - BL - 60);
+let bars = `<svg viewBox="0 0 ${BW} ${vaults.length * rowH + 26}" width="${BW}" style="min-width:560px" role="img" aria-label="Vault heights of ${vaults.length} cathedrals">`;
+for (let v = 0; v <= 50; v += 10) bars += `<line x1="${bx(v)}" x2="${bx(v)}" y1="14" y2="${vaults.length * rowH + 20}" stroke="var(--rule)"/><text x="${bx(v)}" y="10" text-anchor="middle">${v} m</text>`;
+vaults.forEach((b, i) => {
+  const v = b.dossier.dimensions.vault_height_m, y = 20 + i * rowH;
+  bars += `<a href="${href(b)}"><text x="${BL - 8}" y="${y + 11}" text-anchor="end" style="fill:var(--accent);font-size:11px">${esc(shortName(b))}</text></a>`;
+  bars += `<rect x="${bx(0)}" y="${y + 2}" width="${bx(v.value) - bx(0)}" height="${rowH - 6}" fill="${hue(b)}"/>`;
+  for (const a of v.alt || []) if (typeof a.value === "number") bars += `<line x1="${bx(a.value)}" x2="${bx(a.value)}" y1="${y}" y2="${y + rowH - 2}" stroke="var(--ink)" stroke-width="1.5"/>`;
+  bars += `<text x="${bx(Math.max(v.value, ...(v.alt || []).map((a) => +a.value || 0))) + 6}" y="${y + 11}" style="fill:var(--ink)">${num(v.value)}</text>`;
+});
+bars += "</svg>";
+
+// 2. The race: year the Gothic works began against vault height.
+const SW = 760, SH = 360, SL = 44, SB = 30, y0 = 1130, y1 = 1300;
+const racers = vaults.filter((b) => bodyYear(b) && bodyYear(b) <= y1);
+const sx = (y) => SL + ((y - y0) / (y1 - y0)) * (SW - SL - 20), sy = (v) => SH - SB - ((v - 15) / 37) * (SH - SB - 14);
+let race = `<svg viewBox="0 0 ${SW} ${SH}" width="${SW}" style="min-width:560px" role="img" aria-label="Vault height against the year work began">`;
+for (let v = 20; v <= 50; v += 10) race += `<line x1="${SL}" x2="${SW - 20}" y1="${sy(v)}" y2="${sy(v)}" stroke="var(--rule)"/><text x="${SL - 6}" y="${sy(v) + 3}" text-anchor="end">${v} m</text>`;
+for (let y = 1140; y <= 1300; y += 20) race += `<text x="${sx(y)}" y="${SH - 10}" text-anchor="middle">${y}</text>`;
+let best = 0, rec = "";
+for (const b of [...racers].sort((a, b) => bodyYear(a) - bodyYear(b))) {
+  const v = dim(b, "vault_height_m");
+  if (v > best) { rec += (rec ? `H${sx(bodyYear(b))}V${sy(v)}` : `M${sx(bodyYear(b))},${sy(v)}`); best = v; }
+}
+race += `<path d="${rec}H${SW - 20}" fill="none" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4 3"/>`;
+const placed = [];
+for (const b of racers) {
+  const x = sx(bodyYear(b)), y = sy(dim(b, "vault_height_m"));
+  let ly = y - 8;
+  while (placed.some((p) => Math.abs(p[0] - x) < 56 && Math.abs(p[1] - ly) < 11)) ly -= 11;
+  placed.push([x, ly]);
+  race += `<circle cx="${x}" cy="${y}" r="4.5" fill="${hue(b)}" stroke="var(--paper)" stroke-width="1.2"/><a href="${href(b)}"><text x="${x}" y="${ly}" text-anchor="middle" style="fill:var(--ink)">${esc(shortName(b))}</text></a>`;
+}
+race += "</svg>";
+
+// 3. Silhouettes from LiDAR, all at one scale (1 unit = 1 m), tallest first.
+const surveyed = all.filter((b) => b.lidar).sort((a, b) => b.lidar.top_m - a.lidar.top_m);
+const sil = surveyed.map((b) => {
+  const p = b.lidar.profile, w = p.length, h = 150;
+  const d = `M0,${h}` + p.map((z, i) => `L${i},${(h - z).toFixed(1)}L${i + 1},${(h - z).toFixed(1)}`).join("") + `L${w},${h}Z`;
+  return { b, w, svg: `<svg viewBox="0 0 ${w} ${h + 1}" width="${w * 1.6}" height="${(h + 1) * 1.6}" role="img" aria-label="Side profile of ${esc(shortName(b))}"><path d="${d}" fill="var(--ink)"/><line x1="0" x2="${w}" y1="${h + 0.5}" y2="${h + 0.5}" stroke="var(--ink)"/></svg>` };
+});
+const table = [...all].sort((a, b) => shortName(a).localeCompare(shortName(b)));
+---
+<Base title="How high, how long" description="Vault heights, lengths and surveyed silhouettes of thirty French Gothic cathedrals compared at one scale, with a source for every figure.">
+  <div class="stack" style="--gap:3rem">
+    <header class="stack">
+      <p class="eyebrow"><a href="/studies/">Studies</a></p>
+      <h1>How high, how long</h1>
+      <p>Thirty cathedrals measured against each other. The figures are compiled by hand from published sources, and each links to where it was read. The silhouettes are not drawings: they are cut from the national airborne laser survey.</p>
+    </header>
+
+    <section class="stack">
+      <h2>Vault heights</h2>
+      <p>Height of the main vault above the floor. For Beauvais and Narbonne this is the choir, since their naves were never built. A black tick marks a second published value.</p>
+      <div class="scroll-x" set:html={bars}></div>
+      <p class="legend">{CENTURIES.slice(0, 4).map((c) => <span><i style={`background:${c.color};border-radius:0`}></i>Gothic works begun in the {c.label}</span>)}</p>
+    </section>
+
+    <section class="stack">
+      <h2>The race upward</h2>
+      <p>Each cathedral is placed at the year its Gothic building began. The dashed line follows the record. It climbs for a century and stops at Beauvais, whose choir vault fell in 1284. Nobody built higher.</p>
+      <div class="scroll-x" set:html={race}></div>
+      <p class="caption">Start years are the first recorded phase on the choir or nave from 1130 on; the vault itself was usually closed decades later. Buildings begun after 1300 are left off.</p>
+    </section>
+
+    {sil.length ? (
+      <section class="stack">
+        <h2>Silhouettes at one scale</h2>
+        <p>The long side of each building as the survey aircraft saw it: the highest laser return in every metre of length. All {sil.length} are drawn at the same scale, so you can compare them directly. Roof ridges read well; needle-thin spire tips are often missed by the laser.</p>
+        <div class="sils">
+          {sil.map((s) => (
+            <figure>
+              <div class="scroll-x" set:html={s.svg}></div>
+              <figcaption><a href={href(s.b)}>{shortName(s.b)}</a> <span class="mono">top {num(s.b.lidar.top_m)} m · {num(s.b.lidar.length_m)} m long</span></figcaption>
+            </figure>
+          ))}
+        </div>
+        <p class="caption">Source: IGN LiDAR HD (Licence Ouverte 2.0), processed by Gothic Atlas. Heights are above the median ground level around the building. Buildings that touch the cathedral can add to its length. Cathedrals whose tile is not yet published are missing.</p>
+      </section>
+    ) : null}
+
+    <section class="stack">
+      <h2>All figures</h2>
+      <div class="scroll-x">
+        <table class="data" style="min-width:860px">
+          <thead><tr><th>Cathedral</th>{DIM_LABELS.map(([, l, u]) => <th class="num">{l}, {u}</th>)}</tr></thead>
+          <tbody>
+            {table.map((b) => (
+              <tr>
+                <td><a href={href(b)}>{shortName(b)}</a></td>
+                {DIM_LABELS.map(([k]) => { const v = b.dossier.dimensions?.[k]; return <td class="num">{v ? <a href={v.source} title={`${v.note || ""} · ${host(v.source)}`}>{num(v.value)}</a> : "—"}</td>; })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Each number links to its source. A dash means no source was found, not zero. Most figures come from French Wikipedia and have not yet been checked against a measured survey.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .sils { display: flex; flex-wrap: wrap; gap: 28px 36px; align-items: flex-end; }
+  .sils figure { margin: 0; min-width: 0; max-width: 100%; }
+  .sils figcaption { font-size: 0.85rem; padding-top: 4px; }
+  .legend i { vertical-align: -1px; }
+</style>

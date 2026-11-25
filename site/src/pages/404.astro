@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="Page not found" description="This page does not exist in the Gothic Atlas.">
+  <div class="stack" style="--gap:1.4rem">
+    <p class="eyebrow">404</p>
+    <h1>This page is not in the atlas</h1>
+    <p>The address may be mistyped, or the building may have left the list at the last data refresh. Building pages use the Mérimée reference, for example <a href="/buildings/pa00116046/">/buildings/pa00116046/</a> for Amiens.</p>
+    <form action="/buildings/" method="get" class="search">
+      <label class="eyebrow" for="q">Find a building</label>
+      <div><input id="q" name="q" type="search" placeholder="Town or name, e.g. Chartres" /><button type="submit">Search</button></div>
+    </form>
+    <p><a href="/">Home</a> · <a href="/atlas/">Atlas</a> · <a href="/buildings/">All buildings</a></p>
+  </div>
+</Base>
+
+<style>
+  .search { display: grid; gap: 6px; max-width: 460px; }
+  .search div { display: flex; }
+  .search input { flex: 1; min-width: 0; border-right: 0; }
+</style>

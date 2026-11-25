@@ -1,0 +1,194 @@
+{
+  "id": "PA00106817",
+  "name_en": "Metz Cathedral",
+  "summary": "Metz Cathedral has one of the highest Gothic vaults in France, about 41 m, and the largest glazed surface of any French cathedral, around 6,500 square metres. Building ran from the 13th to the 16th century, and a late-19th-century west portal and roof replaced earlier work.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 41.41,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "note": "central nave vault",
+      "alt": [
+        {
+          "value": 41.7,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+        },
+        {
+          "value": 42,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+        }
+      ]
+    },
+    "length_interior_m": {
+      "value": 123.2,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    "length_exterior_m": {
+      "value": 136,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    "nave_width_m": {
+      "value": 15.6,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "note": "central nave"
+    },
+    "tallest_point_m": {
+      "value": 93,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "note": "Mutte tower with its spire"
+    },
+    "towers_m": {
+      "value": 88,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "note": "Tour de la Mutte; Tour du Chapitre is 69 m"
+    },
+    "area_m2": {
+      "value": 3500,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "note": "surface given under the overall figures; not specified further"
+    }
+  },
+  "phases": [
+    {
+      "from": 1237,
+      "to": 1380,
+      "part": "whole",
+      "what": "First Gothic campaign, with nave vaulting finished 1360-1380; bases of the towers late 13th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    },
+    {
+      "from": 1381,
+      "to": 1381,
+      "part": "west front",
+      "what": "Contract for the western rose window",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    },
+    {
+      "from": 1440,
+      "to": 1443,
+      "part": "chapels",
+      "what": "Chapelle des Évêques rebuilt (Jean de Commercy)",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    },
+    {
+      "from": 1478,
+      "to": 1481,
+      "part": "towers",
+      "what": "Mutte spire built (Hannes de Ranconval)",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    },
+    {
+      "from": 1486,
+      "to": 1508,
+      "part": "transept",
+      "what": "North transept rebuilt 1486-1504, south transept 1508",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    },
+    {
+      "from": 1521,
+      "to": 1521,
+      "part": "choir",
+      "what": "Choir completed; Bousch windows installed 1521-1539",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    },
+    {
+      "from": 1552,
+      "to": 1552,
+      "part": "whole",
+      "what": "Cathedral consecrated on 11 April",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    },
+    {
+      "from": 1898,
+      "to": 1903,
+      "part": "west front",
+      "what": "Neo-Gothic west portal replaced the 18th-century portal",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1468,
+      "type": "fire",
+      "what": "Fire damaged the roof; the top of the Mutte tower was rebuilt in stone.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "year": 1764,
+      "type": "other",
+      "what": "Jacques-François Blondel's neoclassical west portal was built.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Became a Temple of Reason in 1793-1794.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "year": 1874,
+      "type": "restoration",
+      "what": "Restoration of nave and chevet piers and buttresses, 1874-1887.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "year": 1877,
+      "type": "fire",
+      "what": "Fire destroyed the roof on 7 May; the roof was raised 4.5 m during repair.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "year": 1909,
+      "type": "restoration",
+      "what": "Mutte spire rebuilt 1909-1911.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "year": 1974,
+      "type": "restoration",
+      "what": "Systematic restoration of facades from 1974 after emergency work in 1946-1973.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "year": 2008,
+      "type": "other",
+      "what": "A Chagall window was broken by burglars on 10 August.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Pierre Perrat",
+      "active": "second half of the 14th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "name": "Jean de Commercy",
+      "active": "1440-1443",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "name": "Hannes de Ranconval",
+      "active": "1478-1481",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    },
+    {
+      "name": "Paul Tornow",
+      "active": "from 1874",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Étienne de Metz (French Wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Metz"
+    }
+  ]
+}

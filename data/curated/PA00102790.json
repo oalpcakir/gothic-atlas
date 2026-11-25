@@ -1,0 +1,39 @@
+{
+  "id": "PA00102790",
+  "name_en": "Narbonne Cathedral (Saint-Just-et-Saint-Pasteur)",
+  "summary": "Only the choir, transept crossing and the start of the towers of Narbonne's planned cathedral were ever built, begun in 1272 on a northern Rayonnant model. Its vault is among the highest in France. The nave was never built because the city's ramparts and the archbishop's palace stood in the way, and an 18th-century attempt to add nave chapels stopped after a few years.",
+  "dimensions": {
+    "vault_height_m": {"value": 41, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "note": "choir vault; there is no nave, the choir is the only completed vessel"},
+    "nave_width_m": {"value": 15.2, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "note": "central vessel of the choir (the nave was never built); whole choir 40 m wide and 60 m long"}
+  },
+  "phases": [
+    {"from": 1268, "to": 1272, "part": "whole", "what": "Project decided under Pope Clement IV (1268; 1264 in another passage); first stone laid 13 April 1272 by Archbishop Maurin", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "debated"},
+    {"from": 1295, "to": 1309, "part": "ambulatory", "what": "Collateral aisles mostly built under Dominique de Fauran", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "documented"},
+    {"from": 1309, "to": 1336, "part": "choir", "what": "Chevet and first storey of the towers under Jacques de Fauran", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "documented"},
+    {"from": 1332, "to": 1332, "part": "choir", "what": "Choir completed", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "documented"},
+    {"from": 1336, "to": 1349, "part": "transept", "what": "Transept foundations and the two lateral portals under Raymond Aicard", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "documented"},
+    {"from": 1349, "to": 1354, "part": "towers", "what": "Transept and upper storeys of the towers under Pierre Daniel de Carcassonne and Louis Richecler", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "documented"},
+    {"from": 1349, "to": 1417, "part": "cloister", "what": "Cloister built on the site of the Carolingian cathedral", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "documented"},
+    {"from": 1708, "to": 1722, "part": "nave", "what": "Saint-Eutrope nave chapels begun under Archbishop Le Goux de La Berchère; work stopped at his death in 1719 and abandoned in 1722", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne", "certainty": "documented"}
+  ],
+  "events": [
+    {"year": 1285, "type": "other", "what": "Philip III the Bold dies at Perpignan; a coffret with his flesh is buried in the central aisle.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"year": 1344, "type": "war", "what": "Conflict between the consuls and the archbishop over the Capitole tower; lawsuit 1345-1354 and settlement in 1361.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"year": 1355, "type": "war", "what": "The Black Prince besieges the city, after the plague of 1348-1355 slowed work.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"year": 1405, "type": "fire", "what": "Fire partly destroys the towers; the north tower repaired later under François de Conzié.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"year": 1801, "type": "other", "what": "Concordat suppresses the archbishopric.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"year": 1840, "type": "restoration", "what": "Viollet-le-Duc begins a fortified porch but leaves after a few months; he made the tabernacle and retable in 1841.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"year": 1910, "type": "fire", "what": "Fire in the choir area destroys one organ and damages the grand organ.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"year": 1914, "type": "other", "what": "Cloister listed as a monument historique.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"}
+  ],
+  "masters": [
+    {"name": "Jean Deschamps (contract 1286; identity with the Clermont architect disputed)", "active": "1286", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"name": "Dominique de Fauran", "active": "1295–1309", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"name": "Jacques de Fauran", "active": "1309–1336", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"name": "Raymond Aicard", "active": "1336–1349", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"},
+    {"name": "Pierre Daniel de Carcassonne and Louis Richecler", "active": "1349–1354", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Saint-Just-et-Saint-Pasteur de Narbonne (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Just-et-Saint-Pasteur_de_Narbonne"}
+  ]
+}

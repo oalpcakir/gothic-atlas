@@ -1,0 +1,219 @@
+---
+import Base from "../layouts/Base.astro";
+import { load, fmt, CENTURIES, centuryOf } from "../lib/data.js";
+const { buildings, meta } = load();
+const dated = buildings.filter((b) => b.first);
+
+// Chart: buildings by the quarter-century in which their first Gothic-era campaign is dated, split by precision.
+const bins = [];
+for (let y = 1125; y < 1600; y += 25) bins.push({ from: y + 1, to: y + 25, n: 0 });
+const centuryOnly = {};
+for (const b of dated) {
+  const c = b.campaigns.find((k) => k.from === b.first);
+  if (c.precision === "century") centuryOnly[centuryOf(b.first)] = (centuryOnly[centuryOf(b.first)] || 0) + 1;
+  else { const bin = bins.find((k) => b.first >= k.from && b.first <= k.to); if (bin) bin.n++; }
+}
+const maxBin = Math.max(...bins.map((b) => b.n));
+const W = 720, H = 240, L = 44, B = 28, T = 12;
+const bw = (W - L - 8) / bins.length;
+const yScale = (n) => H - B - (n / maxBin) * (H - B - T);
+const ticks = [0, 1, 2, 3, 4].map((i) => Math.round((maxBin / 4) * i / 10) * 10);
+
+// Regions: share of each century among dated buildings.
+const regions = {};
+for (const b of dated) {
+  const r = (regions[b.region] ??= { name: b.region, total: 0, by: {} });
+  r.total++; const c = centuryOf(b.first); r.by[c] = (r.by[c] || 0) + 1;
+}
+const regionRows = Object.values(regions).filter((r) => r.total >= 40).sort((a, b) => b.total - a.total);
+for (const r of regionRows) {
+  let x = 0;
+  r.segs = CENTURIES.map((c) => { const n = r.by[c.c] || 0; const w = (n / r.total) * 300; const g = { x, w, n, color: c.color, label: c.label }; x += w; return g; });
+}
+---
+<Base title="Atlas" description={`Map of ${fmt(meta.count)} Gothic-era churches, abbeys and cathedrals in France, by the date of their first Gothic building campaign.`} wide>
+  <div class="wrap stack" style="--gap:1.2rem">
+    <p class="eyebrow">Atlas</p>
+    <h1>Where Gothic was built, and when</h1>
+    <p>Each dot is a protected religious building with a building campaign dated between {meta.rule.era_start} and {meta.rule.era_end}. Move the year to watch them appear. Colour is the century of the first such campaign. Dates come from the Mérimée record and are often no finer than a century, so read the map as a pattern, not as a chronicle.</p>
+  </div>
+
+  <section class="atlas wrap" aria-label="Map">
+    <div class="map-plate plate">
+      <div id="map" role="application" aria-label="Map of Gothic-era buildings in France"></div>
+    </div>
+    <aside class="panel stack" style="--gap:1.1rem">
+      <div>
+        <p class="eyebrow">Built by</p>
+        <p class="year" id="yearOut">1600</p>
+        <input id="year" type="range" min="1140" max="1600" step="5" value="1600" aria-label="Year" />
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <button id="play" type="button">Play</button>
+          <span class="mono muted" id="count" style="align-self:center"></span>
+        </div>
+      </div>
+      <div class="legend" id="legend">
+        {CENTURIES.map((c) => <span><i style={`background:${c.color}`}></i>{c.label}</span>)}
+        <span><i style="background:none;border:1.5px solid var(--undated)"></i>style from Wikidata, undated</span>
+      </div>
+      <div class="stack" style="--gap:.5rem">
+        <label class="eyebrow" for="fType">Type</label>
+        <select id="fType"><option value="">All types</option></select>
+        <label class="eyebrow" for="fLevel">Evidence</label>
+        <select id="fLevel">
+          <option value="">Gothic-era campaign or Gothic style</option>
+          <option value="1">Gothic style recorded on Wikidata</option>
+        </select>
+      </div>
+      <div id="card" class="card" aria-live="polite">
+        <p class="muted">Select a dot to see the building.</p>
+      </div>
+    </aside>
+  </section>
+
+  <div class="wrap stack" style="--gap:2.5rem;margin-top:3rem">
+    <section class="stack">
+      <h2>First Gothic campaigns, by quarter-century</h2>
+      <p>Only {fmt(bins.reduce((a, b) => a + b.n, 0))} of {fmt(dated.length)} dated buildings have a first campaign dated more finely than a century, and those are counted here. The rest are listed below the chart by century, because spreading them evenly over a hundred years would invent a curve.</p>
+      <div class="scroll-x">
+        <svg viewBox={`0 0 ${W} ${H}`} width={W} role="img" aria-label="Bar chart of buildings by quarter-century of first Gothic campaign" style="min-width:560px">
+          {ticks.map((t) => <g><line x1={L} x2={W} y1={yScale(t)} y2={yScale(t)} stroke="var(--rule)" stroke-width="1" /><text x={L - 6} y={yScale(t) + 3} text-anchor="end">{t}</text></g>)}
+          {bins.map((b, i) => <rect x={L + i * bw + 1} y={yScale(b.n)} width={bw - 2} height={H - B - yScale(b.n)} fill={`var(--c${centuryOf(b.from)})`} />)}
+          {bins.filter((b) => (b.from - 1) % 100 === 0).map((b) => <text x={L + bins.indexOf(b) * bw} y={H - 8}>{b.from - 1}</text>)}
+        </svg>
+      </div>
+      <p class="caption">Century-only dating: {CENTURIES.map((c) => `${c.label} ${fmt(centuryOnly[c.c] || 0)}`).join(" · ")}. Source: Mérimée, compiled by Gothic Atlas.</p>
+    </section>
+
+    <section class="stack">
+      <h2>By region</h2>
+      <p>Share of each century among dated first campaigns. Regions with fewer than 40 dated buildings are left out.</p>
+      <div class="scroll-x">
+        <table class="data" style="min-width:560px">
+          <thead><tr><th>Region</th><th class="num">Buildings</th><th style="width:50%">First Gothic-era campaign</th></tr></thead>
+          <tbody>
+            {regionRows.map((r) => (
+              <tr>
+                <td>{r.name}</td>
+                <td class="num">{fmt(r.total)}</td>
+                <td>
+                  <svg viewBox="0 0 300 12" width="100%" height="12" preserveAspectRatio="none" role="img" aria-label={CENTURIES.map((c) => `${c.label} ${Math.round(((r.by[c.c] || 0) / r.total) * 100)}%`).join(", ")}>
+                    {r.segs.map((g) => <rect x={g.x} y="0" width={g.w} height="12" fill={g.color} />)}
+                  </svg>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .atlas { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; margin-top: 1.5rem; align-items: start; }
+  .map-plate { padding: 6px; }
+  #map { height: min(78vh, 720px); min-height: 440px; background: var(--paper-2); }
+  .year { font-family: var(--display); font-size: 4rem; line-height: 1; margin: 2px 0 6px; font-variant-numeric: tabular-nums; }
+  .card { border-top: 1px solid var(--ink); padding-top: 12px; font-size: 0.95rem; }
+  @media (max-width: 860px) { .atlas { grid-template-columns: minmax(0, 1fr); } #map { height: 62vh; } }
+</style>
+<style is:global>
+  .card h3 { margin-bottom: 4px; }
+  .card p + p { margin-top: 6px; }
+  .maplibregl-ctrl-attrib { font-family: var(--mono); font-size: 10px; }
+</style>
+
+<script>
+  import maplibregl from "maplibre-gl";
+  import "maplibre-gl/dist/maplibre-gl.css";
+
+  const css = (n: string) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const $ = (id: string) => document.getElementById(id)!;
+  const atlas = await fetch("/data/atlas.json").then((r) => r.json());
+  const I = Object.fromEntries(atlas.cols.map((c: string, i: number) => [c, i]));
+
+  const features = atlas.rows.filter((r: any[]) => r[I.lat] != null).map((r: any[]) => ({
+    type: "Feature",
+    geometry: { type: "Point", coordinates: [r[I.lon], r[I.lat]] },
+    properties: { id: r[I.id], name: r[I.name], commune: r[I.commune], dept: r[I.dept], type: r[I.type], level: r[I.level],
+      first: r[I.first] ?? 0, protected: r[I.protected], photos: r[I.photos], objects: r[I.objects] },
+  }));
+
+  const map = new maplibregl.Map({
+    container: "map",
+    style: { version: 8, sources: {}, layers: [{ id: "bg", type: "background", paint: { "background-color": css("--paper-2") } }] },
+    bounds: [[-5.3, 41.2], [9.8, 51.3]],
+    fitBoundsOptions: { padding: 16 },
+    maxBounds: [[-12, 38], [16, 54]],
+    attributionControl: false,
+    dragRotate: false,
+  });
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-left");
+  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: "Buildings: Mérimée / Wikidata · Boundaries: IGN ADMIN EXPRESS" }));
+
+  const colorExpr: any = ["case", ["==", ["get", "first"], 0], "rgba(0,0,0,0)",
+    ["step", ["get", "first"], css("--c12"), 1201, css("--c13"), 1301, css("--c14"), 1401, css("--c15"), 1501, css("--c16")]];
+
+  function applyFilter() {
+    const year = +(($("year") as HTMLInputElement).value);
+    const type = ($("fType") as HTMLSelectElement).value;
+    const level = ($("fLevel") as HTMLSelectElement).value;
+    const f: any[] = ["all", ["<=", ["get", "first"], year]];
+    if (type !== "") f.push(["==", ["get", "type"], +type]);
+    if (level !== "") f.push(["==", ["get", "level"], 1]);
+    map.setFilter("pts", f);
+    $("yearOut").textContent = String(year);
+    const n = features.filter((x: any) => x.properties.first <= year && (type === "" || x.properties.type === +type) && (level === "" || x.properties.level === 1)).length;
+    $("count").textContent = `${n.toLocaleString("en-GB")} buildings`;
+  }
+
+  map.on("load", () => {
+    map.addSource("dept", { type: "geojson", data: "/data/france-departements.geojson" });
+    map.addLayer({ id: "land", type: "fill", source: "dept", paint: { "fill-color": css("--paper") } });
+    map.addLayer({ id: "dept-line", type: "line", source: "dept", paint: { "line-color": css("--rule"), "line-width": 0.6 } });
+    map.addSource("pts", { type: "geojson", data: { type: "FeatureCollection", features } as any });
+    map.addLayer({
+      id: "pts", type: "circle", source: "pts",
+      paint: {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 1.6, 7, 3.2, 10, 6, 13, 9],
+        "circle-color": colorExpr,
+        "circle-opacity": 0.85,
+        "circle-stroke-width": ["case", ["==", ["get", "first"], 0], 1.2, 0],
+        "circle-stroke-color": css("--undated"),
+      },
+    });
+    map.addLayer({ id: "sel", type: "circle", source: "pts", filter: ["==", ["get", "id"], ""],
+      paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 6, 10, 11], "circle-color": "rgba(0,0,0,0)", "circle-stroke-width": 2, "circle-stroke-color": css("--ink") } });
+    applyFilter();
+
+    map.on("mouseenter", "pts", () => (map.getCanvas().style.cursor = "pointer"));
+    map.on("mouseleave", "pts", () => (map.getCanvas().style.cursor = ""));
+    map.on("click", "pts", (e) => {
+      const p = e.features![0].properties as any;
+      map.setFilter("sel", ["==", ["get", "id"], p.id]);
+      const esc = (s: string) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
+      $("card").innerHTML = `<p class="eyebrow">${esc(atlas.types[p.type])}</p>
+        <h3><a href="/buildings/${p.id.toLowerCase()}/">${esc(p.name)}</a></h3>
+        <p>${esc(p.commune)} (${esc(p.dept)})</p>
+        <p class="mono muted">${p.first ? "first Gothic-era campaign from " + p.first : "undated in Mérimée"}${p.protected ? " · protected " + p.protected : ""}</p>
+        <p class="mono muted">${p.photos.toLocaleString("en-GB")} archive photographs · ${p.objects.toLocaleString("en-GB")} protected objects</p>`;
+    });
+  });
+
+  const typeSel = $("fType") as HTMLSelectElement;
+  atlas.types.forEach((t: string, i: number) => typeSel.add(new Option(t[0].toUpperCase() + t.slice(1), String(i))));
+  ["year", "fType", "fLevel"].forEach((id) => $(id).addEventListener("input", () => { if (map.getLayer("pts")) applyFilter(); }));
+
+  let timer: number | undefined;
+  $("play").addEventListener("click", () => {
+    const y = $("year") as HTMLInputElement;
+    if (timer) { clearInterval(timer); timer = undefined; $("play").textContent = "Play"; return; }
+    if (+y.value >= 1600) y.value = "1140";
+    $("play").textContent = "Pause";
+    timer = window.setInterval(() => {
+      y.value = String(+y.value + 5); applyFilter();
+      if (+y.value >= 1600) { clearInterval(timer); timer = undefined; $("play").textContent = "Play"; }
+    }, 120);
+  });
+</script>

@@ -1,0 +1,626 @@
+<title>Taş ve Işık</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a nave at dusk. One dark stone ground, jewel-glass accents; tabs like arched bays. */
+:root {
+  --night: #11121c;
+  --stone: #1c1e2c;
+  --stone-2: #2a2d40;
+  --line: #3a3e56;
+  --ink: #ebe6da;
+  --muted: #a19fb2;
+  --gold: #e2ad4c;
+  --ruby: #d9435c;
+  --ok: #5fb383;
+  --warn: #e0873a;
+  --p-early: #7ea4ff;
+  --p-high: #e2ad4c;
+  --p-ray: #e0566e;
+  --p-flam: #ef8a3c;
+  --p-south: #c98a6a;
+  --p-none: #6d6b80;
+  --display: "Grenze Gotisch", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+html, body { background: var(--night); color: var(--ink); }
+body { font-family: var(--body); font-size: 17px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 48px; }
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; border-bottom: 1px solid var(--line); }
+header.top > div { padding-bottom: 14px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(44px, 7vw, 76px); line-height: .9; margin: 0; letter-spacing: .01em; }
+h1 span { color: var(--gold); }
+.sub { color: var(--muted); margin: 6px 0 0; max-width: 60ch; text-wrap: balance; }
+nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+nav.tabs a { font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 12px 18px 9px; border: 1px solid var(--line); border-bottom: none; border-radius: 40px 40px 0 0; background: var(--stone); }
+nav.tabs a[aria-current="page"] { color: var(--night); background: var(--gold); border-color: var(--gold); }
+nav.tabs a:focus-visible, button:focus-visible, input:focus-visible, .dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+section.view { padding-top: 22px; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 34px; margin: 0 0 4px; line-height: 1.05; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+button { font: inherit; color: var(--ink); background: var(--stone-2); border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--gold); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+a { color: var(--p-early); }
+
+/* Map */
+.map-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.map-box { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+#map { width: 100%; height: auto; display: block; }
+#map .land { fill: var(--stone-2); stroke: var(--line); stroke-width: 1; }
+#map .dot { cursor: pointer; transition: r .35s ease; }
+#map .dot.undated { fill: none; stroke: var(--p-none); stroke-width: 1.2; }
+#map .dot.sel { stroke: var(--ink); stroke-width: 2.2; }
+#map .lbl { font-family: var(--body); font-size: 11px; fill: var(--ink); paint-order: stroke; stroke: var(--stone); stroke-width: 3px; pointer-events: none; transition: opacity .3s; }
+.year-big { font-family: var(--display); font-size: 72px; line-height: .9; color: var(--gold); }
+.slider-row { display: flex; gap: 10px; align-items: center; margin: 8px 0 14px; }
+.slider-row input { flex: 1; min-width: 0; accent-color: var(--gold); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; box-sizing: border-box; }
+.card { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.card h3 { font-family: var(--display); font-weight: 500; font-size: 28px; margin: 2px 0 6px; line-height: 1.05; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; font-size: 15px; margin: 8px 0; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; }
+.recent { list-style: none; padding: 0; margin: 14px 0 0; font-size: 15px; }
+.recent li { display: flex; gap: 10px; padding: 4px 0; border-top: 1px solid var(--line); }
+.recent li[data-id] { cursor: pointer; }
+.recent li[data-id]:hover { color: var(--gold); }
+.recent .mono { color: var(--muted); width: 3.2em; flex: none; }
+
+/* Race */
+.chart-box { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; padding: 10px; overflow-x: auto; }
+#race { width: 100%; min-width: 560px; height: auto; display: block; }
+#race text { font-family: var(--body); fill: var(--ink); }
+#race .ax { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+#race .grid { stroke: var(--line); stroke-width: 1; }
+#race .rec { fill: none; stroke: var(--gold); stroke-width: 2; stroke-dasharray: 5 4; }
+.race-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+.race-notes p { margin: 0; font-size: 15px; color: var(--muted); }
+.race-notes b { color: var(--ink); }
+
+/* Game */
+.game-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.canvas-box { background: var(--stone); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; position: relative; }
+#cv { width: 100%; height: auto; aspect-ratio: 560 / 440; display: block; }
+.hud { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+.hud div { background: var(--stone); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-width: 0; }
+.hud b { display: block; font-family: var(--mono); font-size: 19px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hud span { font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.stab { height: 10px; border-radius: 5px; background: var(--stone-2); overflow: hidden; margin: 4px 0 12px; position: relative; }
+.stab i { position: absolute; inset: 0 auto 0 0; background: var(--ok); transition: width .3s, background .3s; }
+.stab::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--ink); opacity: .6; }
+.actions { display: grid; gap: 6px; }
+.act { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; text-align: left; padding: 9px 12px; }
+.act .nm { font-weight: 700; }
+.act .cost { font-family: var(--mono); color: var(--gold); text-align: right; }
+.act .eff { grid-column: 1 / -1; font-size: 13px; color: var(--muted); }
+.act .eff .bad { color: var(--ruby); font-weight: 700; }
+.act .eff .good { color: var(--ok); }
+.speed { display: flex; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
+.speed button[aria-pressed="true"] { background: var(--gold); color: var(--night); border-color: var(--gold); }
+#log { list-style: none; margin: 0; padding: 0; font-size: 14px; max-height: 190px; overflow-y: auto; border-top: 1px solid var(--line); }
+#log li { padding: 5px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
+#log .mono { color: var(--muted); flex: none; }
+#log .bad { color: var(--ruby); }
+#log .hist { color: var(--p-early); }
+#log .good { color: var(--ok); }
+.end { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(17, 18, 28, .82); padding: 16px; }
+.end .card { max-width: 420px; text-align: center; }
+.end h3 { font-size: 34px; }
+
+footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+footer p { margin: 4px 0; max-width: 90ch; }
+
+@media (max-width: 820px) {
+  .map-grid, .game-grid { grid-template-columns: minmax(0, 1fr); }
+  .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .year-big { font-size: 56px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Taş ve <span>Işık</span></h1>
+      <p class="sub">Fransa'nın gotik katedralleri: nerede, ne zaman ve ne kadar yükseğe. Sonra sıra seninkinde.</p>
+    </div>
+    <nav class="tabs" aria-label="Bölümler">
+      <a href="#harita" data-v="harita">Harita</a>
+      <a href="#yaris" data-v="yaris">Yükseklik yarışı</a>
+      <a href="#insa" data-v="insa">İnşa et</a>
+    </nav>
+  </header>
+
+  <section class="view" id="v-harita">
+    <h2>Gotik nasıl yayıldı</h2>
+    <p class="lede">1140'ta Saint-Denis'de bir koro, iki kuşak sonra bütün kuzey Fransa. Yılı kaydır ya da oynat: her nokta, gotik yapımın başladığı yıl haritaya düşer. İçi boş halkaların başlangıç tarihi veride yok.</p>
+    <div class="map-grid">
+      <div class="map-box"><svg id="map" viewBox="0 0 420 400" role="img" aria-label="Fransa haritasında gotik katedraller"></svg></div>
+      <div>
+        <div class="eyebrow">Yıl</div>
+        <div class="year-big mono" id="yearBig">1250</div>
+        <div class="slider-row">
+          <button id="play" type="button">▶ Oynat</button>
+          <input id="year" type="range" min="1130" max="1610" step="1" value="1250" aria-label="Yıl">
+        </div>
+        <div class="legend" id="legend"></div>
+        <div class="card" id="info"></div>
+        <ul class="recent" id="recent" aria-label="Son başlayanlar"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-yaris" hidden>
+    <h2>Tonoz yarışı</h2>
+    <p class="lede">Her yeni katedral bir öncekinden yükseğe çıkmak istedi. Dikey eksen tavanın, yani tonozun iç yüksekliği; kuleler ve sivri tepeler hariç. Altın çizgi o yılın rekorunu izliyor. Kendi katedralin de burada görünür.</p>
+    <div class="chart-box"><svg id="race" viewBox="0 0 680 380" role="img" aria-label="Katedrallerin tonoz yüksekliği yıllara göre"></svg></div>
+    <div class="race-notes">
+      <p><b>Sivri kemer</b> yükü daha dik indirir, duvarı daha az iter. Yuvarlak Romanesk kemerle bu yüksekliklere çıkılamazdı.</p>
+      <p><b>Uçan payanda</b> itkiyi duvardan alıp dışarıdaki taş ayağa taşır. Duvar incelir, yerini cama bırakır.</p>
+      <p><b>Beauvais, 1284.</b> 48,5 metreyle rekoru kırdıktan on iki yıl sonra koro tonozu çöktü. Yarış orada durdu.</p>
+    </div>
+  </section>
+
+  <section class="view" id="v-insa" hidden>
+    <h2>Katedralini inşa et</h2>
+    <p class="lede">Yıl 1140. Elinde bir piskoposun parası ve Romanesk bir kilise var. Tonozu yükselt, pencereleri büyüt, hacılar gelsin. Ama her metre duvarı daha çok iter ve fırtınalar zayıf yapıyı bulur. Kara Ölüm 1348'de gelir, inşaat durur.</p>
+    <div class="game-grid">
+      <div class="canvas-box">
+        <canvas id="cv" width="560" height="440" aria-label="Katedralinin kesiti"></canvas>
+        <div class="end" id="end" hidden></div>
+      </div>
+      <div>
+        <div class="hud">
+          <div><span>Yıl</span><b id="hYear">1140</b></div>
+          <div><span>Hazine ₤</span><b id="hMoney">0</b></div>
+          <div><span>Tonoz</span><b id="hH">0 m</b></div>
+          <div><span>Hacı / yıl</span><b id="hPil">0</b></div>
+        </div>
+        <div class="eyebrow">Denge <span class="mono" id="hStab"></span> · 1,00'ın altı tehlikeli</div>
+        <div class="stab" aria-hidden="true"><i id="stabBar"></i></div>
+        <div class="actions" id="actions"></div>
+        <div class="speed" role="group" aria-label="Zaman hızı">
+          <button type="button" data-s="0">❚❚ Dur</button>
+          <button type="button" data-s="1">▶ 1 yıl/sn</button>
+          <button type="button" data-s="4">▶▶ 4 yıl/sn</button>
+          <button type="button" id="restart">Yeniden başla</button>
+        </div>
+        <ul id="log" aria-live="polite"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Veri.</b> Katedral listesi, konumlar ve üsluplar <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a>'dan (CC0). Her kayıt Kültür Bakanlığı'nın Mérimée tarihi eser kaydına (<a href="https://pop.culture.gouv.fr" target="_blank" rel="noopener">POP</a>, Licence Ouverte) bağlı. Fransa sınırı <a href="https://github.com/gregoiredavid/france-geojson" target="_blank" rel="noopener">france-geojson</a>'dan.</p>
+    <p><b>Uyarı.</b> Ünlü katedrallerin başlangıç yılları ve tonoz yükseklikleri elle düzeltildi ve yaklaşıktır; kaynaklar birkaç yıl ve metre farklı sayılar verir. Oyunun fiziği bir oyuncak modeldir, mühendislik değil.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = {"cathedrals":[{"id":"Q184407","name":"Basilica of Saint-Denis","city":"Saint-Denis","lat":48.9356,"lon":2.3597,"start":1140,"vault":29,"tallest":29.0,"period":"early","styles":["Gothic architecture"],"merimee":"PA00079952","wiki":"https://en.wikipedia.org/wiki/Basilica_of_Saint-Denis","note":"Abbot Suger's choir (1140-44): the first Gothic choir.","src":"curated","x":213.4,"y":98.9},{"id":"Q489014","name":"Sens Cathedral","city":"Sens","lat":48.198,"lon":3.284,"start":1140,"vault":24.4,"tallest":null,"period":"early","styles":["Early Gothic architecture"],"merimee":"PA00113853","wiki":"https://en.wikipedia.org/wiki/Sens_Cathedral","note":"Often called the first Gothic cathedral.","src":"curated","x":237.9,"y":127.3},{"id":"Q2942394","name":"Pontoise Cathedral","city":"Pontoise","lat":49.0506,"lon":2.0972,"start":1145,"vault":null,"tallest":null,"period":"early","styles":["Gothic architecture"],"merimee":"PA00080163","wiki":"https://en.wikipedia.org/wiki/Pontoise_Cathedral","note":null,"src":"wikidata","x":206.5,"y":94.5},{"id":"Q932828","name":"Noyon Cathedral","city":"Noyon","lat":49.5821,"lon":3.0006,"start":1150,"vault":22.7,"tallest":null,"period":"early","styles":["Early Gothic architecture"],"merimee":"PA00114786","wiki":"https://en.wikipedia.org/wiki/Noyon_Cathedral","note":null,"src":"curated","x":230.4,"y":74.1},{"id":"Q1736217","name":"Senlis Cathedral","city":"Senlis","lat":49.2069,"lon":2.5861,"start":1153,"vault":null,"tallest":26.5,"period":"early","styles":["Early Gothic architecture"],"merimee":"PA00114883","wiki":"https://en.wikipedia.org/wiki/Senlis_Cathedral","note":null,"src":"curated","x":219.4,"y":88.5},{"id":"Q585947","name":"Laon Cathedral","city":"Laon","lat":49.5643,"lon":3.625,"start":1160,"vault":24,"tallest":26.0,"period":"early","styles":["Gothic architecture"],"merimee":"PA00115710","wiki":"https://en.wikipedia.org/wiki/Laon_Cathedral","note":"Famous for the stone oxen on its towers.","src":"curated","x":246.9,"y":74.8},{"id":"Q2981","name":"Notre-Dame de Paris","city":"Paris","lat":48.853,"lon":2.3498,"start":1163,"vault":33,"tallest":90.0,"period":"early","styles":["Early Gothic architecture","French Gothic architecture","Rayonnant","classic gothic"],"merimee":"PA00086250","wiki":"https://en.wikipedia.org/wiki/Notre-Dame_de_Paris","note":"Flying buttresses added around 1180, among the first anywhere.","src":"curated","x":213.2,"y":102.1},{"id":"Q584590","name":"Lisieux Cathedral","city":"Lisieux","lat":49.1465,"lon":0.2269,"start":1170,"vault":null,"tallest":null,"period":"early","styles":["Gothic architecture"],"merimee":"PA00111473","wiki":"https://en.wikipedia.org/wiki/Lisieux_Cathedral","note":null,"src":"wikidata","x":157.0,"y":90.8},{"id":"Q547013","name":"Tours Cathedral","city":"Tours","lat":47.3956,"lon":0.6944,"start":1170,"vault":29,"tallest":69.0,"period":"early","styles":["Gothic architecture"],"merimee":"PA00098135","wiki":"https://en.wikipedia.org/wiki/Tours_Cathedral","note":null,"src":"curated","x":169.4,"y":158.2},{"id":"Q1521","name":"Lyon Cathedral","city":"Lyon","lat":45.7608,"lon":4.8272,"start":1175,"vault":null,"tallest":44.0,"period":"early","styles":["Gothic architecture"],"merimee":"PA00117785","wiki":"https://en.wikipedia.org/wiki/Lyon_Cathedral","note":null,"src":"wikidata","x":278.8,"y":221.0},{"id":"Q586471","name":"Meaux Cathedral","city":"Meaux","lat":48.96,"lon":2.8789,"start":1175,"vault":null,"tallest":68.0,"period":"early","styles":["Gothic architecture"],"merimee":"PA00087087","wiki":"https://en.wikipedia.org/wiki/Meaux_Cathedral","note":null,"src":"wikidata","x":227.2,"y":98.0},{"id":"Q1736223","name":"Soissons Cathedral","city":"Soissons","lat":49.3808,"lon":3.3252,"start":1177,"vault":30,"tallest":66.0,"period":"early","styles":["classic gothic"],"merimee":"PA00115941","wiki":"https://en.wikipedia.org/wiki/Soissons_Cathedral","note":null,"src":"curated","x":239.0,"y":81.8},{"id":"Q476516","name":"Rouen Cathedral","city":"Rouen","lat":49.4402,"lon":1.095,"start":1185,"vault":28,"tallest":151.0,"period":"early","styles":["Gothic architecture"],"merimee":"IA00021830","wiki":"https://en.wikipedia.org/wiki/Rouen_Cathedral","note":"Tallest building in the world 1876-1880 (cast-iron spire).","src":"curated","x":180.0,"y":79.5},{"id":"Q180274","name":"Notre-Dame de Chartres","city":"Chartres","lat":48.4478,"lon":1.4878,"start":1194,"vault":36.5,"tallest":113.0,"period":"high","styles":["classic gothic"],"merimee":"PA00096993","wiki":"https://en.wikipedia.org/wiki/Chartres_Cathedral","note":"Rebuilt after the 1194 fire; most of its 12th/13th-c. glass survives.","src":"curated","x":190.4,"y":117.7},{"id":"Q207985","name":"Bourges Cathedral","city":"Bourges","lat":47.0822,"lon":2.3992,"start":1195,"vault":37.5,"tallest":null,"period":"high","styles":["classic gothic"],"merimee":"PA00096656","wiki":"https://en.wikipedia.org/wiki/Bourges_Cathedral","note":"No transept: five aisles in one huge stepped section.","src":"curated","x":214.5,"y":170.2},{"id":"Q1425162","name":"Dol Cathedral","city":"Dol-de-Bretagne","lat":48.5508,"lon":-1.7558,"start":1203,"vault":null,"tallest":null,"period":"high","styles":["Gothic architecture"],"merimee":"PA00090544","wiki":"https://en.wikipedia.org/wiki/Dol_Cathedral","note":null,"src":"wikidata","x":104.5,"y":113.7},{"id":"Q2443243","name":"Troyes Cathedral","city":"Troyes","lat":48.3003,"lon":4.0814,"start":1208,"vault":28.5,"tallest":null,"period":"high","styles":["Gothic architecture"],"merimee":"PA00078250","wiki":"https://en.wikipedia.org/wiki/Troyes_Cathedral","note":null,"src":"curated","x":259.0,"y":123.4},{"id":"Q206823","name":"Reims Cathedral","city":"Reims","lat":49.2539,"lon":4.0342,"start":1211,"vault":38,"tallest":81.0,"period":"high","styles":["classic gothic"],"merimee":"PA00078776","wiki":"https://en.wikipedia.org/wiki/Reims_Cathedral","note":"Coronation church of the French kings.","src":"curated","x":257.8,"y":86.7},{"id":"Q1518999","name":"Auxerre Cathedral","city":"Auxerre","lat":47.7979,"lon":3.5729,"start":1215,"vault":30,"tallest":68.0,"period":"high","styles":["Gothic architecture"],"merimee":"PA00113586","wiki":"https://en.wikipedia.org/wiki/Auxerre_Cathedral","note":null,"src":"curated","x":245.6,"y":142.7},{"id":"Q671066","name":"Metz Cathedral","city":"Metz","lat":49.1203,"lon":6.1756,"start":1220,"vault":41.4,"tallest":88.0,"period":"high","styles":["classic gothic"],"merimee":"PA00106817","wiki":"https://en.wikipedia.org/wiki/Metz_Cathedral","note":"Called 'God's lantern' for its huge glass area.","src":"curated","x":314.5,"y":91.8},{"id":"Q106934","name":"Notre-Dame d'Amiens","city":"Amiens","lat":49.8946,"lon":2.3021,"start":1220,"vault":42.3,"tallest":112.7,"period":"high","styles":["Gothic architecture","classic gothic"],"merimee":"PA00116046","wiki":"https://en.wikipedia.org/wiki/Amiens_Cathedral","note":"Largest cathedral in France by volume.","src":"curated","x":211.9,"y":62.1},{"id":"Q787927","name":"Saint-Brieuc Cathedral","city":"Saint-Brieuc","lat":48.5142,"lon":-2.7642,"start":1220,"vault":null,"tallest":null,"period":"high","styles":["Gothic architecture"],"merimee":"PA00089582","wiki":"https://en.wikipedia.org/wiki/Saint-Brieuc_Cathedral","note":null,"src":"wikidata","x":77.8,"y":115.1},{"id":"Q1351690","name":"Toul Cathedral","city":"Toul","lat":48.6753,"lon":5.8944,"start":1221,"vault":30,"tallest":62.0,"period":"high","styles":["Gothic architecture"],"merimee":"PA00106374","wiki":"https://en.wikipedia.org/wiki/Toul_Cathedral","note":null,"src":"curated","x":307.0,"y":108.9},{"id":"Q907505","name":"Sées Cathedral","city":"Sées","lat":48.6053,"lon":0.1726,"start":1222,"vault":null,"tallest":70.0,"period":"rayonnant","styles":["Rayonnant"],"merimee":"PA00110943","wiki":"https://en.wikipedia.org/wiki/S%C3%A9es_Cathedral","note":null,"src":"wikidata","x":155.5,"y":111.6},{"id":"Q513300","name":"Beauvais Cathedral","city":"Beauvais","lat":49.4325,"lon":2.0814,"start":1225,"vault":48.5,"tallest":67.2,"period":"rayonnant","styles":["Rayonnant"],"merimee":"PA00114502","wiki":"https://en.wikipedia.org/wiki/Beauvais_Cathedral","note":"Highest Gothic vault ever built; the choir vault fell in 1284.","src":"curated","x":206.1,"y":79.8},{"id":"Q745460","name":"Cathedral of Our Lady of Strasbourg","city":"Strasbourg","lat":48.5819,"lon":7.7511,"start":1225,"vault":32,"tallest":142.0,"period":"high","styles":["Gothic architecture"],"merimee":"PA00085015","wiki":"https://en.wikipedia.org/wiki/Strasbourg_Cathedral","note":"Its 142 m spire made it the world's tallest building 1647-1874.","src":"curated","x":356.2,"y":112.5},{"id":"Q1636244","name":"Bayeux Cathedral","city":"Bayeux","lat":49.2756,"lon":-0.7033,"start":1230,"vault":null,"tallest":76.6,"period":"high","styles":["Gothic architecture"],"merimee":"PA00111042","wiki":"https://en.wikipedia.org/wiki/Bayeux_Cathedral","note":null,"src":"curated","x":132.3,"y":85.9},{"id":"Q2419151","name":"Quimper Cathedral","city":"Quimper","lat":47.9956,"lon":-4.1022,"start":1239,"vault":null,"tallest":null,"period":"high","styles":["Gothic architecture"],"merimee":"PA00090326","wiki":"https://en.wikipedia.org/wiki/Quimper_Cathedral","note":null,"src":"curated","x":42.4,"y":135.1},{"id":"Q1736175","name":"Carcassonne Cathedral","city":"Carcassonne","lat":43.211,"lon":2.3512,"start":1247,"vault":null,"tallest":null,"period":"south","styles":["Gothic architecture","Meridional Gothic"],"merimee":"PA00102584","wiki":"https://en.wikipedia.org/wiki/Carcassonne_Cathedral","note":null,"src":"wikidata","x":213.2,"y":319.1},{"id":"Q1349239","name":"Lavaur Cathedral","city":"Lavaur","lat":43.6992,"lon":1.8219,"start":1255,"vault":null,"tallest":null,"period":"south","styles":["Gothic architecture","Meridional Gothic"],"merimee":"PA00095584","wiki":"https://en.wikipedia.org/wiki/Lavaur_Cathedral","note":null,"src":"wikidata","x":199.2,"y":300.3},{"id":"Q473121","name":"Narbonne Cathedral","city":"Narbonne","lat":43.1847,"lon":3.0039,"start":1272,"vault":41,"tallest":null,"period":"rayonnant","styles":["Gothic architecture"],"merimee":"PA00102790","wiki":"https://en.wikipedia.org/wiki/Narbonne_Cathedral","note":"Only the choir was finished; the nave was never built.","src":"curated","x":230.5,"y":320.1},{"id":"Q2189282","name":"Limoges Cathedral","city":"Limoges","lat":45.8289,"lon":1.2667,"start":1273,"vault":null,"tallest":null,"period":"rayonnant","styles":["Gothic architecture"],"merimee":"PA00100333","wiki":"https://en.wikipedia.org/wiki/Limoges_Cathedral","note":null,"src":"curated","x":184.5,"y":218.4},{"id":"Q2942292","name":"Rodez Cathedral","city":"Rodez","lat":44.3508,"lon":2.5741,"start":1277,"vault":null,"tallest":null,"period":"rayonnant","styles":["Gothic architecture"],"merimee":"PA00094108","wiki":"https://en.wikipedia.org/wiki/Rodez_Cathedral","note":null,"src":"wikidata","x":219.1,"y":275.3},{"id":"Q1711691","name":"Dijon Cathedral","city":"Dijon","lat":47.3214,"lon":5.0344,"start":1280,"vault":null,"tallest":null,"period":"rayonnant","styles":["Gothic architecture"],"merimee":"PA00112253","wiki":"https://en.wikipedia.org/wiki/Dijon_Cathedral","note":null,"src":"wikidata","x":284.3,"y":161.0},{"id":"Q94744","name":"Albi Cathedral","city":"Albi","lat":43.9285,"lon":2.1426,"start":1282,"vault":30,"tallest":78.0,"period":"south","styles":["Brick Gothic","Gothic architecture"],"merimee":"PA00095453","wiki":"https://en.wikipedia.org/wiki/Albi_Cathedral","note":"Brick fortress-cathedral of the south.","src":"curated","x":207.7,"y":291.5},{"id":"Q2942878","name":"Rieux Cathedral","city":"Rieux-Volvestre","lat":43.2584,"lon":1.2031,"start":1317,"vault":null,"tallest":null,"period":"rayonnant","styles":["Gothic architecture"],"merimee":"PA00094436","wiki":"https://en.wikipedia.org/wiki/Rieux_Cathedral","note":null,"src":"wikidata","x":182.8,"y":317.3},{"id":"Q2942355","name":"Perpignan Cathedral","city":"Perpignan","lat":42.7006,"lon":2.8969,"start":1324,"vault":null,"tallest":null,"period":"rayonnant","styles":["Gothic architecture"],"merimee":"PA00104067","wiki":"https://en.wikipedia.org/wiki/Perpignan_Cathedral","note":null,"src":"wikidata","x":227.7,"y":338.7},{"id":"Q1736197","name":"Montpellier Cathedral","city":"Montpellier","lat":43.6133,"lon":3.8742,"start":1364,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00103522","wiki":"https://en.wikipedia.org/wiki/Montpellier_Cathedral","note":null,"src":"curated","x":253.5,"y":303.6},{"id":"Q2942436","name":"St. Peter and St. Florus Cathedral","city":"Saint-Flour","lat":45.0334,"lon":3.0951,"start":1398,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00093609","wiki":"https://en.wikipedia.org/wiki/Saint-Flour_Cathedral","note":null,"src":"wikidata","x":232.9,"y":249.0},{"id":"Q2371597","name":"Tréguier Cathedral","city":"Tréguier","lat":48.7878,"lon":-3.2308,"start":1400,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00089701","wiki":"https://en.wikipedia.org/wiki/Tr%C3%A9guier_Cathedral","note":null,"src":"wikidata","x":65.4,"y":104.6},{"id":"Q1423005","name":"Nantes Cathedral","city":"Nantes","lat":47.2184,"lon":-1.5502,"start":1434,"vault":null,"tallest":63.0,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00108654","wiki":"https://en.wikipedia.org/wiki/Nantes_Cathedral","note":null,"src":"wikidata","x":109.9,"y":165.0},{"id":"Q919028","name":"Vannes Cathedral","city":"Vannes","lat":47.6578,"lon":-2.7569,"start":1450,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00091772","wiki":"https://en.wikipedia.org/wiki/Vannes_Cathedral","note":null,"src":"wikidata","x":78.0,"y":148.1},{"id":"Q1788518","name":"Church of St. Trophime, Arles","city":"Arles","lat":43.6767,"lon":4.6281,"start":1454,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00081139","wiki":"https://en.wikipedia.org/wiki/Church_of_St._Trophime,_Arles","note":"Gothic choir added to a Romanesque church.","src":"curated","x":273.5,"y":301.2},{"id":"Q1049348","name":"Auch Cathedral","city":"Auch","lat":43.6464,"lon":0.5858,"start":1489,"vault":null,"tallest":44.0,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00094702","wiki":"https://en.wikipedia.org/wiki/Auch_Cathedral","note":null,"src":"wikidata","x":166.5,"y":302.4},{"id":"Q2942267","name":"Digne Cathedral","city":"Digne-les-Bains","lat":44.0919,"lon":6.2361,"start":1490,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00080378","wiki":"https://en.wikipedia.org/wiki/Digne_Cathedral","note":null,"src":"wikidata","x":316.1,"y":285.2},{"id":"Q1102200","name":"Saint Louis Cathedral of Blois","city":"Blois","lat":47.5885,"lon":1.3365,"start":1544,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00098336","wiki":"https://en.wikipedia.org/wiki/Saint_Louis_Cathedral_of_Blois","note":null,"src":"wikidata","x":186.4,"y":150.7},{"id":"Q2942295","name":"Le Havre Cathedral","city":"Le Havre","lat":49.4869,"lon":0.1083,"start":1575,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00100696","wiki":"https://en.wikipedia.org/wiki/Le_Havre_Cathedral","note":null,"src":"wikidata","x":153.8,"y":77.7},{"id":"Q1083336","name":"St. Peter's Cathedral","city":"Annecy","lat":45.8993,"lon":6.1255,"start":1600,"vault":null,"tallest":null,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00118342","wiki":"https://en.wikipedia.org/wiki/Annecy_Cathedral","note":null,"src":"wikidata","x":313.1,"y":215.7},{"id":"Q1366553","name":"Orléans Cathedral","city":"Orléans","lat":47.9019,"lon":1.9104,"start":1601,"vault":null,"tallest":114.0,"period":"flamboyant","styles":["Gothic architecture"],"merimee":"PA00098836","wiki":"https://en.wikipedia.org/wiki/Orl%C3%A9ans_Cathedral","note":"Rebuilt in Gothic style 1601-1829 after the Wars of Religion.","src":"curated","x":201.5,"y":138.7},{"id":"Q2820502","name":"Alet Cathedral","city":"Alet-les-Bains","lat":42.9958,"lon":2.2553,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00102515","wiki":"https://en.wikipedia.org/wiki/Alet_Cathedral","note":null,"src":"wikidata","x":210.7,"y":327.4},{"id":"Q2942427","name":"Aleth Cathedral","city":"Saint-Malo","lat":48.6358,"lon":-2.0269,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00090800","wiki":"https://en.wikipedia.org/wiki/Aleth_Cathedral","note":null,"src":"wikidata","x":97.3,"y":110.5},{"id":"Q1736171","name":"Bayonne Cathedral","city":"Bayonne","lat":43.4906,"lon":-1.4772,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00084329","wiki":"https://en.wikipedia.org/wiki/Bayonne_Cathedral","note":null,"src":"wikidata","x":111.9,"y":308.4},{"id":"Q2942348","name":"Bazas Cathedral","city":"Bazas","lat":44.4314,"lon":-0.2097,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00083131","wiki":"https://en.wikipedia.org/wiki/Bazas_Cathedral","note":null,"src":"wikidata","x":145.4,"y":272.2},{"id":"Q656738","name":"Bordeaux Cathedral","city":"Bordeaux","lat":44.8376,"lon":-0.5778,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00083160","wiki":"https://en.wikipedia.org/wiki/Bordeaux_Cathedral","note":null,"src":"curated","x":135.7,"y":256.6},{"id":"Q1736174","name":"Béziers Cathedral","city":"Béziers","lat":43.3414,"lon":3.21,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00103374","wiki":"https://en.wikipedia.org/wiki/B%C3%A9ziers_Cathedral","note":null,"src":"wikidata","x":236.0,"y":314.1},{"id":"Q1539168","name":"Cathedral of the Holy Saviour","city":"Aix-en-Provence","lat":43.5319,"lon":5.4472,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00080981","wiki":"https://en.wikipedia.org/wiki/Aix_Cathedral","note":null,"src":"wikidata","x":295.2,"y":306.8},{"id":"Q2942458","name":"Chalon Cathedral","city":"Chalon-sur-Saône","lat":46.7825,"lon":4.8592,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00113149","wiki":"https://en.wikipedia.org/wiki/Chalon_Cathedral","note":null,"src":"wikidata","x":279.6,"y":181.7},{"id":"Q2942331","name":"Chambéry Cathedral","city":"Chambéry","lat":45.5653,"lon":5.9231,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00118223","wiki":"https://en.wikipedia.org/wiki/Chamb%C3%A9ry_Cathedral","note":null,"src":"wikidata","x":307.8,"y":228.6},{"id":"Q998451","name":"Châlons Cathedral","city":"Châlons-en-Champagne","lat":48.9553,"lon":4.3578,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00078610","wiki":"https://en.wikipedia.org/wiki/Ch%C3%A2lons_Cathedral","note":null,"src":"wikidata","x":266.3,"y":98.2},{"id":"Q2942431","name":"Condom Cathedral","city":"Condom","lat":43.9579,"lon":0.3728,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00094770","wiki":"https://en.wikipedia.org/wiki/Condom_Cathedral","note":null,"src":"wikidata","x":160.8,"y":290.4},{"id":"Q1468594","name":"Coutances Cathedral","city":"Coutances","lat":49.0475,"lon":-1.4442,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["French Gothic architecture"],"merimee":"PA00110375","wiki":"https://en.wikipedia.org/wiki/Coutances_Cathedral","note":null,"src":"wikidata","x":112.7,"y":94.6},{"id":"Q1135277","name":"Fréjus Cathedral","city":"Fréjus","lat":43.4332,"lon":6.7369,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00081606","wiki":"https://en.wikipedia.org/wiki/Fr%C3%A9jus_Cathedral","note":null,"src":"curated","x":329.3,"y":310.6},{"id":"Q2942335","name":"Lectoure Cathedral","city":"Lectoure","lat":43.9339,"lon":0.6239,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00094838","wiki":"https://en.wikipedia.org/wiki/Lectoure_Cathedral","note":null,"src":"wikidata","x":167.5,"y":291.3},{"id":"Q1780440","name":"Lodève Cathedral","city":"Lodève","lat":43.7319,"lon":3.3172,"start":null,"vault":null,"tallest":null,"period":"south","styles":["Meridional Gothic"],"merimee":"IA00029553","wiki":"https://en.wikipedia.org/wiki/Lod%C3%A8ve_Cathedral","note":null,"src":"wikidata","x":238.8,"y":299.1},{"id":"Q2942499","name":"Lombez Cathedral","city":"Lombez","lat":43.4744,"lon":0.9106,"start":null,"vault":null,"tallest":null,"period":"south","styles":["Meridional Gothic"],"merimee":"PA00094844","wiki":"https://en.wikipedia.org/wiki/Lombez_Cathedral","note":null,"src":"wikidata","x":175.1,"y":309.0},{"id":"Q334011","name":"Maillezais Cathedral","city":"Maillezais","lat":46.3733,"lon":-0.7475,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00110162","wiki":"https://en.wikipedia.org/wiki/Maillezais_Cathedral","note":null,"src":"wikidata","x":131.2,"y":197.5},{"id":"Q2942278","name":"Mende Cathedral","city":"Mende","lat":44.5173,"lon":3.4985,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00103856","wiki":"https://en.wikipedia.org/wiki/Mende_Cathedral","note":null,"src":"wikidata","x":243.6,"y":268.9},{"id":"Q2845859","name":"Mirepoix Cathedral","city":"Mirepoix","lat":43.0877,"lon":1.8743,"start":null,"vault":null,"tallest":null,"period":"south","styles":["Meridional Gothic"],"merimee":"PA00093826","wiki":"https://en.wikipedia.org/wiki/Mirepoix_Cathedral","note":null,"src":"wikidata","x":200.6,"y":323.9},{"id":"Q63504","name":"Moulins Cathedral","city":"Moulins","lat":46.5667,"lon":3.3317,"start":null,"vault":null,"tallest":null,"period":"flamboyant","styles":["Flamboyant"],"merimee":"PA00093188","wiki":"https://en.wikipedia.org/wiki/Moulins_Cathedral","note":null,"src":"wikidata","x":239.2,"y":190.0},{"id":"Q571282","name":"Nevers Cathedral","city":"Nevers","lat":46.9872,"lon":3.1572,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00112936","wiki":"https://en.wikipedia.org/wiki/Nevers_Cathedral","note":null,"src":"wikidata","x":234.6,"y":173.9},{"id":"Q435667","name":"Old Cambrai Cathedral","city":"Cambrai","lat":50.1761,"lon":3.2297,"start":null,"vault":null,"tallest":114.0,"period":"gothic","styles":["Gothic architecture"],"merimee":null,"wiki":"https://en.wikipedia.org/wiki/Old_Cambrai_Cathedral","note":null,"src":"wikidata","x":236.5,"y":51.2},{"id":"Q2310816","name":"Oloron Cathedral","city":"Oloron-Sainte-Marie","lat":43.1878,"lon":-0.6161,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00084466","wiki":"https://en.wikipedia.org/wiki/Oloron_Cathedral","note":null,"src":"curated","x":134.7,"y":320.0},{"id":"Q2942307","name":"Pamiers Cathedral","city":"Pamiers","lat":43.1142,"lon":1.6089,"start":null,"vault":null,"tallest":null,"period":"south","styles":["Meridional Gothic"],"merimee":"PA00093896","wiki":"https://en.wikipedia.org/wiki/Pamiers_Cathedral","note":null,"src":"wikidata","x":193.6,"y":322.8},{"id":"Q1481233","name":"Poitiers Cathedral","city":"Poitiers","lat":46.5805,"lon":0.3493,"start":null,"vault":null,"tallest":34.0,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00105586","wiki":"https://en.wikipedia.org/wiki/Poitiers_Cathedral","note":null,"src":"wikidata","x":160.2,"y":189.5},{"id":"Q2942423","name":"Saint-Claude Cathedral","city":"Saint-Claude","lat":46.3865,"lon":5.8663,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00102013","wiki":"https://en.wikipedia.org/wiki/Saint-Claude_Cathedral","note":null,"src":"wikidata","x":306.3,"y":197.0},{"id":"Q1675088","name":"Saint-Omer Cathedral","city":"Saint-Omer","lat":50.7472,"lon":2.2528,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00108403","wiki":"https://en.wikipedia.org/wiki/Saint-Omer_Cathedral","note":null,"src":"wikidata","x":210.6,"y":29.3},{"id":"Q739028","name":"Saint-Pol-de-Léon Cathedral","city":"Saint-Pol-de-Léon","lat":48.685,"lon":-3.9864,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00090425","wiki":"https://en.wikipedia.org/wiki/Saint-Pol-de-L%C3%A9on_Cathedral","note":null,"src":"wikidata","x":45.4,"y":108.6},{"id":"Q2942437","name":"Saintes cathedral","city":"Saintes","lat":45.7444,"lon":-0.6319,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00105252","wiki":"https://en.wikipedia.org/wiki/Saintes_Cathedral","note":null,"src":"wikidata","x":134.2,"y":221.7},{"id":"Q2942447","name":"Sarlat Cathedral","city":"Sarlat-la-Canéda","lat":44.8889,"lon":1.2169,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00082916","wiki":"https://en.wikipedia.org/wiki/Sarlat_Cathedral","note":null,"src":"wikidata","x":183.2,"y":254.6},{"id":"Q2315601","name":"St-Martin de Clamecy","city":"Clamecy","lat":47.46,"lon":3.5192,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00112851","wiki":"https://en.wikipedia.org/wiki/Saint-Martin_Church_of_Clamecy","note":null,"src":"wikidata","x":244.1,"y":155.7},{"id":"Q1104681","name":"Tarbes Cathedral","city":"Tarbes","lat":43.2339,"lon":0.0689,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00095426","wiki":"https://en.wikipedia.org/wiki/Tarbes_Cathedral","note":null,"src":"wikidata","x":152.8,"y":318.2},{"id":"Q2737833","name":"Toulouse Cathedral","city":"Toulouse","lat":43.5999,"lon":1.4504,"start":null,"vault":null,"tallest":null,"period":"south","styles":["Gothic architecture","Meridional Gothic"],"merimee":"PA00094498","wiki":"https://en.wikipedia.org/wiki/Toulouse_Cathedral","note":null,"src":"wikidata","x":189.4,"y":304.2},{"id":"Q613060","name":"Tulle Cathedral","city":"Tulle","lat":45.2679,"lon":1.7712,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00099912","wiki":"https://en.wikipedia.org/wiki/Tulle_Cathedral","note":null,"src":"wikidata","x":197.9,"y":240.0},{"id":"Q2942390","name":"Éauze Cathedral","city":"Eauze","lat":43.8609,"lon":0.1006,"start":null,"vault":null,"tallest":null,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00094791","wiki":"https://en.wikipedia.org/wiki/Eauze_Cathedral","note":null,"src":"wikidata","x":153.6,"y":294.1},{"id":"Q2918846","name":"Évreux Cathedral","city":"Évreux","lat":49.0242,"lon":1.1508,"start":null,"vault":null,"tallest":78.15,"period":"gothic","styles":["Gothic architecture"],"merimee":"PA00099400","wiki":"https://en.wikipedia.org/wiki/%C3%89vreux_Cathedral","note":null,"src":"wikidata","x":181.4,"y":95.5}],"france":"M339.7,154.0L338.1,154.4L336.9,154.0L335.9,154.5L336.3,156.0L334.7,156.7L334.1,157.8L333.3,159.0L334.2,159.7L336.1,159.4L337.6,159.5L337.5,160.8L336.7,161.3L336.1,162.0L334.8,162.3L335.1,164.0L333.2,165.6L332.5,167.1L331.0,168.4L330.0,168.8L329.4,169.9L328.1,170.8L328.7,171.5L327.3,172.3L326.6,173.4L325.5,173.7L323.6,174.5L321.6,175.9L322.1,177.6L322.0,179.1L321.5,179.8L321.3,181.0L321.1,182.8L320.2,183.4L318.9,184.5L317.4,185.3L315.9,186.9L314.5,188.2L313.2,189.1L313.5,190.4L312.8,192.2L312.4,193.3L311.8,194.0L312.1,194.9L311.5,195.8L314.3,197.7L313.0,199.8L312.5,200.9L313.1,202.2L310.7,202.7L309.9,203.3L308.9,204.3L308.7,206.8L311.0,206.5L312.3,206.0L313.2,206.4L314.5,205.8L316.1,203.9L317.2,203.6L318.0,202.5L316.9,202.3L316.1,201.2L316.4,200.2L317.2,198.4L317.9,197.8L318.9,197.6L320.1,198.8L320.7,198.1L322.2,197.5L323.4,196.3L324.3,196.7L325.4,196.4L326.6,196.2L329.0,196.2L330.7,196.7L330.2,198.2L330.6,199.0L331.5,199.8L332.7,201.0L332.4,202.1L331.1,204.0L330.8,205.6L331.4,206.9L333.6,207.1L333.2,208.2L332.9,209.8L334.3,209.3L335.0,209.9L335.9,211.6L336.9,212.6L337.3,213.6L337.5,214.8L336.4,215.8L336.1,216.9L335.0,217.2L333.5,217.9L331.5,218.1L331.3,219.2L331.1,220.4L331.2,222.4L332.3,223.8L333.8,224.4L334.6,225.4L336.3,225.7L335.7,227.6L336.1,229.9L337.5,231.2L338.9,232.3L339.3,233.6L340.3,234.0L341.2,234.6L340.7,235.6L339.9,236.8L339.3,237.7L339.5,238.9L339.9,240.4L339.1,241.1L338.1,242.2L336.8,242.0L335.4,242.3L335.1,243.4L333.5,243.8L332.3,245.4L331.3,244.6L330.1,244.2L329.4,245.0L327.8,244.9L326.5,246.1L327.3,247.6L327.6,249.5L329.0,249.5L329.7,250.4L330.0,251.4L329.8,252.5L329.7,253.9L331.2,255.1L332.7,256.1L334.0,256.3L334.5,255.6L335.6,256.2L336.8,257.5L336.3,258.4L336.9,259.4L337.4,261.1L338.3,262.6L336.9,262.2L335.2,263.0L335.3,264.7L334.5,266.0L334.0,267.3L333.0,267.6L332.4,268.4L332.7,269.7L333.8,270.8L334.6,271.9L333.5,272.6L333.6,274.4L334.2,275.3L335.2,276.8L336.1,278.0L336.5,279.7L337.3,280.2L338.2,279.8L339.3,280.4L340.0,281.0L341.7,281.7L342.6,282.1L343.7,283.3L345.3,283.2L345.8,284.2L347.6,284.2L349.7,283.2L351.0,283.1L352.6,283.0L353.4,281.9L354.4,282.1L354.0,283.6L355.2,285.6L354.8,287.2L353.9,287.6L354.0,288.8L353.6,289.7L352.4,290.5L351.5,291.2L351.1,292.1L349.8,293.3L349.4,294.1L350.0,296.3L349.3,297.7L347.2,299.0L346.2,299.6L345.2,299.9L344.2,300.8L342.7,300.7L342.3,301.8L340.5,302.1L339.5,304.6L338.1,305.6L336.7,306.0L335.6,306.2L334.7,307.4L334.9,308.6L334.3,309.9L333.4,310.7L332.6,311.3L330.5,311.5L329.2,311.6L328.7,313.1L327.8,314.1L327.4,315.0L325.3,316.6L326.3,317.1L327.7,316.5L328.1,317.4L327.4,318.1L327.5,319.3L326.8,320.1L326.2,321.0L325.5,320.1L322.9,321.4L320.5,321.5L319.6,322.0L319.5,323.8L318.2,323.1L317.1,322.6L315.3,322.8L314.1,323.8L313.8,324.9L314.0,326.1L312.9,325.7L313.2,324.2L311.8,323.9L310.6,324.3L310.0,323.2L308.3,323.1L307.7,322.5L307.6,323.9L306.4,324.6L305.3,325.3L304.6,324.2L304.9,323.1L303.8,322.7L302.6,322.0L301.7,321.7L301.1,320.3L299.9,320.0L299.3,321.0L298.4,320.5L297.4,319.1L295.4,319.1L293.7,319.1L292.4,319.0L293.2,317.8L292.5,316.4L293.0,315.2L291.9,313.5L290.1,314.3L289.2,314.6L288.0,314.4L284.3,314.6L284.0,313.6L282.7,311.8L281.5,310.6L279.7,311.6L279.3,312.8L280.0,313.4L279.5,314.4L277.6,313.9L275.9,313.8L274.4,313.9L272.4,313.4L271.6,312.3L272.4,311.8L271.7,310.2L270.5,309.7L269.2,309.6L267.5,310.0L263.0,309.5L261.3,309.1L260.2,308.4L260.5,306.8L259.5,305.9L257.2,306.0L256.0,306.5L254.4,307.4L252.9,308.5L251.5,310.3L249.6,311.2L248.7,312.1L246.3,313.6L245.2,315.0L243.9,316.8L242.8,316.6L241.8,316.1L240.6,316.3L239.5,316.8L237.4,318.4L236.8,319.0L235.1,320.9L234.1,322.3L232.9,324.6L232.4,325.8L231.5,328.8L232.0,330.4L231.5,333.5L231.4,334.9L231.4,337.6L231.3,339.6L231.4,341.6L231.6,342.8L231.7,344.5L232.7,345.5L234.0,345.9L233.9,347.2L234.6,348.0L235.0,348.9L233.6,348.8L232.7,349.3L231.7,348.2L230.7,347.7L229.6,347.8L229.0,347.2L228.4,348.1L226.8,347.9L225.5,348.8L225.1,349.6L223.9,349.3L221.8,350.1L221.7,352.6L220.1,352.4L219.2,351.9L218.2,352.9L217.2,352.5L216.3,351.9L215.4,351.2L213.2,350.0L212.0,349.2L210.7,348.8L209.2,349.7L208.1,349.4L207.3,349.8L207.0,351.0L206.1,351.7L204.5,352.0L202.9,350.6L202.8,349.4L202.2,348.2L200.9,348.4L199.9,347.7L198.7,346.9L197.6,347.0L196.7,345.8L196.9,344.5L198.3,343.6L196.7,343.0L195.5,341.7L194.3,341.5L192.9,341.3L192.3,340.6L190.7,340.9L189.9,341.5L189.5,342.5L188.6,341.6L188.4,340.5L187.7,339.9L186.8,338.8L186.0,337.8L184.8,338.2L183.5,337.7L181.7,338.3L181.0,337.7L180.8,336.6L179.3,335.6L177.0,335.4L176.4,334.7L175.4,335.3L173.7,333.9L172.2,333.4L170.5,333.0L168.4,333.4L168.7,334.7L168.0,335.6L169.0,338.4L167.1,338.8L165.0,338.7L163.6,338.8L162.5,339.1L161.4,338.3L160.5,337.9L159.6,338.6L158.7,339.7L158.0,338.9L157.0,338.1L155.6,337.4L154.6,337.9L153.4,338.1L152.2,338.9L150.7,339.4L149.4,339.0L148.3,337.9L146.7,335.0L144.7,334.6L143.6,333.6L142.7,333.0L141.8,333.5L141.2,334.4L140.1,334.6L139.2,335.1L137.5,333.9L137.1,335.0L136.4,335.8L135.9,334.7L135.0,333.7L133.8,332.8L133.0,331.7L131.8,331.4L131.1,328.5L129.5,329.1L128.1,329.1L127.1,328.7L125.9,329.0L124.5,328.1L122.3,327.2L121.5,326.4L120.1,325.9L118.4,325.1L117.5,325.5L116.3,324.6L116.6,323.6L117.1,322.7L116.0,322.9L115.3,323.7L115.1,326.1L112.8,325.4L112.0,324.1L113.5,322.3L113.8,321.1L114.3,319.9L114.4,317.5L113.6,316.7L111.4,316.4L109.5,316.2L109.2,317.6L107.8,316.3L106.8,315.1L105.2,315.9L104.4,314.0L103.6,312.8L107.6,311.5L108.6,310.6L109.6,308.6L110.6,306.9L111.5,305.2L112.3,303.4L112.8,301.7L112.9,299.9L113.6,296.3L114.6,292.1L115.6,286.7L116.1,283.8L117.1,276.5L117.8,270.8L117.8,269.0L117.6,267.7L118.5,266.6L119.1,264.8L119.4,263.4L120.8,263.9L122.4,264.1L124.0,263.8L123.8,262.8L123.0,261.5L121.7,260.2L120.1,259.0L119.9,260.1L118.7,261.5L118.2,262.6L118.0,264.1L117.8,261.4L118.5,255.9L119.1,250.7L119.5,246.2L120.2,238.9L120.3,236.6L120.2,234.5L120.5,233.3L120.3,232.2L120.9,230.7L121.8,229.5L122.9,228.8L123.4,229.7L124.4,231.4L125.2,232.5L126.2,233.2L127.2,234.4L128.8,235.8L129.7,236.9L130.6,239.2L131.1,240.8L131.3,243.0L132.9,247.3L133.7,248.4L134.9,249.7L135.3,248.7L134.1,247.4L133.7,246.2L133.2,243.8L132.7,241.9L132.3,239.4L131.9,237.7L131.5,236.1L130.9,234.7L129.7,232.6L128.5,231.1L126.3,229.2L124.7,228.1L124.2,226.8L123.2,226.5L122.4,225.7L121.4,225.4L120.3,224.5L118.9,223.5L118.1,220.2L119.0,219.7L121.0,219.3L120.3,217.9L121.2,217.3L122.5,215.1L122.8,213.8L121.9,212.2L123.1,211.4L122.7,209.9L121.8,208.2L121.1,207.0L119.9,206.5L119.0,206.2L119.2,204.4L120.0,203.2L120.7,202.5L121.5,201.8L121.1,199.9L120.1,199.6L119.3,200.3L119.0,201.6L117.0,199.9L115.4,198.7L113.9,198.7L112.2,198.7L111.6,197.2L110.4,196.1L108.3,195.9L105.7,194.5L104.5,193.6L103.9,192.9L102.7,191.7L101.8,188.4L100.9,187.4L99.6,185.3L98.5,184.1L96.1,181.7L94.3,180.4L93.9,177.6L95.3,176.4L96.5,175.3L97.2,173.1L98.5,172.3L97.9,171.0L96.6,169.8L95.0,169.2L93.9,169.0L92.3,168.6L92.0,167.5L93.6,167.0L93.8,165.3L93.2,164.4L93.5,163.1L91.5,163.5L90.9,164.2L89.0,163.6L88.2,162.7L86.3,163.4L84.4,162.4L84.7,160.7L84.2,159.6L83.2,159.0L85.2,157.5L86.1,157.0L85.3,156.3L85.1,155.1L86.3,154.3L85.7,153.7L84.3,153.1L83.4,153.7L82.0,153.5L80.7,152.6L80.0,154.3L79.1,153.9L77.3,154.4L75.5,154.2L74.8,152.8L73.8,152.5L74.6,151.7L75.2,152.6L76.3,152.3L77.8,152.8L78.6,152.2L79.1,151.2L78.0,149.8L77.0,149.6L76.0,149.8L74.5,150.2L73.2,150.4L71.4,151.6L70.8,150.9L69.0,151.7L68.0,152.9L68.4,154.3L67.5,154.0L68.0,152.3L67.8,151.1L67.3,150.0L66.4,149.5L66.0,148.7L66.5,147.1L68.2,146.2L67.3,145.0L66.9,146.4L65.8,147.7L64.4,147.3L63.9,146.4L62.5,146.1L61.3,146.4L60.1,146.3L58.3,145.3L57.7,144.2L57.8,142.4L57.3,141.2L57.7,142.5L57.3,144.1L55.2,143.8L53.9,143.4L52.1,142.4L51.4,143.0L49.8,142.7L47.7,141.1L46.8,139.4L45.6,138.6L45.7,140.5L44.0,140.9L43.2,140.2L41.7,140.1L40.7,140.7L40.4,139.7L39.8,140.3L40.3,141.1L40.2,142.6L39.3,142.9L37.9,143.0L35.5,142.8L35.0,141.8L35.8,141.4L35.3,139.0L34.8,137.7L33.9,136.3L33.1,135.6L31.6,134.7L30.1,134.9L28.7,134.3L26.5,133.9L26.1,132.5L27.4,132.2L28.6,132.3L29.7,131.8L31.0,131.5L32.2,131.6L33.7,131.1L35.2,130.7L36.9,131.5L37.6,130.0L37.2,128.7L37.0,127.4L35.3,127.0L32.8,125.8L31.8,126.1L31.3,127.6L30.4,128.5L30.4,126.9L30.1,126.0L29.6,125.2L30.1,123.9L29.7,122.6L30.4,121.9L30.4,123.6L31.8,124.1L33.0,123.7L34.2,124.3L36.1,123.9L36.9,123.5L38.1,124.2L39.2,123.5L37.6,122.8L36.4,122.8L35.3,121.7L33.4,122.4L34.4,119.9L32.9,120.1L31.6,120.5L30.8,121.2L28.9,121.9L27.1,121.3L26.3,122.1L24.6,122.3L24.7,121.0L24.6,119.3L24.5,117.6L25.0,116.8L24.5,115.6L24.9,114.5L25.7,113.5L27.0,113.1L28.4,112.7L29.4,112.1L30.3,110.9L31.3,110.5L33.6,110.5L34.5,109.7L35.8,108.9L37.9,109.9L39.1,110.0L39.5,109.1L42.2,108.2L43.5,108.4L44.2,107.5L45.5,107.0L45.8,107.9L46.4,109.8L47.6,109.4L49.2,110.8L49.1,109.5L48.9,108.5L49.8,107.9L51.3,107.7L52.9,108.4L54.1,108.2L54.5,109.1L56.2,109.2L56.1,107.3L57.0,106.1L56.1,105.3L57.4,104.0L57.7,103.0L59.2,103.3L60.2,104.3L61.4,103.5L63.0,102.7L64.6,102.8L65.0,102.0L66.2,102.8L67.1,102.1L68.2,101.7L69.3,103.1L70.1,103.6L71.2,103.3L70.3,104.6L71.3,105.4L72.9,105.6L73.0,107.2L74.4,108.1L74.7,109.0L76.1,109.9L76.4,111.5L77.4,112.4L78.9,113.6L79.5,115.5L80.0,114.5L81.3,114.7L82.0,113.7L83.2,112.4L84.9,111.5L85.6,109.9L87.1,110.3L88.5,109.7L89.7,109.0L89.7,110.6L91.0,110.2L92.6,112.7L93.9,112.3L94.7,111.7L94.3,110.6L96.1,110.3L97.2,111.0L97.7,112.3L98.7,114.4L98.2,112.1L97.3,110.5L98.1,109.5L98.8,108.5L99.7,108.2L100.9,108.0L102.0,108.2L101.7,109.3L102.1,111.2L104.0,111.7L107.0,111.4L109.4,110.8L110.8,111.1L112.7,110.8L114.1,109.9L111.6,108.5L110.4,106.8L109.3,106.0L109.4,104.1L108.5,102.7L109.2,101.6L109.4,100.3L110.1,99.1L109.6,96.4L108.8,95.6L108.4,93.4L108.4,92.2L108.4,88.9L108.9,87.5L107.8,88.2L107.2,87.2L106.9,86.2L105.7,84.0L104.2,82.5L103.1,82.2L102.7,81.0L102.6,79.0L102.1,78.3L101.9,76.8L101.0,75.7L101.8,75.2L102.1,72.7L101.7,71.5L100.8,70.9L99.4,70.5L99.4,69.3L100.2,68.6L101.1,69.3L102.3,69.1L102.7,69.9L104.0,70.3L105.5,70.3L106.7,71.2L108.0,71.6L110.7,71.2L111.6,70.7L112.0,69.7L113.3,69.4L114.7,69.3L116.6,69.8L117.3,70.3L118.2,71.4L118.4,73.0L117.4,73.7L116.3,75.2L117.8,78.0L119.4,79.8L120.0,80.8L119.8,81.9L121.3,82.8L122.4,81.5L123.7,81.5L124.8,81.2L126.1,81.3L127.8,82.2L129.1,82.7L131.8,83.1L133.8,83.2L135.1,83.4L136.3,83.1L139.0,83.6L141.4,84.0L143.0,85.0L145.0,85.6L146.5,85.5L148.4,85.0L151.0,83.9L152.9,82.4L153.9,81.3L155.6,80.6L156.8,80.0L158.8,79.9L159.9,79.5L158.2,79.0L156.7,79.0L154.2,78.6L153.4,77.9L152.8,77.0L152.9,75.8L153.8,74.0L154.6,72.7L155.1,71.5L155.3,70.1L156.0,69.3L157.6,68.6L158.5,68.1L160.4,67.4L162.4,66.1L164.8,64.7L166.1,63.8L168.0,63.2L169.7,62.9L171.9,62.8L173.0,62.2L175.6,61.6L176.5,61.1L178.0,61.2L180.3,60.4L182.9,59.0L184.0,58.2L186.2,56.2L187.5,55.5L189.5,53.8L190.2,51.4L191.0,50.2L192.0,49.7L193.2,50.9L195.3,51.3L195.0,49.8L193.2,48.6L192.0,48.0L191.7,47.1L192.0,44.5L193.7,44.1L192.8,43.4L192.2,42.7L192.5,40.9L192.7,38.1L193.8,37.4L192.8,36.4L192.7,33.2L192.3,31.1L193.2,29.7L193.4,28.7L193.5,27.5L192.7,25.2L194.4,24.2L195.8,22.8L196.7,21.9L198.1,21.3L199.5,21.0L200.5,20.5L201.7,20.2L205.1,19.6L206.8,19.3L207.6,18.8L209.0,18.8L210.8,17.9L213.0,17.3L214.4,17.6L218.4,16.1L218.8,17.1L219.2,19.0L220.0,20.0L220.7,21.6L219.5,22.7L220.1,24.8L220.7,26.7L222.9,26.7L223.4,27.9L224.6,29.1L225.4,30.4L227.0,31.0L228.3,31.0L228.7,29.5L229.6,29.2L231.0,28.3L232.0,28.0L233.3,27.5L234.4,27.9L235.7,29.7L236.0,30.6L237.2,31.1L236.8,32.7L237.1,34.1L237.9,35.8L238.0,37.7L240.0,38.7L241.8,38.5L242.9,37.5L244.1,37.9L243.5,38.8L245.4,38.7L246.5,38.9L247.4,40.2L248.2,43.0L248.2,45.1L249.2,46.3L249.9,44.8L253.0,44.5L253.9,45.3L256.0,44.5L257.6,44.3L260.1,46.5L262.4,47.5L261.9,48.9L261.1,50.2L260.8,51.3L260.2,52.8L262.1,52.8L262.9,54.9L261.5,56.2L260.5,57.2L261.0,58.5L262.1,59.2L263.0,59.6L265.0,59.2L266.1,59.8L268.7,60.4L269.6,60.0L271.2,59.2L272.1,58.8L274.7,58.1L275.4,55.9L275.5,54.3L276.8,53.7L278.7,51.8L280.2,52.2L279.9,53.2L279.4,54.1L278.8,56.2L278.5,57.4L277.8,59.2L279.4,60.1L280.4,61.5L279.4,63.3L279.8,64.2L279.5,66.0L281.5,66.2L282.2,65.6L283.3,65.7L285.0,67.2L286.4,67.9L286.7,69.0L287.7,69.3L288.9,69.7L289.8,70.1L292.1,71.3L291.5,72.0L292.4,72.4L293.8,72.7L294.8,73.7L295.0,75.3L295.2,76.6L295.8,77.3L297.7,76.6L299.1,76.4L300.2,75.5L301.9,75.7L303.8,74.8L305.5,75.6L306.4,77.3L308.2,77.2L309.1,77.6L309.4,79.1L310.5,78.9L311.8,78.6L313.1,78.3L313.9,77.1L316.6,76.8L317.7,78.0L319.5,78.8L320.6,78.5L322.3,78.7L324.5,80.4L324.7,81.5L324.9,83.2L325.6,83.8L326.2,84.8L327.3,86.4L327.9,87.1L328.2,88.2L329.2,88.5L328.7,89.2L329.4,90.2L330.6,90.0L331.9,90.6L332.6,89.6L331.9,88.3L333.3,88.3L334.6,87.9L335.2,88.7L336.3,89.0L337.0,89.9L337.5,91.1L339.0,91.1L340.4,91.8L341.2,91.4L342.8,91.5L343.8,92.0L345.0,90.9L346.0,89.8L348.1,89.4L349.4,89.9L349.9,91.8L350.3,92.7L351.4,93.4L353.0,93.8L354.1,94.7L355.7,94.8L356.7,94.6L357.3,93.9L359.3,95.1L360.6,94.9L361.8,94.8L362.7,95.4L364.1,95.9L365.2,96.9L366.5,97.3L368.7,97.4L368.0,98.1L366.5,100.6L365.3,103.8L364.3,104.6L363.4,105.4L362.0,105.9L361.8,107.2L359.9,109.4L358.5,110.3L358.2,111.2L357.6,112.1L357.7,114.9L356.6,116.1L356.5,117.4L355.8,119.4L355.7,120.5L356.0,122.0L354.9,123.0L354.0,126.3L353.4,126.9L352.9,127.9L352.2,128.8L351.6,130.3L351.4,131.8L351.4,133.8L352.3,134.8L352.8,136.0L351.7,137.6L351.0,139.5L351.2,140.6L350.4,143.1L350.8,144.9L349.9,146.4L350.1,147.9L351.3,149.0L352.0,150.5L349.7,152.4L350.2,153.4L349.7,154.3L347.8,154.2L348.2,155.1L347.4,156.3L346.4,156.8L345.2,156.4L343.7,156.7L342.8,157.1L341.8,156.7L340.8,156.3L341.2,154.5L339.7,154.0ZM92.8,175.3L92.1,174.7L91.0,174.9L90.0,173.8L90.3,172.9L91.4,172.3L92.2,173.1L92.0,174.3L93.9,175.3L94.1,176.7L93.4,176.1L92.8,175.3ZM66.4,159.3L67.8,160.7L69.1,161.3L69.5,162.3L67.3,162.1L65.7,162.0L64.9,161.2L64.6,159.8L65.7,158.8L66.4,159.3ZM111.8,203.8L112.5,203.1L113.1,203.9L114.9,203.9L116.0,204.6L117.2,205.7L116.4,206.4L115.1,205.9L114.1,205.0L112.3,204.1L111.1,204.4L109.6,202.7L110.9,201.9L111.9,202.9L110.9,203.3L111.8,203.8ZM117.9,217.8L117.4,216.5L116.7,215.7L115.2,214.7L114.2,213.5L114.2,212.0L113.5,210.0L114.6,210.3L116.4,212.2L117.9,212.2L118.1,213.5L118.3,214.7L119.5,216.2L119.0,217.6L118.4,219.5L118.0,218.7ZM399.9,371.1L400.0,372.5L400.0,374.7L399.8,377.5L399.5,378.8L399.0,379.7L398.2,380.2L396.9,380.7L397.1,381.7L397.7,380.9L398.9,381.2L398.3,382.6L397.3,383.2L396.8,384.1L396.5,385.1L396.0,386.6L395.2,387.1L395.9,388.4L395.0,390.0L393.7,389.3L392.5,388.9L392.0,387.8L391.2,387.1L390.3,386.1L389.1,385.5L388.2,385.2L387.0,384.6L386.0,384.0L385.0,383.2L384.0,382.2L383.3,381.4L383.8,379.9L385.3,379.3L386.1,378.5L387.0,377.9L385.0,377.3L384.3,376.7L383.2,376.8L383.5,375.9L381.9,376.3L380.9,375.4L381.6,374.9L381.5,373.4L383.2,373.0L383.7,370.8L384.0,369.9L383.4,368.6L381.8,369.2L380.5,369.4L379.0,369.5L378.6,367.5L379.9,366.9L380.1,365.3L381.0,364.6L382.4,364.1L381.8,363.2L381.6,362.0L380.2,361.6L379.3,361.0L378.1,359.7L378.1,358.4L377.6,356.6L379.1,355.9L381.0,355.6L380.2,354.1L379.3,353.7L379.0,352.2L377.6,352.9L377.9,351.0L378.9,349.7L380.1,349.7L380.6,347.4L380.4,345.9L381.6,345.5L381.8,344.3L382.8,343.7L383.6,344.2L384.2,342.7L385.9,342.1L386.7,341.6L387.7,341.3L389.5,341.1L390.9,340.1L391.5,338.2L392.5,337.6L393.7,337.4L394.5,337.8L397.0,339.8L397.8,338.8L398.4,337.4L398.2,336.3L398.2,334.9L397.5,333.8L398.0,332.2L397.8,331.1L398.7,329.3L398.3,327.4L400.2,327.0L401.5,327.8L401.6,329.5L401.7,330.9L402.0,332.4L402.2,335.1L401.7,336.1L401.1,339.8L401.8,341.7L402.9,343.2L403.4,345.6L403.3,346.9L403.6,348.2L403.3,350.9L403.5,352.5L404.1,354.9L403.9,356.6L404.0,358.1L404.0,360.2L403.8,361.7L401.6,365.2L400.9,366.1L400.2,367.4L400.3,368.5L399.8,370.5Z"};
+const CATS = DATA.cathedrals;
+const PERIODS = {
+  early: ["Erken gotik", "--p-early"],
+  high: ["Klasik gotik", "--p-high"],
+  rayonnant: ["Rayonnant", "--p-ray"],
+  flamboyant: ["Flamboyant", "--p-flam"],
+  south: ["Güney (tuğla) gotiği", "--p-south"],
+  gothic: ["Gotik, dönemi belirsiz", "--p-none"],
+};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $ = s => document.querySelector(s);
+const svgEl = (tag, attrs) => { const e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+const fmt = n => Math.round(n).toLocaleString("tr-TR");
+const dec = n => String(n).replace(".", ",");
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+
+/* ---------- Tabs ---------- */
+const VIEWS = ["harita", "yaris", "insa"];
+function route() {
+  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "harita";
+  VIEWS.forEach(n => { $("#v-" + n).hidden = n !== v; });
+  document.querySelectorAll("nav.tabs a").forEach(a => { if (a.dataset.v === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  if (v === "yaris") drawRace();
+  if (v === "insa") resizeCanvas();
+}
+addEventListener("hashchange", route);
+
+/* ---------- Map ---------- */
+const map = $("#map");
+const SHORT = { Q2981: "Paris", Q180274: "Chartres", Q206823: "Reims", Q106934: "Amiens", Q513300: "Beauvais", Q745460: "Strasbourg", Q207985: "Bourges", Q94744: "Albi", Q184407: "Saint-Denis", Q476516: "Rouen", Q1366553: "Orléans", Q473121: "Narbonne", Q489014: "Sens", Q932828: "Noyon", Q585947: "Laon", Q671066: "Metz", Q1736223: "Soissons", Q2443243: "Troyes", Q547013: "Tours", Q1518999: "Auxerre", Q1351690: "Toul" };
+const LABELED = ["Q2981", "Q180274", "Q206823", "Q106934", "Q513300", "Q745460", "Q207985", "Q94744", "Q184407", "Q476516", "Q1366553", "Q473121"];
+const LEFT = new Set(["Q184407", "Q1366553", "Q180274"]);
+let selected = "Q180274";
+map.append(svgEl("path", { d: DATA.france, class: "land" }));
+const dots = {};
+const gDots = svgEl("g", {}), gLbl = svgEl("g", {});
+map.append(gDots, gLbl);
+for (const c of CATS) {
+  const r = c.vault ? 3 + (c.vault - 20) / 5 : 3.5;
+  const d = svgEl("circle", { cx: c.x, cy: c.y, r: 0, class: "dot" + (c.start ? "" : " undated"), tabindex: 0, role: "button", "aria-label": c.name });
+  if (c.start) d.setAttribute("fill", css(PERIODS[c.period][1]));
+  else d.style.opacity = .6;
+  d.dataset.r = r;
+  const t = svgEl("title", {}); t.textContent = `${c.name}${c.start ? " · " + c.start : ""}`; d.append(t);
+  d.addEventListener("click", () => select(c.id));
+  d.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(c.id); } });
+  gDots.append(d);
+  dots[c.id] = d;
+  if (LABELED.includes(c.id)) {
+    const l = svgEl("text", { x: c.x + (LEFT.has(c.id) ? -7 : 7), y: c.y + 4, class: "lbl", "text-anchor": LEFT.has(c.id) ? "end" : "start" });
+    l.textContent = SHORT[c.id]; l.dataset.start = c.start || 0; gLbl.append(l);
+  }
+}
+$("#legend").innerHTML = Object.entries(PERIODS).map(([k, [n, v]]) => k === "gothic"
+  ? `<span><i style="border:1.5px solid var(--p-none)"></i>Başlangıç tarihi yok</span>`
+  : `<span><i style="background:var(${v})"></i>${n}</span>`).join("");
+
+function setYear(y) {
+  y = +y;
+  $("#year").value = y; $("#yearBig").textContent = y;
+  for (const c of CATS) { const d = dots[c.id]; d.setAttribute("r", !c.start || c.start <= y ? d.dataset.r : 0); }
+  gLbl.querySelectorAll("text").forEach(l => { const s = +l.dataset.start; l.style.opacity = s && s <= y ? 1 : 0; });
+  const shown = CATS.filter(c => c.start && c.start <= y).sort((a, b) => b.start - a.start);
+  $("#recent").innerHTML = `<li class="eyebrow">${y} yılına kadar ${shown.length} katedral · en son başlayanlar</li>` +
+    shown.slice(0, 6).map(c => `<li data-id="${c.id}"><span class="mono">${c.start}</span><span>${c.name}</span></li>`).join("");
+}
+$("#recent").addEventListener("click", e => { const li = e.target.closest("li[data-id]"); if (li) select(li.dataset.id); });
+$("#year").addEventListener("input", e => { stopPlay(); setYear(e.target.value); });
+
+function select(id) {
+  selected = id;
+  const c = CATS.find(k => k.id === id);
+  Object.values(dots).forEach(d => d.classList.remove("sel"));
+  dots[id].classList.add("sel");
+  const [pn, pv] = PERIODS[c.period];
+  const rows = [
+    ["Şehir", c.city || "—", false],
+    ["Gotik yapım", c.start ? `${c.start}'den itibaren` : "veride yok", !!c.start],
+    ["Tonoz yüksekliği", c.vault ? `${dec(c.vault)} m` : "—", !!c.vault],
+    ["En yüksek nokta", c.tallest ? `${dec(c.tallest)} m` : "—", !!c.tallest],
+    ["Dönem", pn, false],
+  ];
+  const links = [
+    c.merimee && `<a href="https://pop.culture.gouv.fr/notice/merimee/${c.merimee}" target="_blank" rel="noopener">Mérimée kaydı ${c.merimee}</a>`,
+    c.wiki && `<a href="${c.wiki}" target="_blank" rel="noopener">Wikipedia</a>`,
+    `<a href="https://www.wikidata.org/wiki/${c.id}" target="_blank" rel="noopener">Wikidata</a>`,
+  ].filter(Boolean).join("");
+  $("#info").innerHTML = `<div class="eyebrow" style="color:var(${pv})">${pn}</div><h3>${c.name}</h3>
+    ${c.note ? `<p style="margin:0 0 6px">${c.note}</p>` : ""}
+    <dl class="facts">${rows.map(([a, b, num]) => `<dt>${a}</dt><dd class="${num ? "mono" : ""}">${b}</dd>`).join("")}</dl>
+    <div class="links">${links}</div>`;
+}
+let playT = null;
+function stopPlay() { clearInterval(playT); playT = null; $("#play").textContent = "▶ Oynat"; }
+$("#play").addEventListener("click", () => {
+  if (playT) return stopPlay();
+  let y = +$("#year").value; if (y >= 1600) y = 1130;
+  $("#play").textContent = "❚❚ Durdur";
+  playT = setInterval(() => { y += y < 1350 ? 2 : 6; setYear(Math.min(y, 1610)); if (y >= 1610) stopPlay(); }, 70);
+});
+
+/* ---------- Race chart ---------- */
+function drawRace() {
+  const svg = $("#race"); svg.innerHTML = "";
+  const W = 680, Hh = 380, L = 48, R = 24, T = 20, B = 40;
+  const x0 = 1130, x1 = 1350, yMax = 55;
+  const X = y => L + (y - x0) / (x1 - x0) * (W - L - R);
+  const Y = m => T + (1 - m / yMax) * (Hh - T - B);
+  const defs = svgEl("defs", {}); const mk = svgEl("marker", { id: "arr", viewBox: "0 0 10 10", refX: 5, refY: 5, markerWidth: 6, markerHeight: 6, orient: "auto-start-reverse" });
+  mk.append(svgEl("path", { d: "M0,0L10,5L0,10Z", fill: css("--ruby") })); defs.append(mk); svg.append(defs);
+  for (let m = 0; m <= 50; m += 10) {
+    svg.append(svgEl("line", { x1: L, x2: W - R, y1: Y(m), y2: Y(m), class: "grid" }));
+    const t = svgEl("text", { x: L - 8, y: Y(m) + 4, class: "ax", "text-anchor": "end" }); t.textContent = m + " m"; svg.append(t);
+  }
+  for (let y = 1140; y <= 1340; y += 20) {
+    const t = svgEl("text", { x: X(y), y: Hh - B + 18, class: "ax", "text-anchor": "middle" }); t.textContent = y; svg.append(t);
+  }
+  const pts = CATS.filter(c => c.vault && c.start && c.start <= 1350).sort((a, b) => a.start - b.start || a.vault - b.vault);
+  let best = 0, d = "";
+  for (const c of pts) if (c.vault > best) { d += d ? `H${X(c.start)}V${Y(c.vault)}` : `M${X(c.start)},${Y(c.vault)}`; best = c.vault; }
+  d += `H${X(1284)}`;
+  svg.append(svgEl("path", { d, class: "rec" }));
+  const bx = X(1284);
+  svg.append(svgEl("line", { x1: bx, x2: bx, y1: Y(48.5) + 6, y2: Y(31), stroke: css("--ruby"), "stroke-width": 2, "marker-end": "url(#arr)" }));
+  const ct = svgEl("text", { x: bx + 8, y: Y(37), "font-size": 13 }); ct.textContent = "1284: Beauvais çöker"; ct.style.fill = css("--ruby"); svg.append(ct);
+  const placed = [];
+  for (const c of pts) {
+    const cx = X(c.start), cy = Y(c.vault);
+    svg.append(svgEl("circle", { cx, cy, r: 5.5, fill: css(PERIODS[c.period][1]), stroke: css("--stone"), "stroke-width": 1.5 }));
+    let ly = cy - 9;
+    while (placed.some(p => Math.abs(p[0] - cx) < 62 && Math.abs(p[1] - ly) < 13)) ly -= 13;
+    placed.push([cx, ly]);
+    const t = svgEl("text", { x: cx, y: ly, "font-size": 12, "text-anchor": "middle" });
+    t.textContent = SHORT[c.id] || c.city || c.name;
+    svg.append(t);
+  }
+  const p = game.started ? { h: game.H, y: game.peakYear } : store.get("tasisik-best");
+  if (p && p.h) {
+    const cx = X(Math.min(Math.max(p.y, 1140), 1348)), cy = Y(p.h);
+    svg.append(svgEl("path", { d: `M${cx},${cy - 9}L${cx + 9},${cy}L${cx},${cy + 9}L${cx - 9},${cy}Z`, fill: css("--ink"), stroke: css("--ruby"), "stroke-width": 2.5 }));
+    const right = cx < W - 200;
+    const t = svgEl("text", { x: cx + (right ? 14 : -14), y: cy + 4, "font-size": 13, "font-weight": 700, "text-anchor": right ? "start" : "end" });
+    t.textContent = `Senin katedralin · ${p.h} m`; svg.append(t);
+  }
+}
+
+/* ---------- Game ---------- */
+const cv = $("#cv"), ctx = cv.getContext("2d");
+const LW = 560, LH = 440, GROUND = 418, PX = 6.2, SPAN = 14;
+function resizeCanvas() {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const w = cv.clientWidth || LW;
+  cv.width = Math.round(w * dpr); cv.height = Math.round(w * LH / LW * dpr);
+  ctx.setTransform(cv.width / LW, 0, 0, cv.height / LH, 0, 0);
+  draw();
+}
+addEventListener("resize", () => { if (!$("#v-insa").hidden) resizeCanvas(); });
+
+const HIST = {
+  1144: "Saint-Denis'nin yeni korosu kutsandı: ışıkla dolu ilk gotik koro.",
+  1163: "Paris'te Notre-Dame'ın temeli atıldı.",
+  1170: "Ustalar yeni bir fikir konuşuyor: duvarı dışarıdan kemerle desteklemek. Uçan payanda açıldı.",
+  1194: "Chartres yandı. Yerine bugünkü katedral yükselecek.",
+  1211: "Reims'te yeni katedralin inşası başladı.",
+  1220: "Amiens'te temel atıldı. Hedef: 42 metre.",
+  1225: "Beauvais yarışa katıldı. Herkesi geçmek istiyorlar.",
+  1230: "Taş oymacılar pencereleri ince dallara bölüyor (tracery). Cam sınırı yükseldi.",
+  1248: "Paris'te Sainte-Chapelle kutsandı: neredeyse tamamen cam.",
+  1272: "Beauvais korosu bitti: 48,5 m, dünya rekoru.",
+  1284: "Beauvais korosunun tonozu çöktü. Herkes yeniden hesap yapıyor.",
+  1337: "Yüz Yıl Savaşı başladı. Bağışlar azalacak.",
+};
+const START = () => ({ started: false, over: false, year: 1140, money: 260, H: 20, wall: 1.8, glass: 0.15, tiers: 0, arch: "round", ribs: false, peakH: 20, peakYear: 1140, collapses: 0, log: [], shake: 0, rubble: [], frac: 0 });
+let game = START();
+
+const thrust = s => 0.3 * Math.pow(s.H, 1.4) * (s.arch === "pointed" ? 0.62 : 1) * (s.ribs ? 0.85 : 1);
+const support = s => s.wall * 14 * (1 - s.glass * 0.55) + s.tiers * 10;
+const stability = s => support(s) / thrust(s);
+const lightEff = s => s.glass * Math.max(0.3, 1.2 - s.wall * 0.2);
+const pilgrims = s => 200 + s.H * 15 + lightEff(s) * 1800;
+const income = s => (pilgrims(s) * 0.02 + 5) * (s.year >= 1337 ? 0.75 : 1);
+
+const ACTIONS = [
+  { id: "h", nm: "Tonozu 2 m yükselt", cost: s => Math.round(40 + s.H * 4), can: s => s.H < 56, apply: s => { s.H += 2; }, why: "Ün ve hacı getirir, itkiyi artırır." },
+  { id: "arch", nm: "Sivri kemere geç", cost: () => 120, can: s => s.arch === "round", apply: s => { s.arch = "pointed"; }, why: "İtki %38 azalır. Saint-Denis 1140'ta böyle yaptı." },
+  { id: "ribs", nm: "Kaburgalı tonoz", cost: () => 100, can: s => !s.ribs, apply: s => { s.ribs = true; }, why: "Yük kaburgalara toplanır, itki %15 azalır." },
+  { id: "fly", nm: "Uçan payanda katı ekle", cost: s => 150 * (s.tiers + 1), can: s => s.tiers < 3, unlock: 1170, apply: s => { s.tiers++; }, why: "Duvara dışarıdan +10 destek." },
+  { id: "glass", nm: "Pencereleri büyüt", cost: s => Math.round(45 + s.glass * 120), can: s => s.glass < (s.year >= 1230 ? 0.8 : 0.5) - 0.001, apply: s => { s.glass = +(s.glass + 0.05).toFixed(2); }, why: "Daha çok ışık, daha çok hacı. Duvarı zayıflatır." },
+  { id: "wall", nm: "Duvarları kalınlaştır", cost: () => 70, can: s => s.wall < 3.5, apply: s => { s.wall = +(s.wall + 0.3).toFixed(1); }, why: "Sağlam ama karanlık." },
+  { id: "thin", nm: "Duvarları incelt", cost: () => 25, can: s => s.wall > 1.0, apply: s => { s.wall = +(s.wall - 0.3).toFixed(1); }, why: "Işık için yer açar, desteği azaltır." },
+];
+
+function say(text, cls = "") { game.log.unshift({ y: game.year, text, cls }); game.log = game.log.slice(0, 60); renderLog(); }
+function renderLog() { $("#log").innerHTML = game.log.map(l => `<li class="${l.cls}"><span class="mono">${l.y}</span><span>${l.text}</span></li>`).join(""); }
+
+function collapse(reason) {
+  const oldH = game.H;
+  game.H = Math.max(20, Math.round(game.H * 0.72 / 2) * 2);
+  game.glass = Math.max(0.1, +(game.glass - 0.1).toFixed(2));
+  game.collapses++;
+  game.shake = 1.2;
+  for (let i = 0; i < 40; i++) game.rubble.push({ x: LW / 2 + (Math.random() - .5) * SPAN * PX, y: GROUND - oldH * PX, vx: (Math.random() - .5) * 60, vy: Math.random() * -40, life: 1.8 });
+  say(`${reason} Tonoz ${oldH} m'den ${game.H} m'ye indi.`, "bad");
+}
+
+function doAction(a) {
+  if (game.over) return;
+  const c = a.cost(game);
+  if (game.money < c || !a.can(game) || (a.unlock && game.year < a.unlock)) return;
+  if (!game.started) { game.started = true; setSpeed(1); }
+  game.money -= c; a.apply(game);
+  if (game.H > game.peakH) { game.peakH = game.H; game.peakYear = game.year; }
+  const st = stability(game);
+  if (st < 0.9) collapse("Yapı kendi ağırlığını taşıyamadı.");
+  else if (st < 1) say("Duvarlarda çatlaklar var. İlk fırtına tehlikeli olur.", "bad");
+  renderHud();
+}
+
+function tickYear() {
+  if (game.over) return;
+  game.year++;
+  game.money += income(game);
+  if (HIST[game.year]) say(HIST[game.year], "hist");
+  const r = Math.random();
+  if (r < 0.07) {
+    const sev = 0.05 + Math.random() * 0.35, st = stability(game);
+    if (st < 0.85 + sev) collapse(`Şiddetli bir fırtına (güç ${Math.round(sev * 100)}).`);
+    else if (st < 0.95 + sev) say("Fırtına payandaları sarstı ama yapı ayakta.");
+  } else if (r < 0.08) { const l = Math.round(game.money / 3); game.money -= l; say(`Çatıda yangın. Onarım ${fmt(l)} livre tuttu.`, "bad"); }
+  else if (r < 0.10) { game.money += 120; say("Bir kutsal emanet geldi, hacılar akın etti: +120 livre.", "good"); }
+  if (game.year >= 1348) endGame();
+  renderHud();
+}
+
+function endGame() {
+  game.over = true; setSpeed(0);
+  say("Kara Ölüm. İnşaat durdu.", "bad");
+  const prev = store.get("tasisik-best");
+  const rec = { h: game.H, y: game.peakYear };
+  if (!prev || rec.h > prev.h) store.set("tasisik-best", rec);
+  showEnd();
+}
+function showEnd() {
+  const withV = CATS.filter(c => c.vault);
+  const real = [...withV].sort((a, b) => Math.abs(a.vault - game.H) - Math.abs(b.vault - game.H))[0];
+  const above = withV.filter(c => c.vault < game.H).length;
+  const e = $("#end");
+  e.innerHTML = `<div class="card"><div class="eyebrow">1348</div><h3>${game.H} metrelik tonoz</h3>
+    <p>En yakın gerçek akrabası <b>${real.name}</b> (${dec(real.vault)} m). Listedeki ${withV.length} tonozun ${above} tanesinden yüksek.</p>
+    <p class="mono" style="color:var(--muted)">Işık %${Math.round(lightEff(game) * 100)} · ${game.collapses} çöküş · ${game.tiers} payanda katı</p>
+    <p style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:0"><button type="button" id="toRace">Yarışta gör</button><button type="button" id="again">Yeniden yap</button></p></div>`;
+  e.hidden = false;
+  $("#toRace").onclick = () => { location.hash = "yaris"; };
+  $("#again").onclick = restart;
+}
+
+function restart() { game = START(); $("#end").hidden = true; renderLog(); say(INTRO); renderHud(); setSpeed(0); }
+const INTRO = "Piskopos sana bir Romanesk kilise ve 260 livre verdi. İlk işi yaptığında zaman akmaya başlar.";
+$("#restart").addEventListener("click", restart);
+
+function renderHud() {
+  const s = game;
+  $("#hYear").textContent = s.year;
+  $("#hMoney").textContent = fmt(s.money);
+  $("#hH").textContent = s.H + " m";
+  $("#hPil").textContent = fmt(pilgrims(s));
+  const st = stability(s);
+  $("#hStab").textContent = st.toFixed(2).replace(".", ",");
+  const bar = $("#stabBar");
+  bar.style.width = Math.min(100, st / 2 * 100) + "%";
+  bar.style.background = css(st < 1 ? "--ruby" : st < 1.2 ? "--warn" : "--ok");
+  $("#actions").innerHTML = ACTIONS.map(a => {
+    const locked = a.unlock && s.year < a.unlock;
+    const can = a.can(s) && !locked;
+    const c = a.cost(s);
+    let eff = a.why;
+    if (locked) eff = `${a.unlock}'den sonra açılır. Ustalar henüz denemedi.`;
+    else if (can) {
+      const t = { ...s }; a.apply(t);
+      const ns = stability(t);
+      const cls = ns < 1 ? "bad" : ns > st ? "good" : "";
+      eff += ` <span class="${cls}">Denge → ${ns.toFixed(2).replace(".", ",")}${ns < 0.9 ? " · çöker!" : ""}</span>`;
+    } else eff = a.id === "glass" ? (s.year < 1230 ? "Bu dönemin taş işçiliğiyle sınırdasın. 1230'u bekle." : "Daha fazla cam taşıyamaz.") : a.id === "h" ? "En yüksek nokta." : "Tamamlandı.";
+    return `<button type="button" class="act" data-a="${a.id}" ${!can || s.money < c || s.over ? "disabled" : ""}><span class="nm">${a.nm}</span><span class="cost">${can ? fmt(c) + " ₤" : ""}</span><span class="eff">${eff}</span></button>`;
+  }).join("");
+  if (!$("#v-yaris").hidden) drawRace();
+}
+$("#actions").addEventListener("click", e => { const b = e.target.closest("button[data-a]"); if (b) doAction(ACTIONS.find(a => a.id === b.dataset.a)); });
+
+let speed = 1, last = 0;
+function setSpeed(v) { speed = v; document.querySelectorAll(".speed button[data-s]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.s === v))); }
+document.querySelectorAll(".speed button[data-s]").forEach(b => b.addEventListener("click", () => { if (!game.over) setSpeed(+b.dataset.s); }));
+
+function loop(now) {
+  const dt = Math.min(0.1, (now - last) / 1000); last = now;
+  if (!$("#v-insa").hidden) {
+    if (speed && !game.over) { game.frac += dt * speed; while (game.frac >= 1 && !game.over) { game.frac -= 1; tickYear(); } }
+    game.shake = Math.max(0, game.shake - dt);
+    for (const r of game.rubble) { r.vy += 300 * dt; r.x += r.vx * dt; r.y = Math.min(GROUND - 3, r.y + r.vy * dt); r.life -= dt; }
+    game.rubble = game.rubble.filter(r => r.life > 0);
+    draw(now / 1000);
+  }
+  requestAnimationFrame(loop);
+}
+
+/* Cross-section drawing */
+const stars = Array.from({ length: 70 }, (_, i) => [(i * 97.3) % LW, (i * 53.7) % 240, (i % 3) * .4 + .6]);
+function draw(t = 0) {
+  const s = game, c = ctx;
+  c.save();
+  c.clearRect(0, 0, LW, LH);
+  const sky = c.createLinearGradient(0, 0, 0, LH);
+  sky.addColorStop(0, "#0b0c17"); sky.addColorStop(1, "#262a46");
+  c.fillStyle = sky; c.fillRect(0, 0, LW, LH);
+  c.fillStyle = "#cfd3ff";
+  for (const [x, y, r] of stars) { c.globalAlpha = .35 + .3 * Math.sin(t * 1.3 + x); c.fillRect(x, y, r, r); }
+  c.globalAlpha = 1;
+  if (s.shake > 0) c.translate((Math.random() - .5) * 8 * s.shake, (Math.random() - .5) * 4 * s.shake);
+
+  const cx = LW / 2, m = v => v * PX, gy = GROUND;
+  const st = stability(s);
+  const stoneTop = st < 1 ? "#9a7079" : "#b9b2a4", stoneSide = st < 1 ? "#6a4c55" : "#857e72";
+
+  c.font = "12px 'Alegreya Sans', sans-serif"; c.textAlign = "left";
+  for (const [h, n] of [[36.5, "Chartres 36,5 m"], [42.3, "Amiens 42,3 m"], [48.5, "Beauvais 48,5 m"]]) {
+    const y = gy - m(h);
+    c.strokeStyle = "rgba(226,173,76,.4)"; c.lineWidth = 1; c.setLineDash([4, 5]); c.beginPath(); c.moveTo(12, y); c.lineTo(LW - 12, y); c.stroke(); c.setLineDash([]);
+    c.fillStyle = "rgba(226,173,76,.85)"; c.fillText(n, 14, y - 4);
+  }
+
+  const half = m(SPAN / 2), wt = m(s.wall), aisleW = m(7), aisleH = Math.min(m(s.H * 0.5), m(22));
+  const apex = gy - m(s.H);
+  const spring = apex + (s.arch === "pointed" ? m(9) : m(7));
+
+  // flying buttresses and their piers
+  const pierX = half + wt + aisleW + m(1.4), pierW = m(2.2);
+  for (const sgn of [-1, 1]) if (s.tiers) {
+    const px = cx + sgn * pierX - pierW / 2, top = gy - aisleH - m(6);
+    for (let i = 0; i < s.tiers; i++) {
+      const wallX = cx + sgn * (half + wt), yWall = spring + m(1) + i * m(5), yPier = top + m(2) + i * m(4);
+      c.strokeStyle = stoneSide; c.lineWidth = m(0.9); c.beginPath();
+      c.moveTo(wallX, yWall); c.quadraticCurveTo(cx + sgn * (half + wt + aisleW * .6), Math.min(yWall, yPier) - m(1), cx + sgn * pierX, yPier); c.stroke();
+    }
+    c.fillStyle = stoneSide; c.fillRect(px, top, pierW, gy - top);
+    c.fillStyle = stoneTop; c.beginPath(); c.moveTo(px - 1, top); c.lineTo(px + pierW / 2, top - m(4)); c.lineTo(px + pierW + 1, top); c.fill();
+  }
+
+  // side aisles with lean-to roofs
+  for (const sgn of [-1, 1]) {
+    const x0 = cx + sgn * (half + wt), x1 = x0 + sgn * aisleW;
+    c.fillStyle = stoneSide;
+    c.beginPath(); c.moveTo(x0, gy); c.lineTo(x1, gy); c.lineTo(x1, gy - aisleH + m(3)); c.lineTo(x0, gy - aisleH - m(1.5)); c.closePath(); c.fill();
+    c.fillStyle = "#4a3a3e"; c.beginPath(); c.moveTo(x0, gy - aisleH - m(1.5)); c.lineTo(x1 + sgn * 4, gy - aisleH + m(3)); c.lineTo(x1 + sgn * 4, gy - aisleH + m(4)); c.lineTo(x0, gy - aisleH - m(.5)); c.fill();
+  }
+
+  // nave interior, lit by the glass
+  const lit = lightEff(s);
+  c.fillStyle = "#14151f"; c.fillRect(cx - half, apex, half * 2, gy - apex);
+  const glow = c.createLinearGradient(0, apex, 0, gy);
+  glow.addColorStop(0, `rgba(79,127,240,${.12 + lit * .8})`); glow.addColorStop(1, `rgba(226,173,76,${.06 + lit * .45})`);
+  c.fillStyle = glow; c.fillRect(cx - half, apex, half * 2, gy - apex);
+  for (const sgn of [-1, 1]) {
+    const x = sgn < 0 ? cx - half - wt : cx + half;
+    c.fillStyle = stoneTop; c.fillRect(x, spring, wt, gy - spring);
+    const winTop = spring + m(1), winBot = gy - aisleH - m(2.5);
+    const winH = Math.max(0, winBot - winTop) * Math.min(1, s.glass * 1.6), winW = Math.max(2, wt * (0.3 + s.glass * 0.6));
+    if (winH > 3) {
+      const wy = winBot - winH, wx = x + (wt - winW) / 2;
+      const g = c.createLinearGradient(0, wy, 0, winBot);
+      g.addColorStop(0, "#4f7ff0"); g.addColorStop(.55, "#d9435c"); g.addColorStop(1, "#e2ad4c");
+      c.fillStyle = g; c.beginPath();
+      c.moveTo(wx, winBot); c.lineTo(wx, wy + winW / 2); c.quadraticCurveTo(wx + winW / 2, wy - winW * .5, wx + winW, wy + winW / 2); c.lineTo(wx + winW, winBot); c.fill();
+      c.fillStyle = `rgba(255,225,160,${.05 + lit * .15})`; c.beginPath();
+      const inner = sgn < 0 ? wx + winW : wx;
+      c.moveTo(inner, wy + winW); c.lineTo(inner, winBot); c.lineTo(cx - sgn * half * .1, gy); c.lineTo(cx - sgn * half * .7, gy); c.fill();
+    }
+  }
+
+  // vault shell
+  c.fillStyle = stoneTop; c.beginPath();
+  c.moveTo(cx - half - wt, spring);
+  if (s.arch === "pointed") { c.quadraticCurveTo(cx - half - wt, apex - m(1.6), cx, apex - m(1.2)); c.quadraticCurveTo(cx + half + wt, apex - m(1.6), cx + half + wt, spring); }
+  else c.arc(cx, spring, half + wt, Math.PI, 0);
+  c.lineTo(cx + half, spring);
+  if (s.arch === "pointed") { c.quadraticCurveTo(cx + half, apex + m(.6), cx, apex); c.quadraticCurveTo(cx - half, apex + m(.6), cx - half, spring); }
+  else c.arc(cx, spring, half, 0, Math.PI, true);
+  c.closePath(); c.fill();
+  if (s.ribs) { c.strokeStyle = "#efe6cc"; c.lineWidth = 1.6; c.beginPath(); c.moveTo(cx - half, spring); c.quadraticCurveTo(cx - half * .25, apex + m(1.6), cx, apex + m(.5)); c.quadraticCurveTo(cx + half * .25, apex + m(1.6), cx + half, spring); c.stroke(); }
+  const roofBase = apex - m(1.2), roofTop = roofBase - m(SPAN * 0.5);
+  c.fillStyle = "#3f3438"; c.beginPath(); c.moveTo(cx - half - wt - 4, roofBase + m(1.5)); c.lineTo(cx, roofTop); c.lineTo(cx + half + wt + 4, roofBase + m(1.5)); c.closePath(); c.fill();
+  c.fillStyle = "#e2ad4c"; c.fillRect(cx - 1, roofTop - m(3), 2, m(3)); c.fillRect(cx - m(.8), roofTop - m(2.2), m(1.6), 2);
+
+  c.fillStyle = "#1a1b26"; c.fillRect(0, gy, LW, LH - gy);
+  c.fillStyle = stoneTop; for (const r of game.rubble) c.fillRect(r.x, r.y, 5, 4);
+
+  c.fillStyle = "#ebe6da"; c.font = "500 15px 'IBM Plex Mono', monospace"; c.textAlign = "right";
+  c.fillText(`${s.H} m`, cx - half - wt - 12, apex + 5);
+  c.strokeStyle = "rgba(235,230,218,.5)"; c.lineWidth = 1; c.beginPath(); c.moveTo(cx - half - wt - 8, apex); c.lineTo(cx - half, apex); c.stroke();
+  c.restore();
+}
+
+/* ---------- Boot ---------- */
+function start(saved) {
+  if (saved && saved.game) game = Object.assign(START(), saved.game, { rubble: [], shake: 0 });
+  setYear(1250); select(selected);
+  renderLog();
+  if (!game.log.length) say(INTRO);
+  renderHud(); setSpeed(game.started && !game.over ? 1 : 0);
+  if (game.over) showEnd();
+  route();
+  requestAnimationFrame(t => { last = t; loop(t); });
+}
+window.claude?.hot?.snapshot?.(() => ({ game }));
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>

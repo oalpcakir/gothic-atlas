@@ -1,0 +1,42 @@
+{
+  "id": "PA00094108",
+  "name_en": "Rodez Cathedral",
+  "summary": "Rodez Cathedral was begun in 1277 after the Romanesque bell tower collapsed, and took roughly 265 years to finish, ending in Flamboyant and early Renaissance work. It has a plain, fortress-like west front and a tall flat-topped bell tower, 87 m high, which the source calls the tallest of its kind in France.",
+  "dimensions": {
+    "vault_height_m": {"value": 30, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "note": "nave height; the first two choir bays have a quadripartite vault also at 30 m"},
+    "length_interior_m": {"value": 101.57, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "note": "given as 'dans l'oeuvre' (interior); transept width 36.89 m"},
+    "towers_m": {"value": 87, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "note": "bell tower at the north-east angle"},
+    "tallest_point_m": {"value": 87, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "note": "bell tower"}
+  },
+  "phases": [
+    {"from": 1277, "to": 1291, "part": "choir", "what": "First stone laid 25 May 1277 by Bishop Raymond de Calmont; work proceeds from east to west", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "documented"},
+    {"from": 1320, "to": 1330, "part": "chapels", "what": "Five radiating chevet chapels about 1320; eleven polygonal choir chapels about 1330", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "approximate"},
+    {"from": 1325, "to": 1350, "part": "choir", "what": "Second campaign: high vault of the first two choir bays, 30 m high, built after 1325", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "approximate"},
+    {"from": 1366, "to": 1386, "part": "towers", "what": "Bell tower built beside the church at the north-east angle; wooden spire contracted in 1386", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "documented"},
+    {"from": 1440, "to": 1470, "part": "transept", "what": "Transept work from about 1440; choir completed about 1470", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "approximate"},
+    {"from": 1450, "to": 1540, "part": "nave", "what": "Flamboyant nave built from about 1450, slowly 1470-1490, with upper walls under Bernard Anthony after 1503 and first chapels 1520-1540", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "approximate"},
+    {"from": 1513, "to": 1526, "part": "towers", "what": "Bell tower rebuilt after the 1510 fire", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "documented"},
+    {"from": 1554, "to": 1580, "part": "west front", "what": "Renaissance-style west front designed by Guillaume Philandrier and built by Jean Salvanh (about 1554); pinnacles 1562-1580", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez", "certainty": "debated"}
+  ],
+  "events": [
+    {"year": 1276, "type": "collapse", "what": "Bell tower of the Romanesque cathedral collapses on 16-17 February.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"year": 1510, "type": "fire", "what": "Fire destroys the wooden spire of the bell tower on 28 April.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"year": 1793, "type": "revolution", "what": "Choir fittings removed, tomb of Raymond de Calmont hammered and portal sculptures smashed; tower demolition postponed in early 1794.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"year": 1801, "type": "other", "what": "Concordat returns the building to Catholic worship.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"year": 1862, "type": "restoration", "what": "Classified as a monument historique.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"year": 1880, "type": "lightning", "what": "Lightning strikes the cathedral and damages the organ.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"year": 1978, "type": "restoration", "what": "Restoration of the rose window, west front, pinnacles and bell tower, to 1982.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"year": 2002, "type": "restoration", "what": "New stained-glass windows by Stéphane Belzère installed, finished November 2006.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"}
+  ],
+  "masters": [
+    {"name": "Maître Étienne", "active": "1287–1294", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"name": "Guillaume Bisquet", "active": "1358–1360", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"name": "Conrad Roger", "active": "1440–1470", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"name": "Bernard Anthony", "active": "from c.1500", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"name": "Antoine Salvanh", "active": "1510–1554", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"},
+    {"name": "Jean Salvanh", "active": "c.1554–1580", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Notre-Dame de Rodez (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Rodez"}
+  ]
+}

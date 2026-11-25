@@ -1,0 +1,42 @@
+{
+  "id": "PA00099400",
+  "name_en": "Évreux Cathedral",
+  "summary": "Évreux Cathedral has a Romanesque core rebuilt after a fire of 1119, then a Gothic choir and transept from the 13th century, with Flamboyant additions of the 15th and 16th centuries. It is notable for its large Rayonnant choir glazing and the central lantern tower and spire. It suffered repeatedly in wars, and 1940 bombing destroyed the south tower spire and the organ.",
+  "dimensions": {
+    "vault_height_m": {"value": 21.75, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "note": "nave, under vault; choir 24.10 m, transept 22.21 m"},
+    "length_exterior_m": {"value": 108.87, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "note": "total length excluding outbuildings"},
+    "nave_width_m": {"value": 8.82, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "note": "central vessel, axis to axis of piers; each aisle 4.70 m"},
+    "tallest_point_m": {"value": 78.15, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "note": "spire over the crossing; interior height under the lantern 45 m"}
+  },
+  "phases": [
+    {"from": 1046, "to": 1077, "part": "whole", "what": "Romanesque cathedral begun by Bishop Guillaume Flaitel, consecrated 1077", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "documented"},
+    {"from": 1126, "to": 1160, "part": "whole", "what": "Rebuilding after the 1119 fire began in 1126; completion estimated around 1160", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "approximate"},
+    {"from": 1220, "to": 1230, "part": "nave", "what": "Gothic restoration starts 1220; High Gothic triforium works about 1225-1230", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "approximate"},
+    {"from": 1260, "to": 1310, "part": "choir", "what": "Rayonnant choir begun about 1260 (Gautier de Varinfroy attested 1253), structure and decoration done before 1310", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "approximate"},
+    {"from": 1280, "to": 1320, "part": "chapels", "what": "Five side-aisle chapels on each side added, late 13th to early 14th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "approximate"},
+    {"from": 1441, "to": 1455, "part": "nave", "what": "Reconstruction resumed 1441 after wartime damage, directed by Jéhan Le Roy 1442-1455", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "documented"},
+    {"from": 1461, "to": 1470, "part": "chapels", "what": "Lady chapel (Mère de Dieu) built by Bishop Jean de la Balue", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "documented"},
+    {"from": 1500, "to": 1599, "part": "transept", "what": "Flamboyant north transept front, attributed to Jehan Cossart, and Renaissance west portal (16th century)", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "approximate"},
+    {"from": 1600, "to": 1620, "part": "whole", "what": "Church completed by François Galopin in the early 17th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux", "certainty": "approximate"}
+  ],
+  "events": [
+    {"year": 1119, "type": "fire", "what": "Town and cathedral burned under Henry I of England; rebuilding ordered at the Council of Reims.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"year": 1198, "type": "war", "what": "Philip II Augustus burned the city after a siege (also 1195-1198 conflict).", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"year": 1356, "type": "fire", "what": "Fire during the Hundred Years' War, attributed to King John II; repairs led by Nicolle Le Féron.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"year": 1792, "type": "revolution", "what": "Treasure removed; tympanum decoration lost and the 56 statues over the north portal broken and reused as bridge foundations.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"year": 1862, "type": "restoration", "what": "Listed as a monument historique; 19th-century restoration by diocesan architect Darcy.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"year": 1940, "type": "war", "what": "Bombing on 9 June damaged the cathedral; fire on 11 June destroyed the remaining organ and the south tower spire was not rebuilt.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"year": 1953, "type": "restoration", "what": "Jean-Jacques Gruber starts restoring windows stored at Niort during the war; works completed 1973.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"year": 1983, "type": "other", "what": "Hailstorm on 19 August destroyed windows of the choir and south transept.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"}
+  ],
+  "masters": [
+    {"name": "Gautier de Varinfroy", "active": "attested 1253", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"name": "Nicolle Le Féron", "active": "from 1356", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"name": "Jéhan Le Roy", "active": "1442–1455", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"name": "Jehan Cossart", "active": "16th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"},
+    {"name": "François Galopin", "active": "early 17th century", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Notre-Dame d'Évreux (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Évreux"}
+  ]
+}

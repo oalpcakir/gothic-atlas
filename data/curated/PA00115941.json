@@ -1,0 +1,144 @@
+{
+  "id": "PA00115941",
+  "name_en": "Soissons Cathedral",
+  "summary": "Soissons was started in 1176 with the south transept arm, which has an unusual rounded plan, followed by the choir and nave in the early 13th century. A single south-west tower was built; its spire and a matching north tower were never completed. The upper tower and first nave bays were nearly destroyed in the First World War and restored by 1937.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 31,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "note": "choir vault; north transept arm also 31 m, south arm 23 m"
+    },
+    "length_exterior_m": {
+      "value": 116,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    "nave_width_m": {
+      "value": 11.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "note": "central vessel, interior"
+    },
+    "towers_m": {
+      "value": 66,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    "tallest_point_m": {
+      "value": 66,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "note": "tower"
+    }
+  },
+  "phases": [
+    {
+      "from": 1176,
+      "to": 1190,
+      "part": "transept",
+      "what": "South transept arm, the oldest part, begun under Bishop Nivelon de Quierzy",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "certainty": "documented"
+    },
+    {
+      "from": 1197,
+      "to": 1212,
+      "part": "choir",
+      "what": "Choir built; crossing and both transept arms finished by 1212",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "certainty": "documented"
+    },
+    {
+      "from": 1212,
+      "to": 1230,
+      "part": "nave",
+      "what": "Nave and aisles built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1250,
+      "to": 1300,
+      "part": "west front",
+      "what": "West facade built in the mid-13th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1275,
+      "to": 1314,
+      "part": "transept",
+      "what": "North transept arm rebuilt, rose completed early 14th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1340,
+      "to": 1414,
+      "part": "towers",
+      "what": "Work on the south tower stalled in the Hundred Years' War; spire and north tower never built",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1479,
+      "to": 1479,
+      "part": "whole",
+      "what": "Cathedral dedicated on 25 April 1479",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1567,
+      "type": "war",
+      "what": "Huguenots occupied the town and damaged the cathedral; the crossing bell tower was toppled.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Cathedral closed (again in 1796); later used as a military clothing store and its decoration destroyed in 1798.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    {
+      "year": 1815,
+      "type": "other",
+      "what": "Nearby gunpowder explosion on 13 October damaged the stained glass.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    {
+      "year": 1914,
+      "type": "war",
+      "what": "First World War: the upper tower and first three nave bays nearly destroyed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    {
+      "year": 1937,
+      "type": "restoration",
+      "what": "Post-war restoration completed under Émile Brunet; new west rose installed 1931.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    {
+      "year": 2017,
+      "type": "other",
+      "what": "Storm Egon on 12-13 January destroyed the west rose window.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Nivelon de Quierzy (bishop, patron)",
+      "active": "1176-1207",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    },
+    {
+      "name": "Émile Brunet",
+      "active": "restoration until 1937",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Gervais-et-Saint-Protais de Soissons (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Gervais-et-Saint-Protais_de_Soissons"
+    }
+  ]
+}

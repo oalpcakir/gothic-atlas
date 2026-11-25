@@ -1,0 +1,106 @@
+---
+import Base from "../layouts/Base.astro";
+import { load, href, fmt, CENTURIES, centuryOf, project, francePath, MAP_BOX, inFrance, TYPE_PLURAL } from "../lib/data.js";
+const { buildings, meta } = load();
+
+// Hero plate: every building as a small ink mark, one path per century so the SVG stays light.
+const marks = {};
+for (const b of buildings) {
+  if (!inFrance(b)) continue;
+  const [x, y] = project(b.lon, b.lat);
+  const k = b.first ? centuryOf(b.first) : 0;
+  (marks[k] ??= []).push(`M${x - 0.9},${y}h1.8M${x},${y - 0.9}v1.8`);
+}
+const types = {};
+for (const b of buildings) types[b.type] = (types[b.type] || 0) + 1;
+const typeRows = Object.entries(types).sort((a, b) => b[1] - a[1]);
+const photos = buildings.reduce((a, b) => a + (b.photos?.with_image || 0), 0);
+const objects = buildings.reduce((a, b) => a + (b.objects?.count || 0), 0);
+const mostPhotographed = [...buildings].sort((a, b) => (b.photos?.count || 0) - (a.photos?.count || 0)).slice(0, 10);
+const earliest = buildings.filter((b) => b.first && b.campaigns.find((c) => c.from === b.first).precision !== "century").slice(0, 8);
+---
+<Base description={`An open atlas of ${fmt(meta.count)} Gothic-era churches, abbeys and cathedrals in France, compiled from public heritage records with sources shown for every value.`}>
+  <div class="stack" style="--gap:4rem">
+    <section class="hero">
+      <div class="stack" style="--gap:1.2rem">
+        <p class="eyebrow">France, {meta.rule.era_start}–{meta.rule.era_end}</p>
+        <h1>{fmt(meta.count)} buildings of Gothic France, from the public record</h1>
+        <p class="lede">Around 1140 the monks of Saint-Denis rebuilt their choir with pointed arches, ribbed vaults and walls of glass. Within four centuries the idea had reached almost every parish in France. This atlas maps what survives of it, using the state's own heritage registers.</p>
+        <p class="doors">
+          <a class="door" href="/atlas/">Open the atlas</a>
+          <a class="door" href="/buildings/">Browse the buildings</a>
+          <a class="door" href="/data/">Download the data</a>
+        </p>
+        <form action="/buildings/" method="get" class="search">
+          <label class="eyebrow" for="q">Find a building</label>
+          <div><input id="q" name="q" type="search" placeholder="Town or name, e.g. Chartres" /><button type="submit">Search</button></div>
+        </form>
+      </div>
+      <figure class="plate">
+        <svg viewBox={MAP_BOX} role="img" aria-label="Map of France with one mark per Gothic-era building, coloured by century">
+          <path d={francePath()} fill="none" stroke="var(--ink)" stroke-width="0.7" />
+          <path d={(marks[0] || []).join("")} stroke="var(--undated)" stroke-width="0.5" fill="none" />
+          {CENTURIES.map((c) => <path d={(marks[c.c] || []).join("")} stroke={c.color} stroke-width="0.6" fill="none" />)}
+        </svg>
+        <figcaption>
+          <span class="legend">{CENTURIES.map((c) => <span><i style={`background:${c.color}`}></i>{c.label}</span>)}</span>
+          One mark per building, coloured by the century of its first Gothic-era campaign.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="numbers" aria-label="The atlas in numbers">
+      <div><b>{fmt(meta.count)}</b><span>protected religious buildings with Gothic-era work</span></div>
+      <div><b>{fmt(buildings.filter((b) => b.level === "confirmed").length)}</b><span>with a Gothic style recorded on Wikidata</span></div>
+      <div><b>{fmt(photos)}</b><span>digitised archive photographs and drawings linked to them</span></div>
+      <div><b>{fmt(objects)}</b><span>protected objects inside: glass, sculpture, furniture</span></div>
+    </section>
+
+    <section class="cols">
+      <div class="stack">
+        <h2>What is in the atlas</h2>
+        <table class="data">
+          <thead><tr><th>Type</th><th class="num">Buildings</th></tr></thead>
+          <tbody>{typeRows.map(([t, n]) => <tr><td>{TYPE_PLURAL[t] ? TYPE_PLURAL[t][0].toUpperCase() + TYPE_PLURAL[t].slice(1) : t}</td><td class="num">{fmt(n)}</td></tr>)}</tbody>
+        </table>
+        <p class="caption">A building is included when Mérimée dates one of its campaigns between {meta.rule.era_start} and {meta.rule.era_end}, or when Wikidata records a Gothic style. <a href="/about/">How the list is made</a>.</p>
+      </div>
+      <div class="stack">
+        <h2>Earliest closely dated campaigns</h2>
+        <table class="data">
+          <thead><tr><th>Building</th><th>Dated</th></tr></thead>
+          <tbody>{earliest.map((b) => <tr><td><a href={href(b)}>{b.name}</a>, {b.commune}</td><td>{b.first_label}</td></tr>)}</tbody>
+        </table>
+        <h2 style="margin-top:1.2rem">Most photographed</h2>
+        <table class="data">
+          <thead><tr><th>Building</th><th class="num">Archive records</th></tr></thead>
+          <tbody>{mostPhotographed.map((b) => <tr><td><a href={href(b)}>{b.name}</a>, {b.commune}</td><td class="num">{fmt(b.photos?.count)}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>In preparation</h2>
+      <p>This is the first layer: the full register, mapped and linked. Next come hand-checked dossiers for thirty great cathedrals with dimensions and building phases, a glossary of Gothic elements illustrated from Viollet-le-Duc, an archive of open-licensed engravings and plans, and 3D silhouettes from the national LiDAR survey.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  .lede { font-size: 1.2rem; }
+  .doors { display: flex; flex-wrap: wrap; gap: 10px; max-width: none; }
+  .door { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--ink); border: 1px solid var(--ink); padding: 10px 14px; }
+  .door:first-child, .door:hover { background: var(--ink); color: var(--paper); }
+  .search { display: grid; gap: 6px; max-width: 460px; }
+  .search div { display: flex; }
+  .search input { flex: 1; min-width: 0; border-right: 0; }
+  .plate svg { display: block; width: 100%; height: auto; }
+  .plate .legend { margin-bottom: 4px; }
+  .numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .numbers div { padding: 18px 18px 18px 0; display: grid; gap: 4px; align-content: start; }
+  .numbers b { font-family: var(--display); font-weight: 500; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+  .numbers span { font-size: 0.9rem; color: var(--ink-2); max-width: 24ch; }
+  .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; align-items: start; }
+  @media (max-width: 860px) { .hero, .cols { grid-template-columns: minmax(0, 1fr); } }
+</style>

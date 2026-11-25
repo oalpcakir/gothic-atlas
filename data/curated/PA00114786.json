@@ -1,0 +1,141 @@
+{
+  "id": "PA00114786",
+  "name_en": "Noyon Cathedral",
+  "summary": "Rebuilt after a fire in 1131, Noyon is one of the earliest Gothic cathedrals, with a four-storey elevation of arcade, gallery, triforium and clerestory and a rounded transept. Work ran from the 1140s to the early 13th century. It was badly hit in the First World War and rebuilt between 1918 and 1938.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 22.73,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "note": "nave vault"
+    },
+    "length_interior_m": {
+      "value": 91.33,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    "length_exterior_m": {
+      "value": 103.11,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    "nave_width_m": {
+      "value": 10.23,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "note": "between column axes"
+    },
+    "towers_m": {
+      "value": 66,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "note": "north tower"
+    },
+    "tallest_point_m": {
+      "value": 66,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "note": "north tower; planned spires never built"
+    }
+  },
+  "phases": [
+    {
+      "from": 1145,
+      "to": 1150,
+      "part": "choir",
+      "what": "Gothic rebuilding begun after the fire of 1131",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1150,
+      "to": 1185,
+      "part": "ambulatory",
+      "what": "Radiating chapels started after 1150; chevet, transept and eastern nave bays finished by 1185",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1165,
+      "to": 1185,
+      "part": "transept",
+      "what": "Lower parts of the rounded transept, crossing piers earlier",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1180,
+      "to": 1231,
+      "part": "nave",
+      "what": "Nave dated c. 1180-1205; nave and west facade finished by 1231",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "certainty": "debated"
+    },
+    {
+      "from": 1300,
+      "to": 1400,
+      "part": "chapels",
+      "what": "Sacristy and porch added in the 14th century; cloister and north chapels 13th-14th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1747,
+      "to": 1753,
+      "part": "choir",
+      "what": "Chevet and apse rebuilt",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1131,
+      "type": "fire",
+      "what": "Fire destroyed the previous cathedral.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    {
+      "year": 1293,
+      "type": "fire",
+      "what": "Fire on 19 July damaged the cathedral, mainly the west part.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Revolution damage; sculptures of the facade destroyed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    {
+      "year": 1843,
+      "type": "restoration",
+      "what": "Restoration campaigns began, continuing 1860-1872 and from 1884.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    {
+      "year": 1914,
+      "type": "war",
+      "what": "First World War bombardment caused heavy damage; the hemicycle vault collapsed after the war.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    {
+      "year": 1918,
+      "type": "restoration",
+      "what": "Reconstruction led by André Collin until 1938.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Florent Bleuet and Pierre Tarisel",
+      "active": "second half of the 15th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    },
+    {
+      "name": "André Collin",
+      "active": "1918-1938",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Noyon (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Noyon"
+    }
+  ]
+}

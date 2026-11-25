@@ -1,0 +1,41 @@
+{
+  "id": "PA00087087",
+  "name_en": "Meaux Cathedral",
+  "summary": "Meaux Cathedral was begun around 1175 with a choir that soon sank on poor ground and was rebuilt in the Rayonnant style from 1253 under Gautier de Varinfroy. The nave was lengthened in the 14th and 15th centuries and the work stopped about 1540, leaving an asymmetrical west front with only a north tower.",
+  "dimensions": {
+    "vault_height_m": {"value": 31, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "note": "main nave vault, approximate; choir vault up to 33 m; aisle vaults about 15 m", "alt": [{"value": 33, "source": "https://en.wikipedia.org/wiki/Meaux_Cathedral"}]},
+    "length_exterior_m": {"value": 85, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "note": "approximate overall length; the page does not say interior or exterior"},
+    "tallest_point_m": {"value": 48, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "note": "total height to the ridge", "alt": [{"value": 48, "source": "https://en.wikipedia.org/wiki/Meaux_Cathedral"}]},
+    "towers_m": {"value": 60, "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "note": "north tower, the only one completed"}
+  },
+  "phases": [
+    {"from": 1175, "to": 1200, "part": "choir", "what": "First Gothic choir built around 1175-1180, with ambulatory, three radiating chapels and tribune before 1200", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "approximate"},
+    {"from": 1215, "to": 1220, "part": "transept", "what": "Crossing piers, choir triforium and clerestory raised and vaulted", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "approximate"},
+    {"from": 1220, "to": 1235, "part": "transept", "what": "Transept and last two nave bays built by a new architect", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "approximate"},
+    {"from": 1253, "to": 1278, "part": "choir", "what": "Choir rebuilt in Rayonnant style under Gautier de Varinfroy after faulty foundations", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "documented"},
+    {"from": 1266, "to": 1270, "part": "transept", "what": "Transept arm façades modified; Pierre de Varinfroy works on the north arm", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "approximate"},
+    {"from": 1335, "to": 1358, "part": "nave", "what": "Nave lengthened by three bays and west portals begun; work stops in 1358 after the Jacquerie", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "documented"},
+    {"from": 1390, "to": 1410, "part": "nave", "what": "Work resumes on the left side of the first three bays", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "approximate"},
+    {"from": 1450, "to": 1499, "part": "west front", "what": "First three nave bays finished, fourth and fifth remodelled in Flamboyant style, west rose window", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "approximate"},
+    {"from": 1505, "to": 1540, "part": "towers", "what": "North tower built; works end in 1540 leaving the south tower unbuilt", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux", "certainty": "documented"}
+  ],
+  "events": [
+    {"year": 1358, "type": "war", "what": "Works stopped after the Jacquerie peasant revolt.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"year": 1422, "type": "war", "what": "English occupation of Meaux, to 1439, halts works again.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"year": 1562, "type": "war", "what": "Cathedral pillaged by Huguenots and the rood screen destroyed (rebuilt 1563).", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"year": 1640, "type": "other", "what": "The spire is destroyed.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"year": 1808, "type": "lightning", "what": "Lightning on 29 August destroys part of the organ, an entrance door and a turret.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"year": 1814, "type": "war", "what": "Explosion of a nearby gunpowder store on 28 March weakens the building.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"year": 1839, "type": "restoration", "what": "Major restoration to 1894: ambulatory and nave flying buttresses rebuilt.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"year": 1840, "type": "other", "what": "Listed among the first monuments historiques.", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"}
+  ],
+  "masters": [
+    {"name": "Gautier de Varinfroy", "active": "1253–1278", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"name": "Pierre de Varinfroy", "active": "from 1266", "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"name": "Jean-Charles Danjoy", "active": "19th century restoration", "source": "https://en.wikipedia.org/wiki/Meaux_Cathedral"}
+  ],
+  "sources": [
+    {"title": "Cathédrale Saint-Étienne de Meaux (French Wikipedia)", "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Meaux"},
+    {"title": "Meaux Cathedral (English Wikipedia)", "url": "https://en.wikipedia.org/wiki/Meaux_Cathedral"}
+  ]
+}

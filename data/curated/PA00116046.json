@@ -1,0 +1,194 @@
+{
+  "id": "PA00116046",
+  "name_en": "Amiens Cathedral",
+  "summary": "Begun in 1220 after a fire, Amiens was built to a single coherent design, with the nave done by about 1230 and the choir finished in 1269. It has the tallest completed nave vault in France and one of the largest interiors of any medieval cathedral. The two west towers are unequal and the flèche over the crossing dates from the 16th century.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 42.3,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "note": "nave vault",
+      "alt": [
+        {
+          "value": 42,
+          "source": "https://en.wikipedia.org/wiki/Amiens_Cathedral"
+        }
+      ]
+    },
+    "length_interior_m": {
+      "value": 133.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    "length_exterior_m": {
+      "value": 145,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    "nave_width_m": {
+      "value": 14.6,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "note": "central vessel"
+    },
+    "tallest_point_m": {
+      "value": 112.7,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "note": "flèche, ground to top"
+    },
+    "towers_m": {
+      "value": 68.19,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "note": "north tower; its own text says 66 m; south tower 61.70 m",
+      "alt": [
+        {
+          "value": 66,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+        }
+      ]
+    },
+    "area_m2": {
+      "value": 7700,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "note": "covered area"
+    }
+  },
+  "phases": [
+    {
+      "from": 1220,
+      "to": 1230,
+      "part": "nave",
+      "what": "Foundations laid 1220; nave finished and opened about 1230 under Robert de Luzarches",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "certainty": "documented"
+    },
+    {
+      "from": 1220,
+      "to": 1236,
+      "part": "west front",
+      "what": "West facade built in one campaign",
+      "source": "https://en.wikipedia.org/wiki/Amiens_Cathedral",
+      "certainty": "documented"
+    },
+    {
+      "from": 1236,
+      "to": 1247,
+      "part": "choir",
+      "what": "Choir, chevet and radiating chapels under Bishop Arnoul",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "certainty": "documented"
+    },
+    {
+      "from": 1260,
+      "to": 1269,
+      "part": "choir",
+      "what": "Work resumed; choir and main structure with vaulting completed in 1269",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "certainty": "documented"
+    },
+    {
+      "from": 1269,
+      "to": 1288,
+      "part": "spire",
+      "what": "Roof frame and original spire built under Bishop Guillaume de Mâcon",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "certainty": "documented"
+    },
+    {
+      "from": 1290,
+      "to": 1375,
+      "part": "chapels",
+      "what": "Eleven nave chapels added",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "certainty": "documented"
+    },
+    {
+      "from": 1372,
+      "to": 1402,
+      "part": "towers",
+      "what": "South tower finished 1372; north tower completed 1402 (1406 in English article)",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1500,
+      "to": 1550,
+      "part": "west front",
+      "what": "Rose window of the west front rebuilt in Flamboyant style in the 16th century",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens",
+      "certainty": "approximate"
+    }
+  ],
+  "events": [
+    {
+      "year": 1218,
+      "type": "fire",
+      "what": "Fire reportedly destroyed the earlier cathedral (lightning cited).",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "year": 1258,
+      "type": "fire",
+      "what": "Fire destroyed the roof frames of the apse chapels.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "year": 1528,
+      "type": "lightning",
+      "what": "Lightning destroyed the spire; a replacement was built, finished 1533.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Choir sculptures damaged by volunteers in December; used as Temple of Reason.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "year": 1849,
+      "type": "restoration",
+      "what": "Viollet-le-Duc restored the cathedral until 1874.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "year": 1918,
+      "type": "war",
+      "what": "Cathedral shelled in the final German offensive; portals had been sandbagged in 1915.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "year": 1973,
+      "type": "restoration",
+      "what": "Restoration campaign 1973-1980 under Sallez and Gigot.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Robert de Luzarches",
+      "active": "1220-1228",
+      "source": "https://en.wikipedia.org/wiki/Amiens_Cathedral"
+    },
+    {
+      "name": "Thomas de Cormont",
+      "active": "1228-1258",
+      "source": "https://en.wikipedia.org/wiki/Amiens_Cathedral"
+    },
+    {
+      "name": "Renaud de Cormont",
+      "active": "c. 1288",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "name": "Eugène Viollet-le-Duc",
+      "active": "1849-1874",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame d'Amiens (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_d'Amiens"
+    },
+    {
+      "title": "Amiens Cathedral (en.wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Amiens_Cathedral"
+    }
+  ]
+}

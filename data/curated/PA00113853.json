@@ -1,0 +1,146 @@
+{
+  "id": "PA00113853",
+  "name_en": "Sens Cathedral (Saint-Étienne)",
+  "summary": "Begun around 1130, Sens is usually counted as the first large cathedral planned from the start in the new Gothic manner. Its master, William of Sens, later directed the rebuilding of Canterbury choir. The west front collapsed in part in 1268 and the transept and south facade were rebuilt in Flamboyant style around 1500 by Martin Chambiges.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 24.4,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "note": "nave height as stated in the article"
+    },
+    "length_interior_m": {
+      "value": 113.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    "length_exterior_m": {
+      "value": 122,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    "nave_width_m": {
+      "value": 15.25,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "note": "central vessel of the nave"
+    },
+    "towers_m": {
+      "value": 78,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "note": "south tower, total height; 66 m to the terrace"
+    },
+    "tallest_point_m": {
+      "value": 78,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "note": "south tower"
+    }
+  },
+  "phases": [
+    {
+      "from": 1130,
+      "to": 1164,
+      "part": "choir",
+      "what": "Choir and nave begun under Archbishop Henri Sanglier; consecrated by Pope Alexander III in 1164",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1150,
+      "to": 1200,
+      "part": "west front",
+      "what": "West facade completed by the end of the 12th century; the north 'tour de Plomb' is its oldest part",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1268,
+      "to": 1300,
+      "part": "west front",
+      "what": "West facade largely rebuilt after the south tower fell; high windows enlarged and nave chapels added",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1490,
+      "to": 1517,
+      "part": "transept",
+      "what": "Flamboyant transept built for Archbishop Tristan de Salazar to designs by Martin Chambiges",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "certainty": "documented"
+    },
+    {
+      "from": 1490,
+      "to": 1500,
+      "part": "transept",
+      "what": "South transept facade and portal built by Chambiges, over 14th-century lower parts",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "certainty": "documented"
+    },
+    {
+      "from": 1532,
+      "to": 1534,
+      "part": "towers",
+      "what": "South tower finished, with its Renaissance campanile completed in 1534",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens",
+      "certainty": "documented"
+    }
+  ],
+  "events": [
+    {
+      "year": 1268,
+      "type": "collapse",
+      "what": "South tower collapsed, destroying most of the west facade.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    {
+      "year": 1337,
+      "type": "war",
+      "what": "Building work interrupted by the Hundred Years' War, and again by the Black Death in 1346-1353.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "Statuary destroyed on 7 November; Dauphin's tomb dismantled and side chapels demolished.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    {
+      "year": 1845,
+      "type": "restoration",
+      "what": "Lead spire on the north tower removed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    {
+      "year": 1868,
+      "type": "restoration",
+      "what": "Rood screen removed.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    {
+      "year": 1943,
+      "type": "restoration",
+      "what": "Salazar monument reassembled using anastylosis.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Maître de Sens (anonymous)",
+      "active": "design dated to the 1130s",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    {
+      "name": "Guillaume de Sens",
+      "active": "directed Canterbury works 1175-1179",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    },
+    {
+      "name": "Martin Chambiges",
+      "active": "c. 1490-1517",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Saint-Étienne de Sens (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Étienne_de_Sens"
+    }
+  ]
+}

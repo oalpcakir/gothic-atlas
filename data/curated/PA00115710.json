@@ -1,0 +1,158 @@
+{
+  "id": "PA00115710",
+  "name_en": "Laon Cathedral",
+  "summary": "Begun around 1150-1155, Laon is a major early Gothic cathedral with four-storey elevations, a lantern tower over the crossing and a west front with deep porches. Its seven-tower design was only partly realised. The choir was rebuilt with a flat east end in the early 13th century.",
+  "dimensions": {
+    "vault_height_m": {
+      "value": 24,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "note": "nave vault, from the dimensions list",
+      "alt": [
+        {
+          "value": 26,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+        }
+      ]
+    },
+    "length_exterior_m": {
+      "value": 110.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "note": "overall length as stated"
+    },
+    "towers_m": {
+      "value": 56,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "note": "west facade towers per the dimensions list; the towers section gives 52 m",
+      "alt": [
+        {
+          "value": 52,
+          "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+        }
+      ]
+    },
+    "tallest_point_m": {
+      "value": 60.5,
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "note": "south transept clock tower; crossing lantern is 48 m outside"
+    }
+  },
+  "phases": [
+    {
+      "from": 1150,
+      "to": 1160,
+      "part": "choir",
+      "what": "Work begun under Bishop Gautier de Mortagne with the choir and great transept",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1170,
+      "to": 1175,
+      "part": "transept",
+      "what": "Second campaign: north transept arm and portals",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1175,
+      "to": 1185,
+      "part": "transept",
+      "what": "Transept, lantern tower, last five nave bays and transept towers",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1185,
+      "to": 1200,
+      "part": "nave",
+      "what": "Nave and west facade completed around 1200",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1205,
+      "to": 1220,
+      "part": "choir",
+      "what": "Choir rebuilt with a flat chevet and ten bays",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "certainty": "documented"
+    },
+    {
+      "from": 1235,
+      "to": 1238,
+      "part": "whole",
+      "what": "Cathedral dedicated",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "certainty": "approximate"
+    },
+    {
+      "from": 1300,
+      "to": 1400,
+      "part": "chapels",
+      "what": "Chapels built between the buttresses",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon",
+      "certainty": "approximate"
+    }
+  ],
+  "events": [
+    {
+      "year": 1112,
+      "type": "fire",
+      "what": "Earlier Romanesque cathedral burned in the communal uprising on 25 April.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    },
+    {
+      "year": 1692,
+      "type": "other",
+      "what": "Earthquake shook the spire on 18 September.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    },
+    {
+      "year": 1793,
+      "type": "revolution",
+      "what": "South-west spire, belfry between the west towers and part of the portal sculpture demolished.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    },
+    {
+      "year": 1853,
+      "type": "restoration",
+      "what": "Major restoration under Boeswillwald after the west facade had settled about 80 cm.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    },
+    {
+      "year": 1870,
+      "type": "war",
+      "what": "Gunpowder store exploded, destroying the stained glass; restoration ended 1914.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    },
+    {
+      "year": 1944,
+      "type": "war",
+      "what": "Cathedral spared during British air raids on Laon.",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    }
+  ],
+  "masters": [
+    {
+      "name": "Gautier de Mortagne (bishop, patron)",
+      "active": "1150/1155 start",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    },
+    {
+      "name": "Villard de Honnecourt",
+      "active": "13th century, recorded the towers",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    },
+    {
+      "name": "Émile Boeswillwald",
+      "active": "restoration from 1853",
+      "source": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Cathédrale Notre-Dame de Laon (fr.wikipedia)",
+      "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Laon"
+    }
+  ]
+}
