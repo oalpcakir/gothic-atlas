@@ -42,4 +42,4 @@ npm run dev        # local preview
 - Wikidata: CC0. Wikimedia Commons images: licence shown beside each image
 - Boundaries: IGN ADMIN EXPRESS COG CARTO PE (Licence Ouverte 2.0), via `pipeline/boundaries.py`
 
-The compiled dataset is released under ODbL 1.0, the site's own text under CC BY 4.0, the code under MIT.
+The code is released under the MIT licence (see `LICENSE`). The compiled dataset (`data/`, `site/public/data/`) is released under the [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/), and the text written for the site under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
